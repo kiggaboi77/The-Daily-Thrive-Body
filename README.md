@@ -4,8 +4,15 @@ Static website for [kiggaboi77.com](https://kiggaboi77.com/) — Korean culture 
 
 ## Pages
 
-- `index.html` — home: latest article, article list with topic filters, Korean word of the day, about, email signup
+- `index.html` — home: hero, why the long way, four chapters, article journey, Korean word of the day, about, email signup
 - `privacy.html` — privacy policy (includes the Google AdSense cookie disclosure)
+
+## Design
+
+- `assets/img/hero.svg` — hand-built illustration: a hanok under the moon, a pine, misty mountains and a long road winding to the horizon (*meon gil*, "the long way"). Swap in a photo by changing the `<img class="hero-art">` source.
+- `assets/img/dancheong.svg` — band pattern inspired by dancheong temple painting
+- `assets/img/lattice.svg` — hanok window-lattice background
+- Red *dojang* seal mark with 길 (gil, "road") as the logo
 
 ## Adding a new article
 

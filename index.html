@@ -4,95 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Korea, The Long Way</title>
-  <meta name="description" content="Korean culture explained for curious travelers and newcomers — the everyday customs, food, holidays and words behind life in Korea.">
+  <meta name="description" content="No shortcuts. The customs, food, holidays and words behind everyday Korea — explained slowly, in plain English.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&family=Nanum+Myeongjo:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23c8323c'/><path d='M6 50a22 22 0 0 0 44 0a22 22 0 0 1 44 0a44 44 0 0 1-88 0z' fill='%23234a8c'/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%23b0302a'/><text x='50' y='72' font-size='64' text-anchor='middle' fill='white' font-family='serif'>길</text></svg>">
 </head>
 <body>
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="container nav">
-      <a href="#" class="logo">Korea, <span>The Long Way</span></a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <a href="#" class="brand">
+        <span class="seal" aria-hidden="true">길</span>
+        <span class="brand-name">Korea, <em>The Long Way</em></span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
       <nav class="nav-links">
-        <a href="#posts">Articles</a>
+        <a href="#why">Why the Long Way</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#journey">Articles</a>
         <a href="#vocab">Word of the Day</a>
-        <a href="#about">About</a>
-        <a href="#subscribe" class="btn btn-small">Subscribe</a>
+        <a href="#subscribe" class="nav-cta">Subscribe</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- HERO -->
     <section class="hero">
-      <div class="container hero-inner">
-        <div>
-          <p class="eyebrow">Korean culture, explained</p>
-          <h1>The small customs that make Korea <em>feel like Korea.</em></h1>
-          <p class="lead">Why shoes come off at the door, why elders pour first, what happens on the big holidays — the everyday “why” behind life in Korea, written in plain English for travelers, expats and the simply curious.</p>
-          <div class="hero-actions">
-            <a href="#featured" class="btn">Read the latest article</a>
-            <a href="#vocab" class="btn btn-ghost">Learn a Korean word →</a>
-          </div>
+      <img class="hero-art" src="assets/img/hero.svg" alt="A moonlit Korean landscape: a hanok with glowing paper windows, a pine tree, and a long road winding through misty mountains">
+      <div class="hero-vertical" aria-hidden="true">먼 길</div>
+      <div class="container hero-content">
+        <p class="eyebrow light">먼 길 · meon gil — the long way</p>
+        <h1>Korea,<br><em>the long way.</em></h1>
+        <p class="lead">No shortcuts, no clichés. The customs, food, holidays and words behind everyday Korea — explained slowly, so they finally make sense.</p>
+        <div class="hero-actions">
+          <a href="#journey" class="btn btn-light">Start the journey</a>
+          <a href="#why" class="btn btn-outline-light">Why “the long way”?</a>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <svg viewBox="0 0 200 200">
-            <circle cx="100" cy="100" r="88" fill="var(--red)"/>
-            <path d="M12 100a44 44 0 0 0 88 0a44 44 0 0 1 88 0a88 88 0 0 1-176 0z" fill="var(--blue)"/>
-          </svg>
+      </div>
+      <a href="#why" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <div class="dancheong" aria-hidden="true"></div>
+
+    <!-- WHY -->
+    <section id="why" class="section">
+      <div class="container why">
+        <div class="why-intro reveal">
+          <p class="eyebrow">Why the long way</p>
+          <h2>The short answer is rarely the whole story.</h2>
+          <p>Ask why Koreans take off their shoes indoors and you'll usually hear “to keep the floor clean.” True — but the long way goes further: through <em>ondol</em> heated floors, centuries of sitting and sleeping on the floor, and the quiet meaning of the entryway.</p>
+          <p>That's the road this blog takes. One custom at a time, researched properly and told in plain English, for travelers, expats and anyone curious about Korea.</p>
         </div>
+        <ol class="principles">
+          <li class="reveal">
+            <span class="hangul">천천히</span>
+            <span class="roman">cheon cheon hi</span>
+            <h3>Slowly</h3>
+            <p>No listicles. Each article takes one custom and follows it all the way back to where it began.</p>
+          </li>
+          <li class="reveal">
+            <span class="hangul">깊이</span>
+            <span class="roman">gi pi</span>
+            <h3>Deeply</h3>
+            <p>Built on reliable sources, and compared with other cultures so the differences really make sense.</p>
+          </li>
+          <li class="reveal">
+            <span class="hangul">진심</span>
+            <span class="roman">jin sim</span>
+            <h3>Sincerely</h3>
+            <p>Written from real life in Korea — the everyday details that guidebooks skip.</p>
+          </li>
+        </ol>
       </div>
     </section>
 
-    <section id="featured" class="section">
+    <!-- CHAPTERS -->
+    <section id="chapters" class="section section-paper">
       <div class="container">
-        <p class="eyebrow">Latest article</p>
-        <article class="featured">
-          <div class="featured-img" aria-hidden="true">
-            <span>👟</span>
-            <small>Shoes left at a Korean entryway</small>
-          </div>
-          <div class="featured-body">
-            <span class="tag">Etiquette</span>
-            <h2>Why Do Koreans Take Off Their Shoes Indoors?</h2>
-            <p>Step into almost any Korean home and the first thing you do is slip off your shoes. It isn't just about keeping floors clean — it goes back to how Korean homes are heated, how people sit and sleep, and what the entryway means.</p>
-            <a class="btn" href="https://kiggaboi77.com/">Read on kiggaboi77.com →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="posts" class="section section-alt">
-      <div class="container">
-        <h2>Articles</h2>
-        <p class="section-lead">One custom at a time, explained properly. New articles are added regularly.</p>
-        <div class="filters" id="filters">
-          <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="Etiquette">Etiquette</button>
-          <button class="chip" data-filter="Food">Food</button>
-          <button class="chip" data-filter="Holidays">Holidays</button>
-          <button class="chip" data-filter="Language">Language</button>
+        <div class="section-head reveal">
+          <p class="eyebrow">Chapters</p>
+          <h2>Four roads into Korean life</h2>
         </div>
-        <div class="grid grid-3" id="post-grid"></div>
+        <div class="chapters">
+          <button class="chapter reveal" data-filter="Etiquette">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M6 44c4-6 10-8 18-8h14c6 0 10-3 14-8 2 6 0 12-6 16-4 3-10 4-16 4H14c-4 0-7-1-8-4Z"/><path d="M14 36c2-5 6-8 12-8"/><path d="M10 54h46"/></svg>
+            <span class="hangul">예절</span>
+            <h3>Etiquette</h3>
+            <p>Shoes, bowing, pouring drinks and respecting elders.</p>
+          </button>
+          <button class="chapter reveal" data-filter="Food">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 32h40c0 11-9 18-20 18S8 43 8 32Z"/><path d="M18 50h20"/><path d="M20 24c-2-4 2-6 0-10M28 24c-2-4 2-6 0-10M36 24c-2-4 2-6 0-10"/><path d="M52 12v36M58 12l-2 36"/></svg>
+            <span class="hangul">음식</span>
+            <h3>Food</h3>
+            <p>The table, the side dishes and the stories in each bowl.</p>
+          </button>
+          <button class="chapter reveal" data-filter="Holidays">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="40" cy="20" r="12"/><path d="M8 50c0-8 6-13 13-13s13 5 13 13Z"/><path d="M30 54c0-7 5-11 11-11s11 4 11 11Z"/></svg>
+            <span class="hangul">명절</span>
+            <h3>Holidays</h3>
+            <p>Chuseok, Seollal and the traditions families keep.</p>
+          </button>
+          <button class="chapter reveal" data-filter="Language">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="8" width="48" height="48" rx="4"/><path d="M18 20h14v14M40 16v32M40 30h8"/><path d="M18 44h14"/></svg>
+            <span class="hangul">한글</span>
+            <h3>Language</h3>
+            <p>Words and phrases that explain how Koreans think.</p>
+          </button>
+        </div>
       </div>
     </section>
 
-    <section id="vocab" class="section">
+    <!-- JOURNEY -->
+    <section id="journey" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">The journey so far</p>
+          <h2>Stops along the way</h2>
+          <div class="filters" id="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="Etiquette">Etiquette</button>
+            <button class="chip" data-filter="Food">Food</button>
+            <button class="chip" data-filter="Holidays">Holidays</button>
+            <button class="chip" data-filter="Language">Language</button>
+          </div>
+        </div>
+        <ol class="route" id="route"></ol>
+      </div>
+    </section>
+
+    <!-- VOCAB -->
+    <section id="vocab" class="section section-ink">
       <div class="container vocab">
-        <div>
-          <p class="eyebrow">Quick Vocab</p>
+        <div class="reveal">
+          <p class="eyebrow light">Quick Vocab</p>
           <h2>Korean word of the day</h2>
-          <p class="section-lead">A new word every day, written the way it sounds. Tap the card to see what it means.</p>
-          <button class="btn btn-ghost" id="next-word">Show another word</button>
+          <p class="muted-light">A new word each day, written the way it sounds. Tap the card to reveal its meaning.</p>
+          <button class="btn btn-outline-light" id="next-word">Another word →</button>
         </div>
-        <button class="word-card" id="word-card" aria-live="polite">
-          <span class="word-front">
-            <span class="roman" id="word-roman"></span>
+        <button class="word-card reveal" id="word-card" aria-live="polite">
+          <span class="word-face word-front">
+            <span class="seal seal-lg" aria-hidden="true">말</span>
+            <span class="roman-lg" id="word-roman"></span>
             <small>Tap to reveal</small>
           </span>
-          <span class="word-back">
+          <span class="word-face word-back">
             <span class="meaning" id="word-meaning"></span>
             <small id="word-note"></small>
           </span>
@@ -100,21 +157,24 @@
       </div>
     </section>
 
-    <section id="about" class="section section-alt">
-      <div class="container about">
-        <div class="about-mark" aria-hidden="true">KJ</div>
+    <!-- ABOUT -->
+    <section id="about" class="section section-paper">
+      <div class="container about reveal">
+        <span class="seal seal-xl" aria-hidden="true">KJ</span>
         <div>
-          <h2>About this blog</h2>
-          <p>Hi, I'm KJ. Korea, The Long Way is where I explain Korean culture to people who didn't grow up with it — the customs, food, holidays and words that locals take for granted but visitors often wonder about.</p>
-          <p>Every article is researched from reliable sources and written in simple English, with a few Korean words along the way. No rushing, no clichés — just the long way round to really understanding Korea.</p>
+          <p class="eyebrow">About</p>
+          <h2>Hi, I'm KJ.</h2>
+          <p>I write Korea, The Long Way for people who didn't grow up here — to explain the customs, food, holidays and words that Koreans take for granted but visitors often wonder about.</p>
+          <p>Every article is researched from reliable sources, written in simple English, and ends with a few honest thoughts from my own life in Korea.</p>
         </div>
       </div>
     </section>
 
-    <section id="subscribe" class="section">
-      <div class="container subscribe">
-        <h2>Get new articles by email</h2>
-        <p>One short email when a new article goes up. No spam, unsubscribe any time.</p>
+    <!-- SUBSCRIBE -->
+    <section id="subscribe" class="subscribe-wrap">
+      <div class="container subscribe reveal">
+        <h2>Walk the long way with me.</h2>
+        <p>One short email when a new article is published. No spam, unsubscribe any time.</p>
         <form id="subscribe-form" class="subscribe-form">
           <label for="email" class="sr-only">Email address</label>
           <input type="email" id="email" placeholder="you@example.com" required>
@@ -126,15 +186,19 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p class="logo">Korea, <span>The Long Way</span></p>
+    <div class="dancheong" aria-hidden="true"></div>
+    <div class="container footer-inner">
+      <a href="#" class="brand">
+        <span class="seal" aria-hidden="true">길</span>
+        <span class="brand-name">Korea, <em>The Long Way</em></span>
+      </a>
       <nav class="footer-links">
         <a href="#about">About</a>
         <a href="mailto:your-email@example.com">Contact</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="https://kiggaboi77.com/">kiggaboi77.com</a>
       </nav>
-      <p class="small">© <span id="year"></span> Korea, The Long Way. All rights reserved.</p>
+      <p class="small">© <span id="year"></span> Korea, The Long Way · kiggaboi77.com</p>
     </div>
   </footer>
 
