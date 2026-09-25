@@ -37,7 +37,7 @@
       <a class='brand' expr:href='data:blog.homepageUrl'>
         <span aria-hidden='true' class='brand-mark'>&#9733;</span>
         <span class='brand-text'>
-          <span class='brand-kicker'>Life in America</span>
+          <span class='brand-kicker'>Everyday Life in America</span>
           <span class='brand-name'><data:blog.title/></span>
         </span>
       </a>
@@ -61,37 +61,47 @@
   </header>
 
   <main id='main-content'>
+    <!-- Hero photo: Layout → "Hero photo" → Add a Gadget → Image. Leave empty to use the illustration. -->
+    <b:section class='hero-photo' id='hero-photo' maxwidgets='1' name='Hero photo (home page)' showaddelement='yes'/>
     <b:if cond='data:view.isHomepage'>
       <!-- ===== Hero ===== -->
       <section class='hero'>
         <div class='container hero-content'>
           <p class='eyebrow light'><data:blog.title/></p>
-          <h1>Life in America,<br/><em>made simple.</em></h1>
-          <p class='lead'>Clear, practical guides to everyday life in the United States — housing, money, healthcare, driving, work and the unwritten rules nobody explains.</p>
+          <h1>Everyday life in America,<br/><em>made simple.</em></h1>
+          <p class='lead'>Tipping, shopping, holidays, small talk and the unwritten rules of daily life in the United States — explained simply, from real experience.</p>
           <div class='hero-actions'>
-            <a class='btn btn-light' href='#guides'>Explore the guides</a>
+            <a class='btn btn-light' href='#guides'>Start here</a>
             <a class='btn btn-outline-light' href='#latest'>Latest posts</a>
           </div>
         </div>
         <a aria-label='Scroll down' class='scroll-cue' href='#guides'><span></span></a>
       </section>
       <div aria-hidden='true' class='stripe'></div>
-
-      <!-- ===== Guides ===== -->
-      <section class='section desert-bg' id='guides'>
-        <div class='container'>
-          <div class='section-head reveal'>
-            <p class='eyebrow'>Start here</p>
-            <h2>Everything you need to settle in</h2>
-            <p class='section-lead'>The questions everyone has about living in the U.S. — answered step by step, in plain English.</p>
-          </div>
-          <div class='topics-list'>
-<!--@GUIDES@-->
-          </div>
-        </div>
-      </section>
-
     </b:if>
+
+    <!-- ===== Start here: one focus, real labels (home page) ===== -->
+    <section class='band desert-bg home-only' id='guides'>
+      <div class='container focus'>
+        <div class='section-head reveal'>
+          <p class='eyebrow'>Start here</p>
+          <h2>Everyday Life in America</h2>
+          <p class='section-lead'>The small, everyday things nobody explains — how tipping works, what to say in small talk, how holidays are celebrated and how to get daily errands done. Pick a topic to begin.</p>
+        </div>
+        <b:section class='focus-topics' id='focus-topics' name='Start here topics' showaddelement='yes'>
+          <b:widget id='Label1' locked='false' title='' type='Label' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>FREQUENCY</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+        <a class='btn btn-outline-light focus-all' href='/search'>Browse all posts &#8594;</a>
+      </div>
+    </section>
 
     <!-- ===== Posts (all views) ===== -->
     <div class='posts-zone'>
@@ -231,19 +241,8 @@
     </div>
 
     <!-- ===== Topics & popular (home page) ===== -->
-    <section class='section section-paper home-only' id='topics'>
-      <div class='container topics-grid'>
-        <b:section class='topics' id='topics-labels' name='Topics' showaddelement='yes'>
-          <b:widget id='Label1' locked='false' title='Browse by topic' type='Label' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
-              <b:widget-setting name='display'>LIST</b:widget-setting>
-              <b:widget-setting name='selectedLabelsList'/>
-              <b:widget-setting name='showType'>ALL</b:widget-setting>
-              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
-            </b:widget-settings>
-          </b:widget>
-        </b:section>
+    <section class='band section-paper home-only' id='topics'>
+      <div class='container popular-wrap'>
         <b:section class='popular' id='popular' name='Popular' showaddelement='yes'>
           <b:widget id='PopularPosts1' locked='false' title='Most read' type='PopularPosts' version='2' visible='true'>
             <b:widget-settings>
@@ -260,11 +259,11 @@
     <b:if cond='data:view.isHomepage'>
       <section class='cta-wrap'>
         <div class='container cta reveal'>
-          <h2>What are you trying to figure out?</h2>
-          <p>Search every guide on the blog.</p>
+          <h2>What are you curious about?</h2>
+          <p>Search every post on the blog.</p>
           <form action='/search' class='search-box' method='get' role='search'>
             <label class='sr-only' for='cta-q'>Search</label>
-            <input id='cta-q' name='q' placeholder='e.g. credit score, driver&#39;s license, renting' type='search'/>
+            <input id='cta-q' name='q' placeholder='e.g. tipping, Thanksgiving, grocery shopping' type='search'/>
             <button class='btn' type='submit'>Search</button>
           </form>
         </div>
@@ -279,7 +278,7 @@
       <a class='brand' expr:href='data:blog.homepageUrl'>
         <span aria-hidden='true' class='brand-mark'>&#9733;</span>
         <span class='brand-text'>
-          <span class='brand-kicker'>Life in America</span>
+          <span class='brand-kicker'>Everyday Life in America</span>
           <span class='brand-name'><data:blog.title/></span>
         </span>
       </a>

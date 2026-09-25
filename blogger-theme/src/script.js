@@ -7,6 +7,15 @@
     onScroll();
   }
 
+  // Hero photo: use the image from the "Hero photo" Layout gadget, upscaled for full-screen.
+  var hero = document.querySelector('.hero');
+  var photo = document.querySelector('.hero-photo img');
+  if (hero && photo && photo.getAttribute('src')) {
+    var src = photo.getAttribute('src').replace(/\/(s|w)\d+(-h\d+)?(-[a-z-]+)?\//, '/s2400/').replace(/=(s|w)\d+(-h\d+)?(-[a-z-]+)?$/, '=s2400');
+    hero.style.setProperty('--hero-photo', 'url("' + src.replace(/"/g, '%22') + '")');
+    hero.classList.add('has-photo');
+  }
+
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
   if (toggle && nav) {
