@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Daily Thrive Body</title>
+  <meta name="description" content="Simple, daily habits for a stronger, calmer, healthier body.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="logo">The Daily <span>Thrive</span> Body</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <nav class="nav-links">
+        <a href="#pillars">Pillars</a>
+        <a href="#today">Today</a>
+        <a href="#challenge">7-Day Challenge</a>
+        <a href="#articles">Articles</a>
+        <a href="#subscribe" class="btn btn-small">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">Small habits · Big change</p>
+          <h1>Feel better in your body, <em>one day at a time.</em></h1>
+          <p class="lead">Practical, science-backed tips on movement, food, sleep and stress — made simple enough to actually do every day.</p>
+          <div class="hero-actions">
+            <a href="#challenge" class="btn">Start the 7-day challenge</a>
+            <a href="#today" class="btn btn-ghost">Today's tip →</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="ring"><span id="hero-progress">0</span><small>/7 days</small></div>
+          <p>Your thrive streak</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pillars" class="section">
+      <div class="container">
+        <h2>The four pillars</h2>
+        <p class="section-lead">Everything we share fits into one of these. Get a little better at each and the rest takes care of itself.</p>
+        <div class="grid grid-4">
+          <article class="pillar"><div class="icon">🏃</div><h3>Move</h3><p>Daily movement that fits real life — walks, mobility, and short strength sessions.</p></article>
+          <article class="pillar"><div class="icon">🥗</div><h3>Nourish</h3><p>Whole foods, enough protein, plenty of water. No fad diets.</p></article>
+          <article class="pillar"><div class="icon">🌙</div><h3>Rest</h3><p>Consistent sleep and real recovery, so your body can rebuild.</p></article>
+          <article class="pillar"><div class="icon">🧘</div><h3>Mind</h3><p>Breathing, sunlight, and small pauses to keep stress in check.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="today" class="section section-alt">
+      <div class="container today">
+        <div>
+          <p class="eyebrow" id="tip-date">Today</p>
+          <h2>Tip of the day</h2>
+          <blockquote id="tip-text">Loading…</blockquote>
+          <p class="tip-tag" id="tip-tag"></p>
+          <button class="btn btn-ghost" id="next-tip">Show another tip</button>
+        </div>
+        <div class="water">
+          <h3>Water tracker</h3>
+          <p>Tap a glass each time you drink one.</p>
+          <div class="glasses" id="glasses"></div>
+          <p class="water-count"><span id="water-count">0</span> / 8 glasses</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="challenge" class="section">
+      <div class="container">
+        <h2>7-day thrive challenge</h2>
+        <p class="section-lead">One simple task a day. Check it off when you're done — your progress is saved in this browser.</p>
+        <ol class="challenge" id="challenge-list"></ol>
+        <button class="link-btn" id="reset-challenge">Reset progress</button>
+      </div>
+    </section>
+
+    <section id="articles" class="section section-alt">
+      <div class="container">
+        <h2>Latest articles</h2>
+        <div class="filters" id="filters">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="Move">Move</button>
+          <button class="chip" data-filter="Nourish">Nourish</button>
+          <button class="chip" data-filter="Rest">Rest</button>
+          <button class="chip" data-filter="Mind">Mind</button>
+        </div>
+        <div class="grid grid-3" id="article-grid"></div>
+      </div>
+    </section>
+
+    <section id="subscribe" class="section">
+      <div class="container subscribe">
+        <h2>Get one small habit a week</h2>
+        <p>No spam. Just one practical idea every Monday morning.</p>
+        <form id="subscribe-form" class="subscribe-form">
+          <label for="email" class="sr-only">Email address</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+          <button type="submit" class="btn">Subscribe</button>
+        </form>
+        <p class="form-msg" id="form-msg" role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="logo">The Daily <span>Thrive</span> Body</p>
+      <p class="small">Content is for general information only and isn't medical advice. Talk to a healthcare professional before making big changes.</p>
+      <p class="small">© <span id="year"></span> The Daily Thrive Body</p>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
