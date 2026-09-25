@@ -1,14 +1,3 @@
-const store = {
-  get(key, fallback) {
-    try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
-  },
-  set(key, value) {
-    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage unavailable */ }
-  },
-};
-
-const todayKey = new Date().toISOString().slice(0, 10);
-
 // Mobile nav
 const toggle = document.querySelector('.nav-toggle');
 const links = document.querySelector('.nav-links');
@@ -20,124 +9,79 @@ links.addEventListener('click', (e) => {
   if (e.target.tagName === 'A') links.classList.remove('open');
 });
 
-// Tip of the day
-const tips = [
-  { text: 'Take a 10-minute walk after your biggest meal — it helps steady blood sugar.', tag: 'Move' },
-  { text: 'Get outside within an hour of waking. Morning light helps set your sleep clock.', tag: 'Rest' },
-  { text: 'Add a palm-sized portion of protein to every meal to stay full longer.', tag: 'Nourish' },
-  { text: 'Try box breathing: in for 4, hold 4, out for 4, hold 4. Repeat four times.', tag: 'Mind' },
-  { text: 'Stand up and stretch for two minutes every hour you sit.', tag: 'Move' },
-  { text: 'Keep a glass of water by your bed and drink it first thing in the morning.', tag: 'Nourish' },
-  { text: 'Put your phone away 30 minutes before bed. Read something on paper instead.', tag: 'Rest' },
-  { text: 'Write down three things that went well today. It takes one minute.', tag: 'Mind' },
-  { text: 'Eat one more serving of vegetables than you did yesterday.', tag: 'Nourish' },
-  { text: 'Do 10 bodyweight squats while the kettle boils.', tag: 'Move' },
+// Articles — add each new WordPress post here. Set `url` once it's published.
+const posts = [
+  {
+    tag: 'Etiquette',
+    title: 'Why Do Koreans Take Off Their Shoes Indoors?',
+    excerpt: 'Floor heating, floor living and the meaning of the entryway — the real reasons behind the shoes-off rule.',
+    url: 'https://kiggaboi77.com/',
+  },
+  { tag: 'Etiquette', title: 'Drinking Etiquette in Korea', excerpt: 'Two hands, turning away from elders and who pours for whom.' },
+  { tag: 'Food', title: 'Why Koreans Eat Seaweed Soup on Birthdays', excerpt: 'The story behind the birthday bowl of miyeokguk.' },
+  { tag: 'Holidays', title: 'Chuseok: Korea’s Harvest Holiday', excerpt: 'Family trips, ancestral rites and half-moon rice cakes.' },
+  { tag: 'Language', title: 'Oppa, Unni, Hyung: Korean Family Words for Friends', excerpt: 'Why Koreans call friends “older brother” and “older sister”.' },
+  { tag: 'Food', title: 'The Unwritten Rules of the Korean Dinner Table', excerpt: 'Spoons, chopsticks, shared side dishes and waiting for the eldest.' },
 ];
-const dayIndex = Math.floor(Date.now() / 86400000) % tips.length;
-let tipIndex = dayIndex;
-function showTip() {
-  const tip = tips[tipIndex];
-  document.getElementById('tip-text').textContent = tip.text;
-  document.getElementById('tip-tag').textContent = `Pillar: ${tip.tag}`;
-}
-document.getElementById('tip-date').textContent = new Date().toLocaleDateString('en-US', {
-  weekday: 'long', month: 'long', day: 'numeric',
-});
-document.getElementById('next-tip').addEventListener('click', () => {
-  tipIndex = (tipIndex + 1) % tips.length;
-  showTip();
-});
-showTip();
 
-// Water tracker (resets each day)
-const glassesEl = document.getElementById('glasses');
-let water = store.get('water', {});
-if (water.date !== todayKey) water = { date: todayKey, count: 0 };
-function renderWater() {
-  glassesEl.innerHTML = '';
-  for (let i = 0; i < 8; i++) {
-    const b = document.createElement('button');
-    b.className = 'glass' + (i < water.count ? ' full' : '');
-    b.setAttribute('aria-label', `Glass ${i + 1}`);
-    b.addEventListener('click', () => {
-      water.count = i < water.count ? i : i + 1;
-      store.set('water', water);
-      renderWater();
-    });
-    glassesEl.appendChild(b);
-  }
-  document.getElementById('water-count').textContent = water.count;
-}
-renderWater();
-
-// 7-day challenge
-const challenge = [
-  'Walk 7,000 steps',
-  'Drink 8 glasses of water',
-  'Eat protein at breakfast',
-  'In bed 30 minutes earlier',
-  '5 minutes of deep breathing',
-  '15-minute bodyweight workout',
-  'A full day without sugary drinks',
-];
-const listEl = document.getElementById('challenge-list');
-let done = store.get('challenge', []);
-function renderChallenge() {
-  listEl.innerHTML = '';
-  challenge.forEach((task, i) => {
-    const li = document.createElement('li');
-    li.className = done.includes(i) ? 'done' : '';
-    li.innerHTML = `<label><input type="checkbox" ${done.includes(i) ? 'checked' : ''}>
-      <span class="day">Day ${i + 1}</span><span class="task">${task}</span></label>`;
-    li.querySelector('input').addEventListener('change', (e) => {
-      done = e.target.checked ? [...done, i] : done.filter((d) => d !== i);
-      store.set('challenge', done);
-      renderChallenge();
-    });
-    listEl.appendChild(li);
-  });
-  document.getElementById('hero-progress').textContent = done.length;
-  document.querySelector('.ring').style.setProperty('--p', (done.length / 7) * 100);
-}
-document.getElementById('reset-challenge').addEventListener('click', () => {
-  done = [];
-  store.set('challenge', done);
-  renderChallenge();
-});
-renderChallenge();
-
-// Articles
-const articles = [
-  { tag: 'Move', title: 'The 20-minute strength routine you can do at home', excerpt: 'Five moves, no equipment, three rounds. Here is how to start.', read: 5 },
-  { tag: 'Nourish', title: 'How much protein do you really need?', excerpt: 'A simple way to estimate your daily target — and hit it.', read: 6 },
-  { tag: 'Rest', title: 'Why the same bedtime matters more than more sleep', excerpt: 'Consistency is the underrated key to feeling rested.', read: 4 },
-  { tag: 'Mind', title: 'Three breathing techniques for stressful moments', excerpt: 'Quick tools to calm your nervous system in under two minutes.', read: 4 },
-  { tag: 'Move', title: 'Walking: the most underrated exercise', excerpt: 'What the research says about daily steps and long-term health.', read: 7 },
-  { tag: 'Nourish', title: 'Build a better plate in 30 seconds', excerpt: 'Half veggies, a quarter protein, a quarter carbs. That is it.', read: 3 },
-];
-const gridEl = document.getElementById('article-grid');
-function renderArticles(filter) {
+const gridEl = document.getElementById('post-grid');
+function renderPosts(filter) {
   gridEl.innerHTML = '';
-  articles
-    .filter((a) => filter === 'all' || a.tag === filter)
-    .forEach((a) => {
+  posts
+    .filter((p) => filter === 'all' || p.tag === filter)
+    .forEach((p) => {
       const el = document.createElement('article');
-      el.className = 'article';
-      el.innerHTML = `<span class="tag">${a.tag}</span><h3>${a.title}</h3><p>${a.excerpt}</p><span class="meta">${a.read} min read</span>`;
+      el.className = 'post' + (p.url ? '' : ' soon');
+      el.innerHTML = `<span class="tag"></span><h3></h3><p></p><span class="meta"></span>`;
+      el.querySelector('.tag').textContent = p.tag;
+      el.querySelector('h3').textContent = p.title;
+      el.querySelector('p').textContent = p.excerpt;
+      el.querySelector('.meta').innerHTML = p.url
+        ? `<a href="${p.url}">Read article →</a>`
+        : 'COMING SOON';
       gridEl.appendChild(el);
     });
 }
 document.getElementById('filters').addEventListener('click', (e) => {
   if (!e.target.dataset.filter) return;
   document.querySelectorAll('.chip').forEach((c) => c.classList.toggle('active', c === e.target));
-  renderArticles(e.target.dataset.filter);
+  renderPosts(e.target.dataset.filter);
 });
-renderArticles('all');
+renderPosts('all');
 
-// Subscribe (front-end only for now)
+// Word of the day — Quick Vocab format: meaning + romanization with spaced syllables
+const words = [
+  { roman: 'an nyeong ha se yo', meaning: 'Hello', note: 'The polite, everyday greeting.' },
+  { roman: 'gam sa ham ni da', meaning: 'Thank you', note: 'Formal and polite — safe with anyone.' },
+  { roman: 'hyeon gwan', meaning: 'Entryway', note: 'The spot by the door where shoes come off.' },
+  { roman: 'on dol', meaning: 'Underfloor heating', note: 'The heated floors at the heart of Korean homes.' },
+  { roman: 'sil nae hwa', meaning: 'Indoor slippers', note: 'Worn inside schools and some homes.' },
+  { roman: 'jal meok get seum ni da', meaning: 'I will eat well', note: 'Said before a meal, like “thanks for the food”.' },
+  { roman: 'geon bae', meaning: 'Cheers', note: 'Raise your glass!' },
+  { roman: 'jeong', meaning: 'Deep affection and bond', note: 'The warm attachment between people over time.' },
+  { roman: 'song pyeon', meaning: 'Half-moon rice cake', note: 'The classic Chuseok treat.' },
+  { roman: 'mi yeok guk', meaning: 'Seaweed soup', note: 'Traditionally eaten on birthdays.' },
+];
+const card = document.getElementById('word-card');
+let wordIndex = Math.floor(Date.now() / 86400000) % words.length;
+function showWord() {
+  const w = words[wordIndex];
+  card.classList.remove('flipped');
+  document.getElementById('word-roman').textContent = w.roman;
+  document.getElementById('word-meaning').textContent = w.meaning;
+  document.getElementById('word-note').textContent = w.note;
+}
+card.addEventListener('click', () => card.classList.toggle('flipped'));
+document.getElementById('next-word').addEventListener('click', () => {
+  wordIndex = (wordIndex + 1) % words.length;
+  showWord();
+});
+showWord();
+
+// Subscribe (front-end only — connect to Jetpack/Mailchimp to collect emails)
 document.getElementById('subscribe-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  document.getElementById('form-msg').textContent = "Thanks! You're on the list. 🌿";
+  document.getElementById('form-msg').textContent = 'Thanks for subscribing — gam sa ham ni da!';
   e.target.reset();
 });
 

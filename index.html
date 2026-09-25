@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Daily Thrive Body</title>
-  <meta name="description" content="Simple, daily habits for a stronger, calmer, healthier body.">
+  <title>Korea, The Long Way</title>
+  <meta name="description" content="Korean culture explained for curious travelers and newcomers — the everyday customs, food, holidays and words behind life in Korea.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/styles.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%23c8323c'/><path d='M6 50a22 22 0 0 0 44 0a22 22 0 0 1 44 0a44 44 0 0 1-88 0z' fill='%23234a8c'/></svg>">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a href="#" class="logo">The Daily <span>Thrive</span> Body</a>
+      <a href="#" class="logo">Korea, <span>The Long Way</span></a>
       <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
       <nav class="nav-links">
-        <a href="#pillars">Pillars</a>
-        <a href="#today">Today</a>
-        <a href="#challenge">7-Day Challenge</a>
-        <a href="#articles">Articles</a>
+        <a href="#posts">Articles</a>
+        <a href="#vocab">Word of the Day</a>
+        <a href="#about">About</a>
         <a href="#subscribe" class="btn btn-small">Subscribe</a>
       </nav>
     </div>
@@ -30,79 +29,92 @@
     <section class="hero">
       <div class="container hero-inner">
         <div>
-          <p class="eyebrow">Small habits · Big change</p>
-          <h1>Feel better in your body, <em>one day at a time.</em></h1>
-          <p class="lead">Practical, science-backed tips on movement, food, sleep and stress — made simple enough to actually do every day.</p>
+          <p class="eyebrow">Korean culture, explained</p>
+          <h1>The small customs that make Korea <em>feel like Korea.</em></h1>
+          <p class="lead">Why shoes come off at the door, why elders pour first, what happens on the big holidays — the everyday “why” behind life in Korea, written in plain English for travelers, expats and the simply curious.</p>
           <div class="hero-actions">
-            <a href="#challenge" class="btn">Start the 7-day challenge</a>
-            <a href="#today" class="btn btn-ghost">Today's tip →</a>
+            <a href="#featured" class="btn">Read the latest article</a>
+            <a href="#vocab" class="btn btn-ghost">Learn a Korean word →</a>
           </div>
         </div>
-        <div class="hero-card" aria-hidden="true">
-          <div class="ring"><span id="hero-progress">0</span><small>/7 days</small></div>
-          <p>Your thrive streak</p>
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="88" fill="var(--red)"/>
+            <path d="M12 100a44 44 0 0 0 88 0a44 44 0 0 1 88 0a88 88 0 0 1-176 0z" fill="var(--blue)"/>
+          </svg>
         </div>
       </div>
     </section>
 
-    <section id="pillars" class="section">
+    <section id="featured" class="section">
       <div class="container">
-        <h2>The four pillars</h2>
-        <p class="section-lead">Everything we share fits into one of these. Get a little better at each and the rest takes care of itself.</p>
-        <div class="grid grid-4">
-          <article class="pillar"><div class="icon">🏃</div><h3>Move</h3><p>Daily movement that fits real life — walks, mobility, and short strength sessions.</p></article>
-          <article class="pillar"><div class="icon">🥗</div><h3>Nourish</h3><p>Whole foods, enough protein, plenty of water. No fad diets.</p></article>
-          <article class="pillar"><div class="icon">🌙</div><h3>Rest</h3><p>Consistent sleep and real recovery, so your body can rebuild.</p></article>
-          <article class="pillar"><div class="icon">🧘</div><h3>Mind</h3><p>Breathing, sunlight, and small pauses to keep stress in check.</p></article>
-        </div>
+        <p class="eyebrow">Latest article</p>
+        <article class="featured">
+          <div class="featured-img" aria-hidden="true">
+            <span>👟</span>
+            <small>Shoes left at a Korean entryway</small>
+          </div>
+          <div class="featured-body">
+            <span class="tag">Etiquette</span>
+            <h2>Why Do Koreans Take Off Their Shoes Indoors?</h2>
+            <p>Step into almost any Korean home and the first thing you do is slip off your shoes. It isn't just about keeping floors clean — it goes back to how Korean homes are heated, how people sit and sleep, and what the entryway means.</p>
+            <a class="btn" href="https://kiggaboi77.com/">Read on kiggaboi77.com →</a>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="today" class="section section-alt">
-      <div class="container today">
-        <div>
-          <p class="eyebrow" id="tip-date">Today</p>
-          <h2>Tip of the day</h2>
-          <blockquote id="tip-text">Loading…</blockquote>
-          <p class="tip-tag" id="tip-tag"></p>
-          <button class="btn btn-ghost" id="next-tip">Show another tip</button>
-        </div>
-        <div class="water">
-          <h3>Water tracker</h3>
-          <p>Tap a glass each time you drink one.</p>
-          <div class="glasses" id="glasses"></div>
-          <p class="water-count"><span id="water-count">0</span> / 8 glasses</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="challenge" class="section">
+    <section id="posts" class="section section-alt">
       <div class="container">
-        <h2>7-day thrive challenge</h2>
-        <p class="section-lead">One simple task a day. Check it off when you're done — your progress is saved in this browser.</p>
-        <ol class="challenge" id="challenge-list"></ol>
-        <button class="link-btn" id="reset-challenge">Reset progress</button>
-      </div>
-    </section>
-
-    <section id="articles" class="section section-alt">
-      <div class="container">
-        <h2>Latest articles</h2>
+        <h2>Articles</h2>
+        <p class="section-lead">One custom at a time, explained properly. New articles are added regularly.</p>
         <div class="filters" id="filters">
           <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="Move">Move</button>
-          <button class="chip" data-filter="Nourish">Nourish</button>
-          <button class="chip" data-filter="Rest">Rest</button>
-          <button class="chip" data-filter="Mind">Mind</button>
+          <button class="chip" data-filter="Etiquette">Etiquette</button>
+          <button class="chip" data-filter="Food">Food</button>
+          <button class="chip" data-filter="Holidays">Holidays</button>
+          <button class="chip" data-filter="Language">Language</button>
         </div>
-        <div class="grid grid-3" id="article-grid"></div>
+        <div class="grid grid-3" id="post-grid"></div>
+      </div>
+    </section>
+
+    <section id="vocab" class="section">
+      <div class="container vocab">
+        <div>
+          <p class="eyebrow">Quick Vocab</p>
+          <h2>Korean word of the day</h2>
+          <p class="section-lead">A new word every day, written the way it sounds. Tap the card to see what it means.</p>
+          <button class="btn btn-ghost" id="next-word">Show another word</button>
+        </div>
+        <button class="word-card" id="word-card" aria-live="polite">
+          <span class="word-front">
+            <span class="roman" id="word-roman"></span>
+            <small>Tap to reveal</small>
+          </span>
+          <span class="word-back">
+            <span class="meaning" id="word-meaning"></span>
+            <small id="word-note"></small>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section id="about" class="section section-alt">
+      <div class="container about">
+        <div class="about-mark" aria-hidden="true">KJ</div>
+        <div>
+          <h2>About this blog</h2>
+          <p>Hi, I'm KJ. Korea, The Long Way is where I explain Korean culture to people who didn't grow up with it — the customs, food, holidays and words that locals take for granted but visitors often wonder about.</p>
+          <p>Every article is researched from reliable sources and written in simple English, with a few Korean words along the way. No rushing, no clichés — just the long way round to really understanding Korea.</p>
+        </div>
       </div>
     </section>
 
     <section id="subscribe" class="section">
       <div class="container subscribe">
-        <h2>Get one small habit a week</h2>
-        <p>No spam. Just one practical idea every Monday morning.</p>
+        <h2>Get new articles by email</h2>
+        <p>One short email when a new article goes up. No spam, unsubscribe any time.</p>
         <form id="subscribe-form" class="subscribe-form">
           <label for="email" class="sr-only">Email address</label>
           <input type="email" id="email" placeholder="you@example.com" required>
@@ -115,9 +127,14 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p class="logo">The Daily <span>Thrive</span> Body</p>
-      <p class="small">Content is for general information only and isn't medical advice. Talk to a healthcare professional before making big changes.</p>
-      <p class="small">© <span id="year"></span> The Daily Thrive Body</p>
+      <p class="logo">Korea, <span>The Long Way</span></p>
+      <nav class="footer-links">
+        <a href="#about">About</a>
+        <a href="mailto:your-email@example.com">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://kiggaboi77.com/">kiggaboi77.com</a>
+      </nav>
+      <p class="small">© <span id="year"></span> Korea, The Long Way. All rights reserved.</p>
     </div>
   </footer>
 
