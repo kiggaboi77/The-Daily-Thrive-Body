@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='oneofkind77' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.localeUnderscoreDelimited' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta content='width=device-width, initial-scale=1' name='viewport'/>
+  <b:include data='blog' name='all-head-content'/>
+  <title><b:if cond='data:view.isHomepage'><data:blog.title/><b:else/><data:view.title.escaped/> | <data:blog.title/></b:if></title>
+  <b:if cond='data:view.description'>
+    <meta expr:content='data:view.description.escaped' name='description'/>
+  </b:if>
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&amp;family=Inter:wght@400;500;600&amp;display=swap' rel='stylesheet'/>
+  <script>//<![CDATA[
+  document.documentElement.className += ' js';
+  //]]></script>
+  <b:skin version='1.0.0'><![CDATA[
+/*@SKIN@*/
+  ]]></b:skin>
+  <b:template-skin>
+    <![CDATA[
+    body#layout .site-header, body#layout .site-footer, body#layout .container { position: static; width: auto; }
+    body#layout .home-only { display: block; }
+    body#layout .section { margin: 10px 0; }
+    ]]>
+  </b:template-skin>
+</head>
+<body>
+  <b:class cond='data:view.isHomepage' name='is-home'/>
+  <b:class cond='data:view.isSingleItem' name='is-single'/>
+  <b:class cond='data:view.isPage' name='is-page'/>
+  <a class='skip-link' href='#main-content'>Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <header class='site-header' id='site-header'>
+    <div class='container nav'>
+      <a class='brand' expr:href='data:blog.homepageUrl'>
+        <span aria-hidden='true' class='brand-mark'>&#9733;</span>
+        <span class='brand-text'>
+          <span class='brand-kicker'>Life in America</span>
+          <span class='brand-name'><data:blog.title/></span>
+        </span>
+      </a>
+      <button aria-controls='site-nav' aria-expanded='false' aria-label='Open menu' class='nav-toggle' type='button'><span></span><span></span></button>
+      <nav aria-label='Primary' class='nav-links' id='site-nav'>
+        <b:section class='nav-section' id='nav' maxwidgets='1' showaddelement='no'>
+          <b:widget id='PageList1' locked='false' title='' type='PageList' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='pageListJson'><![CDATA[]]></b:widget-setting>
+              <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+              <b:widget-setting name='title'/>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+        <form action='/search' class='nav-search' method='get' role='search'>
+          <label class='sr-only' for='nav-q'>Search</label>
+          <input id='nav-q' name='q' placeholder='Search guides…' type='search'/>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <main id='main-content'>
+    <b:if cond='data:view.isHomepage'>
+      <!-- ===== Hero ===== -->
+      <section class='hero'>
+        <div class='container hero-content'>
+          <p class='eyebrow light'><data:blog.title/></p>
+          <h1>Life in America,<br/><em>made simple.</em></h1>
+          <p class='lead'>Clear, practical guides to everyday life in the United States — housing, money, healthcare, driving, work and the unwritten rules nobody explains.</p>
+          <div class='hero-actions'>
+            <a class='btn btn-light' href='#guides'>Explore the guides</a>
+            <a class='btn btn-outline-light' href='#latest'>Latest posts</a>
+          </div>
+        </div>
+        <a aria-label='Scroll down' class='scroll-cue' href='#guides'><span></span></a>
+      </section>
+      <div aria-hidden='true' class='stripe'></div>
+
+      <!-- ===== Guides ===== -->
+      <section class='section' id='guides'>
+        <div class='container'>
+          <div class='section-head reveal'>
+            <p class='eyebrow'>Start here</p>
+            <h2>Everything you need to settle in</h2>
+            <p class='section-lead'>The questions everyone has about living in the U.S. — answered step by step, in plain English.</p>
+          </div>
+          <div class='guides'>
+            <a class='guide reveal' href='/search?q=housing'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M6 22 24 8l18 14'/><path d='M11 19v21h26V19'/><path d='M20 40V28h8v12'/></svg>
+              <h3>Housing &amp; Moving</h3>
+              <p>Renting, leases, utilities and setting up a new home.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+            <a class='guide reveal' href='/search?q=credit'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='11'/><path d='M5 19h38M11 29h10'/></svg>
+              <h3>Money &amp; Credit</h3>
+              <p>Bank accounts, credit scores, taxes and saving.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+            <a class='guide reveal' href='/search?q=insurance'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M24 6 9 12v10c0 10 6.5 17 15 20 8.5-3 15-10 15-20V12Z'/><path d='M24 17v14M17 24h14'/></svg>
+              <h3>Health &amp; Insurance</h3>
+              <p>How U.S. health insurance, doctors and pharmacies work.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+            <a class='guide reveal' href='/search?q=driving'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M8 30l4-11c.7-2 2.3-3 4.3-3h15.4c2 0 3.6 1 4.3 3l4 11'/><rect height='10' rx='3' width='36' x='6' y='28'/><path d='M12 38v4M36 38v4'/><circle cx='14' cy='33' r='1.5'/><circle cx='34' cy='33' r='1.5'/></svg>
+              <h3>Cars &amp; Driving</h3>
+              <p>Licenses, the DMV, buying a car and the rules of the road.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+            <a class='guide reveal' href='/search?q=work'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='15'/><path d='M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M5 26h38'/></svg>
+              <h3>Work &amp; Careers</h3>
+              <p>Jobs, paychecks, benefits and workplace culture.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+            <a class='guide reveal' href='/search?q=culture'>
+              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M10 16h28l-3 24H13Z'/><path d='M17 16a7 7 0 0 1 14 0'/></svg>
+              <h3>Everyday Life</h3>
+              <p>Shopping, holidays, tipping and small talk.</p>
+              <span class='guide-go'>Read guides &#8594;</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div class='container latest-head' id='latest'>
+        <div class='section-head reveal'>
+          <p class='eyebrow'>Fresh on the blog</p>
+          <h2>Latest posts</h2>
+        </div>
+      </div>
+    </b:if>
+
+    <!-- ===== Posts (all views) ===== -->
+    <div class='container main-wrap'>
+      <b:section class='main' id='main' name='Main' showaddelement='no'>
+        <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
+            <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
+            <b:widget-setting name='showShareButtons'>false</b:widget-setting>
+            <b:widget-setting name='authorLabel'>By</b:widget-setting>
+            <b:widget-setting name='showAuthor'>true</b:widget-setting>
+            <b:widget-setting name='showLabels'>true</b:widget-setting>
+            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
+            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
+            <b:widget-setting name='showReactions'>false</b:widget-setting>
+            <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
+            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
+          </b:widget-settings>
+          <b:includable id='main' var='this'>
+            <b:if cond='data:view.isError'>
+              <div class='empty-state'>
+                <p class='eyebrow'>404</p>
+                <h1>This road doesn&#8217;t go anywhere.</h1>
+                <p>The page you were looking for has moved or never existed. Try a search, or head back home.</p>
+                <form action='/search' class='search-box' method='get' role='search'>
+                  <label class='sr-only' for='err-q'>Search</label>
+                  <input id='err-q' name='q' placeholder='Search guides…' type='search'/>
+                  <button class='btn' type='submit'>Search</button>
+                </form>
+                <a class='text-link' expr:href='data:blog.homepageUrl'>&#8592; Back to home</a>
+              </div>
+            <b:elseif cond='data:view.isMultipleItems'/>
+              <b:if cond='!data:view.isHomepage'>
+                <header class='list-head'>
+                  <p class='eyebrow'>
+                    <b:if cond='data:view.isLabelSearch'>Topic<b:elseif cond='data:view.isSearch'/>Search<b:elseif cond='data:view.isArchive'/>Archive<b:else/>All posts</b:if>
+                  </p>
+                  <h1>
+                    <b:if cond='data:view.isLabelSearch'><data:view.search.label/>
+                    <b:elseif cond='data:view.search.query'/>Results for &#8220;<data:view.search.query/>&#8221;
+                    <b:elseif cond='data:view.isArchive'/><data:view.archive.rangeMessage/>
+                    <b:else/>All posts</b:if>
+                  </h1>
+                </header>
+              </b:if>
+              <b:if cond='data:posts.empty'>
+                <div class='empty-state small-empty'>
+                  <p>No posts found here yet.</p>
+                  <form action='/search' class='search-box' method='get' role='search'>
+                    <label class='sr-only' for='empty-q'>Search</label>
+                    <input id='empty-q' name='q' placeholder='Try another search…' type='search'/>
+                    <button class='btn' type='submit'>Search</button>
+                  </form>
+                </div>
+              <b:else/>
+                <div class='post-grid'>
+                  <b:loop values='data:posts' var='post'>
+                    <article class='card reveal'>
+                      <a class='card-thumb' expr:href='data:post.url' tabindex='-1'>
+                        <b:if cond='data:post.featuredImage'>
+                          <b:if cond='data:post.featuredImage.isResizable'>
+                            <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;3:2&quot;)' loading='lazy'/>
+                          <b:else/>
+                            <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+                          </b:if>
+                        <b:else/>
+                          <span aria-hidden='true' class='card-thumb-fallback'>&#9733;</span>
+                        </b:if>
+                      </a>
+                      <div class='card-body'>
+                        <b:loop index='i' values='data:post.labels' var='label'>
+                          <b:if cond='data:i == 0'>
+                            <a class='card-label' expr:href='data:label.url'><data:label.name/></a>
+                          </b:if>
+                        </b:loop>
+                        <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                        <p class='card-excerpt'><data:post.snippets.short/></p>
+                        <span class='card-meta'><time expr:datetime='data:post.date.iso8601'><data:post.date/></time></span>
+                      </div>
+                    </article>
+                  </b:loop>
+                </div>
+              </b:if>
+              <b:include name='postPagination'/>
+            <b:else/>
+              <b:loop values='data:posts' var='post'>
+                <article class='post-single'>
+                  <header class='post-hero'>
+                    <b:if cond='data:view.isPost'>
+                      <b:loop index='i' values='data:post.labels' var='label'>
+                        <b:if cond='data:i == 0'>
+                          <p class='eyebrow'><a expr:href='data:label.url'><data:label.name/></a></p>
+                        </b:if>
+                      </b:loop>
+                    </b:if>
+                    <h1 class='post-title entry-title'><data:post.title/></h1>
+                    <b:if cond='data:view.isPost'>
+                      <p class='post-meta'>
+                        <b:if cond='data:post.author.name'>By <data:post.author.name/> &#183; </b:if>
+                        <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+                      </p>
+                    </b:if>
+                  </header>
+                  <div aria-hidden='true' class='stripe'></div>
+                  <div class='post-body entry-content' expr:id='&quot;post-body-&quot; + data:post.id'>
+                    <data:post.body/>
+                  </div>
+                  <b:if cond='data:view.isPost'>
+                    <b:if cond='data:post.labels'>
+                      <p class='post-tags'>
+                        <b:loop values='data:post.labels' var='label'>
+                          <a expr:href='data:label.url'>#<data:label.name/></a>
+                        </b:loop>
+                      </p>
+                    </b:if>
+                  </b:if>
+                </article>
+                <b:include cond='data:view.isPost' data='post' name='commentPicker'/>
+              </b:loop>
+              <b:include cond='data:view.isPost' name='postPagination'/>
+            </b:if>
+          </b:includable>
+        </b:widget>
+      </b:section>
+
+      <!-- Ad slot: add an AdSense gadget here in Layout (shown on posts and lists) -->
+      <b:section class='ad-slot' id='ad-slot' name='Ad slot' showaddelement='yes'/>
+    </div>
+
+    <!-- ===== Topics & popular (home page) ===== -->
+    <section class='section section-paper home-only' id='topics'>
+      <div class='container topics-grid'>
+        <b:section class='topics' id='topics-labels' name='Topics' showaddelement='yes'>
+          <b:widget id='Label1' locked='false' title='Browse by topic' type='Label' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='sorting'>ALPHA</b:widget-setting>
+              <b:widget-setting name='display'>LIST</b:widget-setting>
+              <b:widget-setting name='selectedLabelsList'/>
+              <b:widget-setting name='showType'>ALL</b:widget-setting>
+              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+        <b:section class='popular' id='popular' name='Popular' showaddelement='yes'>
+          <b:widget id='PopularPosts1' locked='false' title='Most read' type='PopularPosts' version='2' visible='true'>
+            <b:widget-settings>
+              <b:widget-setting name='numItemsToShow'>4</b:widget-setting>
+              <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+              <b:widget-setting name='showSnippets'>false</b:widget-setting>
+              <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
+            </b:widget-settings>
+          </b:widget>
+        </b:section>
+      </div>
+    </section>
+
+    <b:if cond='data:view.isHomepage'>
+      <section class='cta-wrap'>
+        <div class='container cta reveal'>
+          <h2>What are you trying to figure out?</h2>
+          <p>Search every guide on the blog.</p>
+          <form action='/search' class='search-box' method='get' role='search'>
+            <label class='sr-only' for='cta-q'>Search</label>
+            <input id='cta-q' name='q' placeholder='e.g. credit score, driver&#39;s license, renting' type='search'/>
+            <button class='btn' type='submit'>Search</button>
+          </form>
+        </div>
+      </section>
+    </b:if>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class='site-footer'>
+    <div aria-hidden='true' class='stripe'></div>
+    <div class='container footer-inner'>
+      <a class='brand' expr:href='data:blog.homepageUrl'>
+        <span aria-hidden='true' class='brand-mark'>&#9733;</span>
+        <span class='brand-text'>
+          <span class='brand-kicker'>Life in America</span>
+          <span class='brand-name'><data:blog.title/></span>
+        </span>
+      </a>
+      <p class='footer-tagline'>Everyday life in the United States, made simple.</p>
+      <b:section class='footer-links' id='footer' name='Footer' showaddelement='yes'>
+        <b:widget id='PageList2' locked='false' title='' type='PageList' version='2' visible='true'>
+          <b:widget-settings>
+            <b:widget-setting name='pageListJson'><![CDATA[]]></b:widget-setting>
+            <b:widget-setting name='homeTitle'>Home</b:widget-setting>
+            <b:widget-setting name='title'/>
+          </b:widget-settings>
+        </b:widget>
+      </b:section>
+      <p class='small'>&#169; <span id='year'>2026</span> <data:blog.title/></p>
+    </div>
+  </footer>
+
+  <script>
+  //<![CDATA[
+/*@SCRIPT@*/
+  //]]>
+  </script>
+</body>
+</html>

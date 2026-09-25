@@ -26,6 +26,10 @@ Website and WordPress theme for [kiggaboi77.com](https://kiggaboi77.com/) — Ko
 - **Chapters** link to categories with these slugs if they exist: `etiquette`, `food`, `k-pop-k-drama`, `holidays`, `language`, `korea-and-america`.
 - **AdSense**: add the code with Site Kit by Google (or Auto ads); ad units can also go in the *After Post Content* widget area.
 
+## Blogger theme — oneofkind77.com
+
+English "Life in America" blog on Blogspot. Upload **`dist/oneofkind77-blogger-theme.xml`** (Theme → Restore). Details in [`blogger-theme/README.md`](blogger-theme/README.md).
+
 ## Static preview
 
 `index.html`, `about.html`, `contact.html` and `privacy.html` are a plain-HTML preview of the same design:
