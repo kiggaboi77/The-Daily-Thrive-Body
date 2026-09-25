@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
-<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateUrl='oneofkind77' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' expr:lang='data:blog.localeUnderscoreDelimited' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' expr:dir='data:blog.languageDirection' expr:lang='data:blog.localeUnderscoreDelimited' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
 <head>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <b:include data='blog' name='all-head-content'/>
@@ -47,11 +47,6 @@
       <nav aria-label='Primary' class='nav-links' id='site-nav'>
         <b:section class='nav-section' id='nav' maxwidgets='1' showaddelement='no'>
           <b:widget id='PageList1' locked='false' title='' type='PageList' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='pageListJson'><![CDATA[]]></b:widget-setting>
-              <b:widget-setting name='homeTitle'>Home</b:widget-setting>
-              <b:widget-setting name='title'/>
-            </b:widget-settings>
           </b:widget>
         </b:section>
         <form action='/search' class='nav-search' method='get' role='search'>
@@ -92,13 +87,6 @@
         </div>
         <b:section class='focus-topics' id='focus-topics' name='Start here topics' showaddelement='yes'>
           <b:widget id='Label1' locked='false' title='' type='Label' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='sorting'>FREQUENCY</b:widget-setting>
-              <b:widget-setting name='display'>LIST</b:widget-setting>
-              <b:widget-setting name='selectedLabelsList'/>
-              <b:widget-setting name='showType'>ALL</b:widget-setting>
-              <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
-            </b:widget-settings>
           </b:widget>
         </b:section>
         <a class='btn btn-outline-light focus-all' href='/search'>Browse all posts &#8594;</a>
@@ -116,19 +104,6 @@
       </b:if>
       <b:section class='main' id='main' name='Main' showaddelement='no'>
         <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='showDateHeader'>false</b:widget-setting>
-            <b:widget-setting name='style.textcolor'>#000000</b:widget-setting>
-            <b:widget-setting name='showShareButtons'>false</b:widget-setting>
-            <b:widget-setting name='authorLabel'>By</b:widget-setting>
-            <b:widget-setting name='showAuthor'>true</b:widget-setting>
-            <b:widget-setting name='showLabels'>true</b:widget-setting>
-            <b:widget-setting name='showTimestamp'>true</b:widget-setting>
-            <b:widget-setting name='postsPerAd'>1</b:widget-setting>
-            <b:widget-setting name='showReactions'>false</b:widget-setting>
-            <b:widget-setting name='showAuthorProfile'>false</b:widget-setting>
-            <b:widget-setting name='showInlineAds'>false</b:widget-setting>
-          </b:widget-settings>
           <b:includable id='main' var='this'>
             <b:if cond='data:view.isError'>
               <div class='empty-state'>
@@ -151,8 +126,7 @@
                   <h1>
                     <b:if cond='data:view.isLabelSearch'><data:view.search.label/>
                     <b:elseif cond='data:view.search.query'/>Results for &#8220;<data:view.search.query/>&#8221;
-                    <b:elseif cond='data:view.isArchive'/><data:view.archive.rangeMessage/>
-                    <b:else/>All posts</b:if>
+                                        <b:else/>All posts</b:if>
                   </h1>
                 </header>
               </b:if>
@@ -247,12 +221,6 @@
       <div class='container popular-wrap'>
         <b:section class='popular' id='popular' name='Popular' showaddelement='yes'>
           <b:widget id='PopularPosts1' locked='false' title='Most read' type='PopularPosts' version='2' visible='true'>
-            <b:widget-settings>
-              <b:widget-setting name='numItemsToShow'>4</b:widget-setting>
-              <b:widget-setting name='showThumbnails'>true</b:widget-setting>
-              <b:widget-setting name='showSnippets'>false</b:widget-setting>
-              <b:widget-setting name='timeRange'>ALL_TIME</b:widget-setting>
-            </b:widget-settings>
           </b:widget>
         </b:section>
       </div>
@@ -287,11 +255,6 @@
       <p class='footer-tagline'>Everyday life in the United States, made simple.</p>
       <b:section class='footer-links' id='footer' name='Footer' showaddelement='yes'>
         <b:widget id='PageList2' locked='false' title='' type='PageList' version='2' visible='true'>
-          <b:widget-settings>
-            <b:widget-setting name='pageListJson'><![CDATA[]]></b:widget-setting>
-            <b:widget-setting name='homeTitle'>Home</b:widget-setting>
-            <b:widget-setting name='title'/>
-          </b:widget-settings>
         </b:widget>
       </b:section>
       <p class='small'>&#169; <span id='year'>2026</span> <data:blog.title/></p>
