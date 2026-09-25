@@ -1,0 +1,9 @@
+/* Block editor: match the front-end article typography. */
+body { font: 400 1.1rem/1.8 "Inter", system-ui, sans-serif; color: #1b1d24; }
+h1, h2, h3, h4, .editor-post-title__input { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; line-height: 1.12; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+a { color: #b0302a; }
+blockquote { border-left: 3px solid #b0302a; padding-left: 26px; font: italic 500 1.45rem/1.5 "Cormorant Garamond", Georgia, serif; }
+.lede { font: 500 1.5rem/1.5 "Cormorant Garamond", Georgia, serif; }
+.contact-email { padding: 22px 26px; background: #fffdf8; border: 1px solid #e0d6c3; border-left: 4px solid #b0302a; }

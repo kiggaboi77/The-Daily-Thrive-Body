@@ -223,3 +223,7 @@ a.stop-card:hover { transform: translateX(6px); box-shadow: var(--shadow); borde
   .subscribe-form { flex-direction: column; border-radius: 24px; }
   .word-card { height: 280px; }
 }
+.prose .lede { font: 500 1.45rem/1.5 var(--serif); color: var(--text); }
+.prose .contact-email { padding: 20px 24px; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--seal); color: var(--text); }
+.prose li { color: var(--muted); }
+.site-footer .small a { color: inherit; }
