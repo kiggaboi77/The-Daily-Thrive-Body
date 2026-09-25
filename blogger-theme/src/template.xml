@@ -4,6 +4,8 @@
 <head>
   <meta content='width=device-width, initial-scale=1' name='viewport'/>
   <b:include data='blog' name='all-head-content'/>
+  <!-- Impact site verification (kept from the previous theme) -->
+  <meta name='impact-site-verification' value='03f3d77e-ff9f-4557-87a0-552d2f96d87e'/>
   <title><b:if cond='data:view.isHomepage'><data:blog.title/><b:else/><data:view.title.escaped/> | <data:blog.title/></b:if></title>
   <b:if cond='data:view.description'>
     <meta expr:content='data:view.description.escaped' name='description'/>
