@@ -33,44 +33,21 @@ ICONS = {
     "case": "<rect height='26' rx='3' width='38' x='5' y='15'/><path d='M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M5 26h38'/>",
     "bag": "<path d='M10 16h28l-3 24H13Z'/><path d='M17 16a7 7 0 0 1 14 0'/>",
 }
-GUIDES = [
-    ("Housing &amp; Moving", "grass", 10, "housing", "Newcomer Guide &#183; Home &amp; Rent",
-     [("Find a Rental", "Applications, credit checks and security deposits.", "01"), ("Set Up Utilities", "Power, water, internet and trash &#8212; who to call first.", "02")],
-     "Every new chapter starts with a front door.", "house"),
-    ("Money &amp; Credit", "lightning", 20, "credit", "Newcomer Guide &#183; Banking",
-     [("Open a Bank Account", "Checking vs. savings, and what documents to bring.", "01"), ("Build Credit", "Secured cards and the habits that raise your score.", "02")],
-     "Your credit score opens more doors than you think.", "card"),
-    ("Health &amp; Insurance", "water", 30, "insurance", "Newcomer Guide &#183; Healthcare",
-     [("Pick a Plan", "Premiums, deductibles and copays in plain English.", "01"), ("See a Doctor", "Primary care, urgent care or the ER &#8212; which one?", "02")],
-     "Know your plan before you need it.", "shield"),
-    ("Cars &amp; Driving", "fire", 40, "driving", "Newcomer Guide &#183; On the Road",
-     [("Get Your License", "Documents, the written test and the road test.", "01"), ("Buy a Car", "New vs. used, loans, insurance and registration.", "02")],
-     "In most of America, the car is the key to everything.", "car"),
-    ("Work &amp; Careers", "steel", 50, "work", "Newcomer Guide &#183; Jobs",
-     [("Land the Job", "R&#233;sum&#233;s, interviews and work authorization basics.", "01"), ("Read Your Paycheck", "Taxes, Social Security, Medicare and benefits.", "02")],
-     "Work hard &#8212; and understand the pay stub too.", "case"),
-    ("Everyday Life", "psychic", 60, "culture", "Newcomer Guide &#183; Culture",
-     [("Tip Like a Local", "Restaurants, delivery, haircuts and hotels.", "01"), ("Make Small Talk", "The friendly chats Americans have everywhere.", "02")],
-     "The little customs make the biggest difference.", "bag"),
+GUIDES = [  # (title, search query, description, icon)
+    ("Housing &amp; Moving", "housing", "Renting, leases, utilities and setting up a new home.", "house"),
+    ("Money &amp; Credit", "credit", "Bank accounts, credit scores, taxes and saving.", "card"),
+    ("Health &amp; Insurance", "insurance", "How U.S. health insurance, doctors and pharmacies work.", "shield"),
+    ("Cars &amp; Driving", "driving", "Licenses, the DMV, buying a car and the rules of the road.", "car"),
+    ("Work &amp; Careers", "work", "Jobs, paychecks, benefits and workplace culture.", "case"),
+    ("Everyday Life", "culture", "Shopping, holidays, tipping and small talk.", "bag"),
 ]
 
 def guide_card(n, g):
-    title, typ, lv, q, strip, moves, flavor, icon = g
-    rows = "".join(
-        f"<div class='tcg-move'><span aria-hidden='true' class='cost'>{'<i></i>' * (k + 1)}</span>"
-        f"<div><b>{name}</b><p>{text}</p></div><span class='tcg-dmg'>{dmg}</span></div>"
-        for k, (name, text, dmg) in enumerate(moves))
-    return (f"            <a class='tcg t-{typ} reveal' href='/search?q={q}'>\n"
-            f"              <div class='tcg-inner'>\n"
-            f"                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. {n:03d}/{len(GUIDES):03d}</span></div>\n"
-            f"                <div class='tcg-head'><h3 class='tcg-name'>{title}</h3><span class='tcg-hp'><small>LV</small>{lv}<span aria-hidden='true' class='energy'></span></span></div>\n"
-            f"                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'>{ICONS[icon]}</svg></span></div>\n"
-            f"                <div class='tcg-strip'>{strip}</div>\n"
-            f"                {rows}\n"
-            f"                <p class='tcg-flavor'>{flavor}</p>\n"
-            f"                <div class='tcg-foot'><span>Search: {q}</span><span class='tcg-read'>Open guides &#8594;</span></div>\n"
-            f"              </div>\n"
-            f"              <span aria-hidden='true' class='tcg-shine'></span>\n"
+    title, q, desc, icon = g
+    return (f"            <a class='topic reveal' href='/search?q={q}'>\n"
+            f"              <span class='topic-icon'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'>{ICONS[icon]}</svg></span>\n"
+            f"              <span class='topic-text'><span class='topic-no'>{n:02d}</span><h3>{title}</h3><p>{desc}</p></span>\n"
+            f"              <span aria-hidden='true' class='topic-arrow'>&#8594;</span>\n"
             f"            </a>")
 
 guides_html = "\n".join(guide_card(i + 1, g) for i, g in enumerate(GUIDES))
@@ -119,13 +96,9 @@ posts = [
     ("Culture", "Tipping in America: Who, When and How Much", "Restaurants, delivery, haircuts and hotels — a simple cheat sheet."),
     ("Work", "Understanding Your First U.S. Paycheck", "Federal and state taxes, Social Security, Medicare and benefits deductions."),
 ]
-cards = "".join(f"""<article class='tcg reveal'><div class='tcg-inner'><div class='tcg-top'><span class='tcg-stage'>Blog Post</span><span class='tcg-no'>No. 000</span></div>
-<div class='tcg-head'><h2 class='tcg-name'><a href='post.html'>{t}</a></h2><span aria-hidden='true' class='energy'></span></div>
-<a class='tcg-art' href='post.html' tabindex='-1'><span class='tcg-art-in'><span aria-hidden='true' class='tcg-art-star'>&#9733;</span></span></a>
-<div class='tcg-strip'><a class='tcg-type' href='#'>{l}</a> &#183; <time>September {20 - i}, 2026</time></div>
-<div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><p class='tcg-text'>{e}</p></div>
-<div class='tcg-foot'><a class='tcg-read' href='post.html'>Read guide &#8594;</a><span class='tcg-rarity' aria-hidden='true'>&#9733;</span></div></div>
-<span aria-hidden='true' class='tcg-shine'></span></article>""" for i, (l, t, e) in enumerate(posts))
+cards = "".join(f"""<article class='post-card reveal'><a class='post-card-img' href='post.html' tabindex='-1'><span aria-hidden='true' class='post-card-fallback'>&#9733;</span></a>
+<div class='post-card-body'><p class='post-card-meta'><a class='post-card-label' href='#'>{l}</a><time>September {20 - i}, 2026</time></p>
+<h2 class='post-card-title'><a href='post.html'>{t}</a></h2><p class='post-card-excerpt'>{e}</p><a class='post-card-more' href='post.html'>Read more &#8594;</a></div></article>""" for i, (l, t, e) in enumerate(posts))
 grid = f"<div class='post-grid'>{cards}</div><div class='blog-pager' id='blog-pager'><a class='blog-pager-older-link' href='#'>More posts</a></div>"
 labels = "".join(f"<li><a class='label-name' href='#'>{n}<span class='label-count'>{c}</span></a></li>" for n, c in [("Cars & Driving", 4), ("Culture", 7), ("Health", 5), ("Housing", 6), ("Money", 8), ("Work", 3)])
 popular = "".join(f"<article class='post'><div class='post-content'><a class='post-image-link' href='post.html'><img class='post-thumb' alt='' src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 3 2%22%3E%3Crect width=%223%22 height=%222%22 fill=%22%232b3e6b%22/%3E%3C/svg%3E'></a><h3 class='post-title'><a href='post.html'>{t}</a></h3></div></article>" for _, t, _ in posts[:4])

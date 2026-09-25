@@ -18,8 +18,7 @@ The blog title in the header, hero and footer comes from **Settings → Title**,
 
 ## What's in it
 
-- Home page: dusk hero (suburban street, city skyline, road into town), six "Start here" guides as trading cards on a desert Route 66 backdrop, latest posts as trading cards on an Americana wallpaper (no flag), topics (labels), most read, and a search box.
-- Trading cards: gold frame, name bar, framed art window, "move" rows, card number, 3D tilt and holographic shine on hover. A post card's color comes from its first label (housing → green, money → yellow, health → blue, driving → red, work → steel, life/culture → purple); other labels cycle through the colors.
+- Home page: dusk hero (suburban street, city skyline, road into town), six "Start here" topic rows on a desert Route 66 backdrop, latest posts (newest one featured wide) on an Americana wallpaper (no flag), topics (labels), most read, and a search box.
 - Label, search and archive pages use the same card grid with a heading.
 - Post pages: large title, label, author and date, readable article typography, tags, comments, newer/older links.
 - Page-not-found view with search.
@@ -37,4 +36,4 @@ node blogger-theme/src/gen-backgrounds.mjs   # desert backdrop and Americana wal
 python3 blogger-theme/build.py
 ```
 
-`build.py` inlines `skin.css`, `script.js` and the SVG backgrounds into `template.xml`, builds the six guide cards from its `GUIDES` list, checks the XML is well-formed, and regenerates the previews.
+`build.py` inlines `skin.css`, `script.js` and the SVG backgrounds into `template.xml`, builds the six topic rows from its `GUIDES` list, checks the XML is well-formed, and regenerates the previews.

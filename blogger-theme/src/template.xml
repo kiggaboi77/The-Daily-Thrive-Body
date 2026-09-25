@@ -85,7 +85,7 @@
             <h2>Everything you need to settle in</h2>
             <p class='section-lead'>The questions everyone has about living in the U.S. — answered step by step, in plain English.</p>
           </div>
-          <div class='guides'>
+          <div class='topics-list'>
 <!--@GUIDES@-->
           </div>
         </div>
@@ -156,42 +156,29 @@
               <b:else/>
                 <div class='post-grid'>
                   <b:loop values='data:posts' var='post'>
-                    <article class='tcg reveal'>
-                      <div class='tcg-inner'>
-                        <div class='tcg-top'><span class='tcg-stage'>Blog Post</span><span class='tcg-no'>No. 000</span></div>
-                        <div class='tcg-head'>
-                          <h2 class='tcg-name'><a expr:href='data:post.url'><data:post.title/></a></h2>
-                          <span aria-hidden='true' class='energy'></span>
-                        </div>
-                        <a class='tcg-art' expr:href='data:post.url' tabindex='-1'>
-                          <span class='tcg-art-in'>
-                            <b:if cond='data:post.featuredImage'>
-                              <b:if cond='data:post.featuredImage.isResizable'>
-                                <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;4:3&quot;)' loading='lazy'/>
-                              <b:else/>
-                                <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
-                              </b:if>
-                            <b:else/>
-                              <span aria-hidden='true' class='tcg-art-star'>&#9733;</span>
-                            </b:if>
-                          </span>
-                        </a>
-                        <div class='tcg-strip'>
+                    <article class='post-card reveal'>
+                      <a class='post-card-img' expr:href='data:post.url' tabindex='-1'>
+                        <b:if cond='data:post.featuredImage'>
+                          <b:if cond='data:post.featuredImage.isResizable'>
+                            <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 1000, &quot;3:2&quot;)' loading='lazy'/>
+                          <b:else/>
+                            <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+                          </b:if>
+                        <b:else/>
+                          <span aria-hidden='true' class='post-card-fallback'>&#9733;</span>
+                        </b:if>
+                      </a>
+                      <div class='post-card-body'>
+                        <p class='post-card-meta'>
                           <b:loop index='i' values='data:post.labels' var='label'>
-                            <b:if cond='data:i == 0'><a class='tcg-type' expr:href='data:label.url'><data:label.name/></a> &#183; </b:if>
+                            <b:if cond='data:i == 0'><a class='post-card-label' expr:href='data:label.url'><data:label.name/></a></b:if>
                           </b:loop>
                           <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
-                        </div>
-                        <div class='tcg-move'>
-                          <span aria-hidden='true' class='cost'><i></i></span>
-                          <p class='tcg-text'><data:post.snippets.short/></p>
-                        </div>
-                        <div class='tcg-foot'>
-                          <a class='tcg-read' expr:href='data:post.url'>Read guide &#8594;</a>
-                          <span class='tcg-rarity' aria-hidden='true'>&#9733;</span>
-                        </div>
+                        </p>
+                        <h2 class='post-card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                        <p class='post-card-excerpt'><data:post.snippets.short/></p>
+                        <a class='post-card-more' expr:href='data:post.url'>Read more &#8594;</a>
                       </div>
-                      <span aria-hidden='true' class='tcg-shine'></span>
                     </article>
                   </b:loop>
                 </div>
