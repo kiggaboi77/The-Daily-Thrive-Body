@@ -124,38 +124,95 @@ main { display: block; padding-top: var(--header-h); }
 .scroll-cue span { position: absolute; left: 50%; top: 8px; width: 3px; height: 8px; margin-left: -1.5px; border-radius: 2px; background: #fffdf9; animation: cue 1.8s ease-in-out infinite; }
 @keyframes cue { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(14px); } }
 
-/* ---------- Guides ---------- */
-.guides { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.guide { position: relative; display: flex; flex-direction: column; padding: 34px 30px 30px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; text-decoration: none; color: inherit; overflow: hidden; transition: transform .35s, box-shadow .35s, border-color .35s; }
-.guide::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .4s; }
-.guide:hover { transform: translateY(-6px); box-shadow: var(--shadow); border-color: transparent; }
-.guide:hover::after { transform: scaleX(1); }
-.guide svg { width: 46px; height: 46px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 22px; padding: 10px; box-sizing: content-box; background: var(--paper-2); border-radius: 14px; transition: stroke .3s, background .3s; }
-.guide:hover svg { stroke: #fff; background: var(--accent); }
-@media (prefers-color-scheme: dark) { .guide svg { stroke: var(--text); } }
-.guide p { color: var(--muted); margin: 0 0 18px; }
-.guide-go { margin-top: auto; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+/* ---------- "Start here" on a desert road-trip backdrop ---------- */
+.desert-bg { position: relative; background: #8a5b8c url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 1600 1000%22 preserveAspectRatio=%22xMidYMid slice%22%3E %3Cdefs%3E %3ClinearGradient id=%22s%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%2323407a%22/%3E%3Cstop offset=%22.45%22 stop-color=%22%238a5b8c%22/%3E%3Cstop offset=%22.62%22 stop-color=%22%23e9824a%22/%3E%3Cstop offset=%22.74%22 stop-color=%22%23f6c177%22/%3E%3C/linearGradient%3E %3ClinearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23d9884a%22/%3E%3Cstop offset=%221%22 stop-color=%22%238c3d1e%22/%3E%3C/linearGradient%3E %3CradialGradient id=%22sun%22%3E%3Cstop offset=%220%22 stop-color=%22%23fff1c9%22/%3E%3Cstop offset=%22.3%22 stop-color=%22%23ffd27f%22 stop-opacity=%22.9%22/%3E%3Cstop offset=%221%22 stop-color=%22%23ffb35c%22 stop-opacity=%220%22/%3E%3C/radialGradient%3E %3C/defs%3E %3Crect width=%221600%22 height=%221000%22 fill=%22url(%23s)%22/%3E %3Ccircle cx=%22830%22 cy=%22700%22 r=%22330%22 fill=%22url(%23sun)%22/%3E%3Ccircle cx=%22830%22 cy=%22700%22 r=%2292%22 fill=%22%23fff4d6%22/%3E %3Cpath d=%22M0 700 C300 670 520 690 830 680 S1400 668 1600 690 V740 H0Z%22 fill=%22%23c9774a%22 opacity=%22.6%22/%3E %3Cpath d=%22M60,740 L103.19999999999999,670 L132,520 L348,520 L376.8,670 L420,740Z%22 fill=%22%239c4a2a%22/%3E%3Cg stroke=%22%236e2b17%22 stroke-opacity=%22.35%22 stroke-width=%223%22%3E%3Cpath d=%22M132,538 H348%22/%3E%3Cpath d=%22M132,554 H348%22/%3E%3Cpath d=%22M132,577 H348%22/%3E%3Cpath d=%22M132,600 H348%22/%3E%3Cpath d=%22M132,619 H348%22/%3E%3Cpath d=%22M132,642 H348%22/%3E%3Cpath d=%22M132,659 H348%22/%3E%3C/g%3E%3Cpath d=%22M380,740 L411.2,680 L432,560 L523,560 L536,590 L551.6,590 L556.8,490 L572.4,490 L577.6,590 L588,560 L608.8,680 L640,740Z%22 fill=%22%23a9532e%22/%3E%3Cg stroke=%22%236e2b17%22 stroke-opacity=%22.35%22 stroke-width=%223%22%3E%3Cpath d=%22M432,578 H588%22/%3E%3Cpath d=%22M432,598 H588%22/%3E%3Cpath d=%22M432,618 H588%22/%3E%3Cpath d=%22M432,641 H588%22/%3E%3Cpath d=%22M432,666 H588%22/%3E%3C/g%3E%3Cpath d=%22M980,740 L1018.4,660 L1044,500 L1156,500 L1172,530 L1191.2,530 L1197.6,430 L1216.8,430 L1223.2,530 L1236,500 L1261.6,660 L1300,740Z%22 fill=%22%23963f24%22/%3E%3Cg stroke=%22%236e2b17%22 stroke-opacity=%22.35%22 stroke-width=%223%22%3E%3Cpath d=%22M1044,518 H1236%22/%3E%3Cpath d=%22M1044,536 H1236%22/%3E%3Cpath d=%22M1044,553 H1236%22/%3E%3Cpath d=%22M1044,572 H1236%22/%3E%3Cpath d=%22M1044,594 H1236%22/%3E%3Cpath d=%22M1044,614 H1236%22/%3E%3Cpath d=%22M1044,630 H1236%22/%3E%3Cpath d=%22M1044,656 H1236%22/%3E%3C/g%3E%3Cpath d=%22M1280,740 L1323.2,680 L1352,540 L1568,540 L1596.8,680 L1640,740Z%22 fill=%22%23a24c2b%22/%3E%3Cg stroke=%22%236e2b17%22 stroke-opacity=%22.35%22 stroke-width=%223%22%3E%3Cpath d=%22M1352,558 H1568%22/%3E%3Cpath d=%22M1352,575 H1568%22/%3E%3Cpath d=%22M1352,595 H1568%22/%3E%3Cpath d=%22M1352,621 H1568%22/%3E%3Cpath d=%22M1352,643 H1568%22/%3E%3Cpath d=%22M1352,661 H1568%22/%3E%3C/g%3E %3Crect y=%22738%22 width=%221600%22 height=%22262%22 fill=%22url(%23g)%22/%3E %3Cellipse cx=%22736%22 cy=%22819%22 rx=%2210%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22883%22 cy=%22938%22 rx=%2215%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221089%22 cy=%22901%22 rx=%2212%22 ry=%227%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221528%22 cy=%22942%22 rx=%2213%22 ry=%228%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22981%22 cy=%22929%22 rx=%2214%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22253%22 cy=%22853%22 rx=%2216%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221332%22 cy=%22846%22 rx=%2212%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221274%22 cy=%22943%22 rx=%2218%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22874%22 cy=%22827%22 rx=%2220%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22930%22 cy=%22891%22 rx=%2229%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22529%22 cy=%22860%22 rx=%2224%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22806%22 cy=%22963%22 rx=%2216%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221038%22 cy=%22831%22 rx=%2224%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221292%22 cy=%22947%22 rx=%2211%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22127%22 cy=%22857%22 rx=%2216%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221090%22 cy=%22898%22 rx=%2230%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22266%22 cy=%22877%22 rx=%2225%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221529%22 cy=%22811%22 rx=%229%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22555%22 cy=%22777%22 rx=%2223%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22698%22 cy=%22956%22 rx=%2225%22 ry=%227%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%2219%22 cy=%22796%22 rx=%2223%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221243%22 cy=%22923%22 rx=%2225%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22199%22 cy=%22806%22 rx=%2226%22 ry=%223%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22918%22 cy=%22903%22 rx=%2218%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%2224%22 cy=%22776%22 rx=%2211%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221103%22 cy=%22804%22 rx=%2228%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22696%22 cy=%22817%22 rx=%2225%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221487%22 cy=%22966%22 rx=%2219%22 ry=%227%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221497%22 cy=%22810%22 rx=%2229%22 ry=%227%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221249%22 cy=%22923%22 rx=%2228%22 ry=%223%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221135%22 cy=%22941%22 rx=%2214%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22512%22 cy=%22937%22 rx=%2222%22 ry=%228%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22954%22 cy=%22792%22 rx=%2222%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22173%22 cy=%22763%22 rx=%2213%22 ry=%225%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221515%22 cy=%22764%22 rx=%2211%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22212%22 cy=%22916%22 rx=%2224%22 ry=%223%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221050%22 cy=%22854%22 rx=%2218%22 ry=%227%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%22569%22 cy=%22942%22 rx=%2214%22 ry=%226%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%221465%22 cy=%22821%22 rx=%2224%22 ry=%224%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E%3Cellipse cx=%2272%22 cy=%22905%22 rx=%2214%22 ry=%223%22 fill=%22%236e2b17%22 opacity=%22.35%22/%3E %3Cpath d=%22M827,700 L833,700 L1120,1000 L520,1000Z%22 fill=%22%233a2a2e%22/%3E %3Cpath d=%22M830,700 L820,1000%22 stroke=%22%23ffcf7a%22 stroke-width=%226%22 stroke-dasharray=%2226 22%22 opacity=%22.9%22/%3E %3Cg transform=%22translate(1180 780)%22%3E %3Crect x=%22-3%22 y=%220%22 width=%226%22 height=%22150%22 fill=%22%233b1a12%22/%3E %3Cpath d=%22M-38 -70 H38 C38 -48 44 -30 34 -8 C22 18 6 22 0 32 C-6 22 -22 18 -34 -8 C-44 -30 -38 -48 -38 -70Z%22 fill=%22%23fffaf0%22 stroke=%22%231d1d1d%22 stroke-width=%224%22/%3E %3Cpath d=%22M-30 -62 H30 V-44 H-30Z%22 fill=%22%231d1d1d%22/%3E %3Ctext x=%220%22 y=%22-48%22 font-family=%22Arial,Helvetica,sans-serif%22 font-size=%2212%22 font-weight=%22700%22 fill=%22%23fffaf0%22 text-anchor=%22middle%22%3EUS%3C/text%3E %3Ctext x=%220%22 y=%226%22 font-family=%22Arial,Helvetica,sans-serif%22 font-size=%2240%22 font-weight=%22800%22 fill=%22%231d1d1d%22 text-anchor=%22middle%22%3E66%3C/text%3E%3C/g%3E %3Cg transform=%22translate(250 960) scale(1.4)%22 fill=%22%233b1a12%22%3E %3Crect x=%22-9%22 y=%22-120%22 width=%2218%22 height=%22120%22 rx=%229%22/%3E %3Cpath d=%22M-9 -60 h-18 a9 9 0 0 1 -9 -9 v-34 a9 9 0 0 1 18 0 v25 h9z%22/%3E %3Cpath d=%22M9 -75 h18 a9 9 0 0 0 9 -9 v-26 a9 9 0 0 0 -18 0 v17 h-9z%22/%3E%3C/g%3E%3Cg transform=%22translate(1420 930) scale(1.1)%22 fill=%22%233b1a12%22%3E %3Crect x=%22-9%22 y=%22-120%22 width=%2218%22 height=%22120%22 rx=%229%22/%3E %3Cpath d=%22M-9 -60 h-18 a9 9 0 0 1 -9 -9 v-34 a9 9 0 0 1 18 0 v25 h9z%22/%3E %3Cpath d=%22M9 -75 h18 a9 9 0 0 0 9 -9 v-26 a9 9 0 0 0 -18 0 v17 h-9z%22/%3E%3C/g%3E%3Cg transform=%22translate(1520 990) scale(1.6)%22 fill=%22%233b1a12%22%3E %3Crect x=%22-9%22 y=%22-120%22 width=%2218%22 height=%22120%22 rx=%229%22/%3E %3Cpath d=%22M-9 -60 h-18 a9 9 0 0 1 -9 -9 v-34 a9 9 0 0 1 18 0 v25 h9z%22/%3E %3Cpath d=%22M9 -75 h18 a9 9 0 0 0 9 -9 v-26 a9 9 0 0 0 -18 0 v17 h-9z%22/%3E%3C/g%3E%3Cg transform=%22translate(90 880) scale(0.8)%22 fill=%22%233b1a12%22%3E %3Crect x=%22-9%22 y=%22-120%22 width=%2218%22 height=%22120%22 rx=%229%22/%3E %3Cpath d=%22M-9 -60 h-18 a9 9 0 0 1 -9 -9 v-34 a9 9 0 0 1 18 0 v25 h9z%22/%3E %3Cpath d=%22M9 -75 h18 a9 9 0 0 0 9 -9 v-26 a9 9 0 0 0 -18 0 v17 h-9z%22/%3E%3C/g%3E %3Cg fill=%22none%22 stroke=%22%232b1b2e%22 stroke-width=%223%22 stroke-linecap=%22round%22%3E%3Cpath d=%22M500 300 q10 -8 20 0 q10 -8 20 0%22/%3E%3Cpath d=%22M560 270 q8 -6 16 0 q8 -6 16 0%22/%3E%3Cpath d=%22M1100 330 q9 -7 18 0 q9 -7 18 0%22/%3E%3C/g%3E %3C/svg%3E") center bottom / cover no-repeat; color: #fffdf9; }
+.desert-bg::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,24,52,.55), rgba(20,24,52,.05) 45%, rgba(40,16,10,.25)); pointer-events: none; }
+.desert-bg > .container { position: relative; }
+.desert-bg .eyebrow { color: var(--gold); }
+.desert-bg .section-lead { color: rgba(255,253,249,.82); }
+.desert-bg h2 { text-shadow: 0 2px 20px rgba(0,0,0,.25); }
 
-/* ---------- Post grid (home, labels, search) ---------- */
-.latest-head { padding-top: clamp(24px, 4vw, 40px); }
+/* ---------- Posts on an Americana wallpaper ---------- */
+.posts-zone { background: var(--paper) url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22340%22 height=%22340%22 viewBox=%220 0 340 340%22%3E%3Cg fill=%22none%22 stroke=%22%2314213d%22 stroke-opacity=%22.1%22 stroke-width=%222.4%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E %3Cg transform=%22translate(50 55) rotate(-8)%22%3E%3Cpath d=%22M-22 -26 H22 C22 -12 26 -2 20 12 C13 26 3 28 0 34 C-3 28 -13 26 -20 12 C-26 -2 -22 -12 -22 -26Z%22/%3E%3Cpath d=%22M-22 -16 H22%22/%3E%3Ctext x=%220%22 y=%2212%22 font-family=%22Arial,Helvetica,sans-serif%22 font-size=%2220%22 font-weight=%22800%22 text-anchor=%22middle%22 stroke=%22none%22 fill=%22%2314213d%22 fill-opacity=%22.1%22%3E66%3C/text%3E%3C/g%3E%3Cg transform=%22translate(170 60) rotate(6)%22%3E%3Cpath d=%22M-6 36 V-30 a6 6 0 0 1 12 0 V36%22/%3E%3Cpath d=%22M-6 6 h-10 a6 6 0 0 1 -6 -6 v-18 a5 5 0 0 1 10 0 v12 h6%22/%3E%3Cpath d=%22M6 -2 h10 a6 6 0 0 0 6 -6 v-14 a5 5 0 0 0 -10 0 v8 h-6%22/%3E%3Cpath d=%22M-20 36 H20%22/%3E%3C/g%3E%3Cg transform=%22translate(285 70) rotate(-6)%22%3E%3Cpath d=%22M-8 -6 H8 L4 20 H-4Z%22/%3E%3Cpath d=%22M-12 -6 H12%22/%3E%3Cpath d=%22M0 -10 C-12 -18 -6 -30 0 -38 C2 -30 12 -24 6 -14 C4 -10 2 -10 0 -10Z%22/%3E%3Cpath d=%22M-2 20 V36 H2 V20%22/%3E%3C/g%3E%3Cg transform=%22translate(60 180) rotate(4)%22%3E%3Cpath d=%22M-30 30 H30%22/%3E%3Cpath d=%22M-16 30 V-26 M-10 30 V-26 M10 30 V-26 M16 30 V-26%22/%3E%3Cpath d=%22M-16 -26 H-10 M10 -26 H16 M-16 -8 H-10 M10 -8 H16%22/%3E%3Cpath d=%22M-36 4 Q-24 20 -13 -26 Q0 14 13 -26 Q24 20 36 4%22/%3E%3C/g%3E%3Cg transform=%22translate(150 150) rotate(10)%22%3E%3Cpath d=%22M0 -14 L4 -4 L14 -4 L6 3 L9 13 L0 7 L-9 13 L-6 3 L-14 -4 L-4 -4Z%22/%3E%3C/g%3E%3Cg transform=%22translate(215 190) rotate(-10)%22%3E%3Cpath d=%22M-16 -8 H12 V22 a6 6 0 0 1 -6 6 H-10 a6 6 0 0 1 -6 -6Z%22/%3E%3Cpath d=%22M12 -2 h6 a6 6 0 0 1 0 14 h-6%22/%3E%3Cpath d=%22M-8 -16 q-4 -6 0 -12 M0 -16 q-4 -6 0 -12 M8 -16 q-4 -6 0 -12%22/%3E%3C/g%3E%3Cg transform=%22translate(300 190) rotate(0)%22%3E%3Ccircle r=%2222%22/%3E%3Cpath d=%22M-14 -17 C-6 -8 -6 8 -14 17 M14 -17 C6 -8 6 8 14 17%22/%3E%3Cpath d=%22M-12 -10 l-5 2 M-10 -3 l-5 1 M-10 4 l-5 -1 M12 -10 l5 2 M10 -3 l5 1 M10 4 l5 -1%22/%3E%3C/g%3E%3Cg transform=%22translate(70 290) rotate(-4)%22%3E%3Cpath d=%22M-32 10 C-20 20 20 20 32 10%22/%3E%3Cpath d=%22M-18 12 C-18 -4 -16 -18 -10 -18 C-6 -18 -4 -12 0 -12 C4 -12 6 -18 10 -18 C16 -18 18 -4 18 12%22/%3E%3Cpath d=%22M-18 4 C-6 8 6 8 18 4%22/%3E%3C/g%3E%3Cg transform=%22translate(190 290) rotate(5)%22%3E%3Crect x=%22-30%22 y=%22-16%22 width=%2260%22 height=%2230%22 rx=%225%22/%3E%3Cpath d=%22M-24 -10 h10 v10 h-10z M-8 -10 h10 v10 h-10z M8 -10 h10 v10 h-10z%22/%3E%3Ccircle cx=%22-18%22 cy=%2216%22 r=%225%22/%3E%3Ccircle cx=%2218%22 cy=%2216%22 r=%225%22/%3E%3C/g%3E%3Cg transform=%22translate(290 285) rotate(-12)%22%3E%3Cpath d=%22M0 -14 L4 -4 L14 -4 L6 3 L9 13 L0 7 L-9 13 L-6 3 L-14 -4 L-4 -4Z%22/%3E%3C/g%3E%3Cg transform=%22translate(120 245) rotate(0)%22%3E%3Cpath d=%22M0 -14 L4 -4 L14 -4 L6 3 L9 13 L0 7 L-9 13 L-6 3 L-14 -4 L-4 -4Z%22/%3E%3C/g%3E %3C/g%3E%3C/svg%3E") 0 0 / 340px 340px repeat; }
+.is-single .posts-zone { background-image: none; }
+@media (prefers-color-scheme: dark) { .posts-zone { background-image: none; } }
+.latest-head { padding-top: clamp(64px, 9vw, 110px); }
+
+/* ---------- Trading cards ---------- */
+.guides, .post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 34px 28px; }
+.tcg {
+  --c1: #e7dcc7; --c2: #a89a80; --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%;
+  position: relative; display: block; padding: 11px; border-radius: 20px; text-decoration: none; color: #1b1b1b;
+  background: linear-gradient(145deg, #fbe98f, #e6b83c 28%, #fff3b0 52%, #d8a22e 78%, #f7e27a);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 18px 40px -18px rgba(20,33,61,.55), 0 4px 10px -4px rgba(20,33,61,.3);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d; transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .4s;
+}
+.tcg.tilting { transition: transform .08s linear, box-shadow .4s; }
+.tcg:hover { box-shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 34px 60px -22px rgba(20,33,61,.7), 0 6px 14px -6px rgba(20,33,61,.35); }
+.tcg-inner {
+  position: relative; height: 100%; display: flex; flex-direction: column; gap: 8px; padding: 10px 12px 12px; border-radius: 11px; overflow: hidden;
+  background: repeating-linear-gradient(135deg, rgba(255,255,255,.14) 0 2px, transparent 2px 7px), linear-gradient(170deg, var(--c1), var(--c2));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.18);
+}
+.tcg-top { display: flex; justify-content: space-between; align-items: center; font-size: .64rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.tcg-stage { padding: 2px 9px; border-radius: 999px; background: linear-gradient(180deg, #f4f4f4, #bdbdbd); border: 1px solid rgba(0,0,0,.25); font-style: italic; }
+.tcg-no { opacity: .7; }
+.tcg-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.tcg-name { margin: 0; font: 700 1.28rem/1.15 var(--serif); letter-spacing: -.01em; color: #151515; }
+.tcg-name a { text-decoration: none; color: inherit; }
+.post-grid .tcg-name { font-size: 1.12rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.tcg-hp { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; font: 800 1.2rem/1 var(--sans); color: #b3261e; }
+.tcg-hp small { font-size: .6rem; font-weight: 700; color: #1b1b1b; }
+.energy, .cost i { display: inline-block; width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.85), rgba(255,255,255,0) 45%), var(--c2);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.7), 0 1px 2px rgba(0,0,0,.35); }
+.tcg-art { display: block; padding: 4px; border-radius: 4px; background: linear-gradient(135deg, #fff7c2, #b88a22 30%, #fff3b0 55%, #b88a22 80%, #fff7c2); box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+.tcg-art-in { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 2px;
+  background: repeating-conic-gradient(from 0deg at 50% 62%, rgba(255,255,255,.22) 0 9deg, transparent 9deg 18deg), radial-gradient(circle at 50% 62%, #fffbe8 0, var(--c1) 38%, var(--c2) 100%); }
+.tcg-art-in img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.tcg-art-in svg { width: 46%; height: auto; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 3px 0 rgba(0,0,0,.25)) drop-shadow(0 8px 14px rgba(0,0,0,.25)); }
+.tcg-art-star { font-size: 3.4rem; color: #fff; text-shadow: 0 3px 0 rgba(0,0,0,.2); }
+.tcg-strip { margin: -2px 10px 0; padding: 3px 10px; text-align: center; font-size: .68rem; font-style: italic; font-weight: 500; border-radius: 3px;
+  background: linear-gradient(90deg, #c9a13a, #fff0a8 30%, #fff0a8 70%, #c9a13a); box-shadow: 0 1px 2px rgba(0,0,0,.25); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tcg-strip a { color: inherit; text-decoration: none; font-weight: 700; }
+.tcg-move { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 10px; padding: 7px 2px; border-bottom: 1px solid rgba(0,0,0,.16); }
+.tcg-move .cost { display: flex; gap: 3px; padding-top: 2px; min-width: 20px; }
+.tcg-move .cost i { width: 17px; height: 17px; }
+.tcg-move b { display: block; font: 700 .98rem/1.2 var(--sans); }
+.tcg-move p, .tcg-text { margin: 2px 0 0; font-size: .8rem; line-height: 1.45; color: #2a2a2a; }
+.post-grid .tcg-text { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
+.tcg-dmg { font: 800 1.1rem/1 var(--sans); padding-top: 2px; }
+.tcg-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-top: 6px; font-size: .64rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.tcg-foot span { opacity: .8; }
+.tcg-read { font-size: .78rem; letter-spacing: .04em; text-decoration: none; color: #151515; border-bottom: 2px solid rgba(0,0,0,.35); }
+.tcg-read:hover { border-color: #151515; }
+.tcg-rarity { font-size: .8rem; opacity: .75; }
+.tcg-flavor { margin: 0; padding: 6px 8px; font: italic 500 .74rem/1.4 var(--serif); border: 1px solid rgba(0,0,0,.25); border-radius: 3px; background: rgba(255,255,255,.28); }
+
+/* Holographic shine + glare, driven by --mx / --my from script.js */
+.tcg-shine { position: absolute; inset: 0; border-radius: 20px; pointer-events: none; opacity: 0; transition: opacity .35s; mix-blend-mode: color-dodge;
+  background: radial-gradient(circle at var(--mx) var(--my), rgba(255,255,255,.55), transparent 42%),
+    linear-gradient(115deg, transparent 18%, rgba(255,0,170,.38) 32%, rgba(0,240,255,.38) 44%, rgba(255,245,0,.38) 56%, rgba(120,255,120,.3) 66%, transparent 80%);
+  background-size: 100% 100%, 250% 250%; background-position: center, var(--mx) var(--my); }
+.tcg:hover .tcg-shine, .tcg:focus-within .tcg-shine { opacity: .6; }
+@media (prefers-reduced-motion: reduce) { .tcg { transform: none !important; } }
+
+/* Energy types */
+.t-grass     { --c1: #cfeaa0; --c2: #62a53f; }
+.t-lightning { --c1: #fff0a0; --c2: #e0a92b; }
+.t-water     { --c1: #bfe4f6; --c2: #3f86c2; }
+.t-fire      { --c1: #fbc39e; --c2: #d9482b; }
+.t-steel     { --c1: #e1e6ec; --c2: #7d8a9c; }
+.t-psychic   { --c1: #efcdf6; --c2: #9a58b5; }
+.t-earth     { --c1: #f1d2a4; --c2: #b06a35; }
+
+/* ---------- List pages ---------- */
 .main-wrap { padding-bottom: clamp(64px, 9vw, 110px); }
 .is-home .main-wrap { padding-top: 0; }
 .list-head { padding: clamp(48px, 7vw, 90px) 0 36px; }
 .list-head h1 { font-size: clamp(2.3rem, 5.5vw, 3.8rem); margin: 0; }
-.post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; transition: transform .35s, box-shadow .35s; }
-.card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
-.card-thumb { display: block; aspect-ratio: 3 / 2; overflow: hidden; background: linear-gradient(160deg, #2b3e6b, #b8708a 70%, #f3a86b); }
-.card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .6s; }
-.card:hover .card-thumb img { transform: scale(1.04); }
-.card-thumb-fallback { display: grid; place-content: center; height: 100%; font-size: 2.6rem; color: rgba(255,253,249,.55); }
-.card-body { display: flex; flex-direction: column; gap: 10px; padding: 24px 26px 26px; flex: 1; }
-.card-label { align-self: flex-start; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); padding: 4px 11px; border-radius: 999px; }
-.card-title { font-size: 1.4rem; margin: 0; }
-.card-title a { text-decoration: none; }
-.card-title a:hover { color: var(--accent); }
-.card-excerpt { color: var(--muted); font-size: 0.95rem; margin: 0; }
-.card-meta { margin-top: auto; padding-top: 8px; font-size: 0.8rem; color: var(--muted); }
+
 
 /* Pagination (Blogger default markup) */
 .blog-pager, #blog-pager { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 56px 0 0; }
@@ -270,7 +327,7 @@ main { display: block; padding-top: var(--header-h); }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1040px) {
-  .guides, .post-grid { grid-template-columns: repeat(2, 1fr); }
+  .guides, .post-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav-search input { width: 140px; }
 }
 @media (max-width: 900px) {
@@ -285,7 +342,7 @@ main { display: block; padding-top: var(--header-h); }
   .hero-content { padding: 110px 0 34vh; }
 }
 @media (max-width: 600px) {
-  .guides, .post-grid { grid-template-columns: 1fr; }
+  .guides, .post-grid { grid-template-columns: minmax(0, 1fr); max-width: 400px; margin-inline: auto; }
   .brand-name { font-size: 1.1rem; }
   .brand-mark { width: 34px; height: 34px; font-size: 1rem; }
   .search-box { flex-direction: column; border-radius: 22px; }
@@ -354,7 +411,7 @@ main { display: block; padding-top: var(--header-h); }
       <div aria-hidden='true' class='stripe'></div>
 
       <!-- ===== Guides ===== -->
-      <section class='section' id='guides'>
+      <section class='section desert-bg' id='guides'>
         <div class='container'>
           <div class='section-head reveal'>
             <p class='eyebrow'>Start here</p>
@@ -362,56 +419,93 @@ main { display: block; padding-top: var(--header-h); }
             <p class='section-lead'>The questions everyone has about living in the U.S. — answered step by step, in plain English.</p>
           </div>
           <div class='guides'>
-            <a class='guide reveal' href='/search?q=housing'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M6 22 24 8l18 14'/><path d='M11 19v21h26V19'/><path d='M20 40V28h8v12'/></svg>
-              <h3>Housing &amp; Moving</h3>
-              <p>Renting, leases, utilities and setting up a new home.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-grass reveal' href='/search?q=housing'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 001/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Housing &amp; Moving</h3><span class='tcg-hp'><small>LV</small>10<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M6 22 24 8l18 14'/><path d='M11 19v21h26V19'/><path d='M20 40V28h8v12'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; Home &amp; Rent</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Find a Rental</b><p>Applications, credit checks and security deposits.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>Set Up Utilities</b><p>Power, water, internet and trash &#8212; who to call first.</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>Every new chapter starts with a front door.</p>
+                <div class='tcg-foot'><span>Search: housing</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
-            <a class='guide reveal' href='/search?q=credit'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='11'/><path d='M5 19h38M11 29h10'/></svg>
-              <h3>Money &amp; Credit</h3>
-              <p>Bank accounts, credit scores, taxes and saving.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-lightning reveal' href='/search?q=credit'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 002/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Money &amp; Credit</h3><span class='tcg-hp'><small>LV</small>20<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='11'/><path d='M5 19h38M11 29h10'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; Banking</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Open a Bank Account</b><p>Checking vs. savings, and what documents to bring.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>Build Credit</b><p>Secured cards and the habits that raise your score.</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>Your credit score opens more doors than you think.</p>
+                <div class='tcg-foot'><span>Search: credit</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
-            <a class='guide reveal' href='/search?q=insurance'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M24 6 9 12v10c0 10 6.5 17 15 20 8.5-3 15-10 15-20V12Z'/><path d='M24 17v14M17 24h14'/></svg>
-              <h3>Health &amp; Insurance</h3>
-              <p>How U.S. health insurance, doctors and pharmacies work.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-water reveal' href='/search?q=insurance'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 003/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Health &amp; Insurance</h3><span class='tcg-hp'><small>LV</small>30<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M24 6 9 12v10c0 10 6.5 17 15 20 8.5-3 15-10 15-20V12Z'/><path d='M24 17v14M17 24h14'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; Healthcare</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Pick a Plan</b><p>Premiums, deductibles and copays in plain English.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>See a Doctor</b><p>Primary care, urgent care or the ER &#8212; which one?</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>Know your plan before you need it.</p>
+                <div class='tcg-foot'><span>Search: insurance</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
-            <a class='guide reveal' href='/search?q=driving'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M8 30l4-11c.7-2 2.3-3 4.3-3h15.4c2 0 3.6 1 4.3 3l4 11'/><rect height='10' rx='3' width='36' x='6' y='28'/><path d='M12 38v4M36 38v4'/><circle cx='14' cy='33' r='1.5'/><circle cx='34' cy='33' r='1.5'/></svg>
-              <h3>Cars &amp; Driving</h3>
-              <p>Licenses, the DMV, buying a car and the rules of the road.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-fire reveal' href='/search?q=driving'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 004/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Cars &amp; Driving</h3><span class='tcg-hp'><small>LV</small>40<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M8 30l4-11c.7-2 2.3-3 4.3-3h15.4c2 0 3.6 1 4.3 3l4 11'/><rect height='10' rx='3' width='36' x='6' y='28'/><path d='M12 38v4M36 38v4'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; On the Road</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Get Your License</b><p>Documents, the written test and the road test.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>Buy a Car</b><p>New vs. used, loans, insurance and registration.</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>In most of America, the car is the key to everything.</p>
+                <div class='tcg-foot'><span>Search: driving</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
-            <a class='guide reveal' href='/search?q=work'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='15'/><path d='M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M5 26h38'/></svg>
-              <h3>Work &amp; Careers</h3>
-              <p>Jobs, paychecks, benefits and workplace culture.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-steel reveal' href='/search?q=work'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 005/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Work &amp; Careers</h3><span class='tcg-hp'><small>LV</small>50<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='15'/><path d='M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M5 26h38'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; Jobs</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Land the Job</b><p>R&#233;sum&#233;s, interviews and work authorization basics.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>Read Your Paycheck</b><p>Taxes, Social Security, Medicare and benefits.</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>Work hard &#8212; and understand the pay stub too.</p>
+                <div class='tcg-foot'><span>Search: work</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
-            <a class='guide reveal' href='/search?q=culture'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M10 16h28l-3 24H13Z'/><path d='M17 16a7 7 0 0 1 14 0'/></svg>
-              <h3>Everyday Life</h3>
-              <p>Shopping, holidays, tipping and small talk.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
+            <a class='tcg t-psychic reveal' href='/search?q=culture'>
+              <div class='tcg-inner'>
+                <div class='tcg-top'><span class='tcg-stage'>Basic Guide</span><span class='tcg-no'>No. 006/006</span></div>
+                <div class='tcg-head'><h3 class='tcg-name'>Everyday Life</h3><span class='tcg-hp'><small>LV</small>60<span aria-hidden='true' class='energy'></span></span></div>
+                <div class='tcg-art'><span class='tcg-art-in'><svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M10 16h28l-3 24H13Z'/><path d='M17 16a7 7 0 0 1 14 0'/></svg></span></div>
+                <div class='tcg-strip'>Newcomer Guide &#183; Culture</div>
+                <div class='tcg-move'><span aria-hidden='true' class='cost'><i></i></span><div><b>Tip Like a Local</b><p>Restaurants, delivery, haircuts and hotels.</p></div><span class='tcg-dmg'>01</span></div><div class='tcg-move'><span aria-hidden='true' class='cost'><i></i><i></i></span><div><b>Make Small Talk</b><p>The friendly chats Americans have everywhere.</p></div><span class='tcg-dmg'>02</span></div>
+                <p class='tcg-flavor'>The little customs make the biggest difference.</p>
+                <div class='tcg-foot'><span>Search: culture</span><span class='tcg-read'>Open guides &#8594;</span></div>
+              </div>
+              <span aria-hidden='true' class='tcg-shine'></span>
             </a>
           </div>
         </div>
       </section>
 
-      <div class='container latest-head' id='latest'>
-        <div class='section-head reveal'>
-          <p class='eyebrow'>Fresh on the blog</p>
-          <h2>Latest posts</h2>
-        </div>
-      </div>
     </b:if>
 
     <!-- ===== Posts (all views) ===== -->
+    <div class='posts-zone'>
     <div class='container main-wrap'>
+      <b:if cond='data:view.isHomepage'>
+        <div class='section-head reveal latest-head' id='latest'>
+          <p class='eyebrow'>Fresh on the blog</p>
+          <h2>Latest posts</h2>
+        </div>
+      </b:if>
       <b:section class='main' id='main' name='Main' showaddelement='no'>
         <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
           <b:widget-settings>
@@ -466,28 +560,42 @@ main { display: block; padding-top: var(--header-h); }
               <b:else/>
                 <div class='post-grid'>
                   <b:loop values='data:posts' var='post'>
-                    <article class='card reveal'>
-                      <a class='card-thumb' expr:href='data:post.url' tabindex='-1'>
-                        <b:if cond='data:post.featuredImage'>
-                          <b:if cond='data:post.featuredImage.isResizable'>
-                            <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;3:2&quot;)' loading='lazy'/>
-                          <b:else/>
-                            <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
-                          </b:if>
-                        <b:else/>
-                          <span aria-hidden='true' class='card-thumb-fallback'>&#9733;</span>
-                        </b:if>
-                      </a>
-                      <div class='card-body'>
-                        <b:loop index='i' values='data:post.labels' var='label'>
-                          <b:if cond='data:i == 0'>
-                            <a class='card-label' expr:href='data:label.url'><data:label.name/></a>
-                          </b:if>
-                        </b:loop>
-                        <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
-                        <p class='card-excerpt'><data:post.snippets.short/></p>
-                        <span class='card-meta'><time expr:datetime='data:post.date.iso8601'><data:post.date/></time></span>
+                    <article class='tcg reveal'>
+                      <div class='tcg-inner'>
+                        <div class='tcg-top'><span class='tcg-stage'>Blog Post</span><span class='tcg-no'>No. 000</span></div>
+                        <div class='tcg-head'>
+                          <h2 class='tcg-name'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                          <span aria-hidden='true' class='energy'></span>
+                        </div>
+                        <a class='tcg-art' expr:href='data:post.url' tabindex='-1'>
+                          <span class='tcg-art-in'>
+                            <b:if cond='data:post.featuredImage'>
+                              <b:if cond='data:post.featuredImage.isResizable'>
+                                <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;4:3&quot;)' loading='lazy'/>
+                              <b:else/>
+                                <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+                              </b:if>
+                            <b:else/>
+                              <span aria-hidden='true' class='tcg-art-star'>&#9733;</span>
+                            </b:if>
+                          </span>
+                        </a>
+                        <div class='tcg-strip'>
+                          <b:loop index='i' values='data:post.labels' var='label'>
+                            <b:if cond='data:i == 0'><a class='tcg-type' expr:href='data:label.url'><data:label.name/></a> &#183; </b:if>
+                          </b:loop>
+                          <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+                        </div>
+                        <div class='tcg-move'>
+                          <span aria-hidden='true' class='cost'><i></i></span>
+                          <p class='tcg-text'><data:post.snippets.short/></p>
+                        </div>
+                        <div class='tcg-foot'>
+                          <a class='tcg-read' expr:href='data:post.url'>Read guide &#8594;</a>
+                          <span class='tcg-rarity' aria-hidden='true'>&#9733;</span>
+                        </div>
                       </div>
+                      <span aria-hidden='true' class='tcg-shine'></span>
                     </article>
                   </b:loop>
                 </div>
@@ -536,6 +644,7 @@ main { display: block; padding-top: var(--header-h); }
 
       <!-- Ad slot: add an AdSense gadget here in Layout (shown on posts and lists) -->
       <b:section class='ad-slot' id='ad-slot' name='Ad slot' showaddelement='yes'/>
+    </div>
     </div>
 
     <!-- ===== Topics & popular (home page) ===== -->
@@ -640,6 +749,47 @@ main { display: block; padding-top: var(--header-h); }
     items.forEach(function (el, n) { el.style.transitionDelay = (n % 3) * 90 + 'ms'; io.observe(el); });
   } else {
     items.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  // Trading cards: energy type from the first label, card numbers, holo tilt.
+  var TYPES = [
+    ['t-grass', /hous|home|rent|mov|apartment|garden/i],
+    ['t-lightning', /money|credit|bank|tax|finance|saving|budget|cost/i],
+    ['t-water', /health|insur|doctor|medical|hospital|dental/i],
+    ['t-fire', /car|driv|dmv|road|travel|trip/i],
+    ['t-steel', /work|job|career|visa|paycheck|business|immigra/i],
+    ['t-psychic', /life|culture|holiday|food|shop|tip|school|educat/i]
+  ];
+  var CYCLE = ['t-fire', 't-water', 't-grass', 't-lightning', 't-psychic', 't-steel', 't-earth'];
+  var cards = document.querySelectorAll('.post-grid .tcg');
+  cards.forEach(function (card, n) {
+    var label = card.querySelector('.tcg-type');
+    var text = label ? label.textContent : '';
+    var type = CYCLE[n % CYCLE.length];
+    for (var i = 0; i < TYPES.length; i++) { if (TYPES[i][1].test(text)) { type = TYPES[i][0]; break; } }
+    card.classList.add(type);
+    var no = card.querySelector('.tcg-no');
+    if (no) no.textContent = 'No. ' + ('00' + (n + 1)).slice(-3);
+  });
+
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!still) {
+    document.querySelectorAll('.tcg').forEach(function (card) {
+      card.addEventListener('pointermove', function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.classList.add('tilting');
+        card.style.setProperty('--ry', ((x - 0.5) * 16).toFixed(2) + 'deg');
+        card.style.setProperty('--rx', ((0.5 - y) * 16).toFixed(2) + 'deg');
+        card.style.setProperty('--mx', (x * 100).toFixed(1) + '%');
+        card.style.setProperty('--my', (y * 100).toFixed(1) + '%');
+      });
+      card.addEventListener('pointerleave', function () {
+        card.classList.remove('tilting');
+        card.style.setProperty('--rx', '0deg');
+        card.style.setProperty('--ry', '0deg');
+      });
+    });
   }
 
   var year = document.getElementById('year');

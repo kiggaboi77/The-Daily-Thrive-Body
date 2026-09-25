@@ -78,7 +78,7 @@
       <div aria-hidden='true' class='stripe'></div>
 
       <!-- ===== Guides ===== -->
-      <section class='section' id='guides'>
+      <section class='section desert-bg' id='guides'>
         <div class='container'>
           <div class='section-head reveal'>
             <p class='eyebrow'>Start here</p>
@@ -86,56 +86,22 @@
             <p class='section-lead'>The questions everyone has about living in the U.S. — answered step by step, in plain English.</p>
           </div>
           <div class='guides'>
-            <a class='guide reveal' href='/search?q=housing'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M6 22 24 8l18 14'/><path d='M11 19v21h26V19'/><path d='M20 40V28h8v12'/></svg>
-              <h3>Housing &amp; Moving</h3>
-              <p>Renting, leases, utilities and setting up a new home.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
-            <a class='guide reveal' href='/search?q=credit'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='11'/><path d='M5 19h38M11 29h10'/></svg>
-              <h3>Money &amp; Credit</h3>
-              <p>Bank accounts, credit scores, taxes and saving.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
-            <a class='guide reveal' href='/search?q=insurance'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M24 6 9 12v10c0 10 6.5 17 15 20 8.5-3 15-10 15-20V12Z'/><path d='M24 17v14M17 24h14'/></svg>
-              <h3>Health &amp; Insurance</h3>
-              <p>How U.S. health insurance, doctors and pharmacies work.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
-            <a class='guide reveal' href='/search?q=driving'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M8 30l4-11c.7-2 2.3-3 4.3-3h15.4c2 0 3.6 1 4.3 3l4 11'/><rect height='10' rx='3' width='36' x='6' y='28'/><path d='M12 38v4M36 38v4'/><circle cx='14' cy='33' r='1.5'/><circle cx='34' cy='33' r='1.5'/></svg>
-              <h3>Cars &amp; Driving</h3>
-              <p>Licenses, the DMV, buying a car and the rules of the road.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
-            <a class='guide reveal' href='/search?q=work'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><rect height='26' rx='3' width='38' x='5' y='15'/><path d='M17 15v-4a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M5 26h38'/></svg>
-              <h3>Work &amp; Careers</h3>
-              <p>Jobs, paychecks, benefits and workplace culture.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
-            <a class='guide reveal' href='/search?q=culture'>
-              <svg aria-hidden='true' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'><path d='M10 16h28l-3 24H13Z'/><path d='M17 16a7 7 0 0 1 14 0'/></svg>
-              <h3>Everyday Life</h3>
-              <p>Shopping, holidays, tipping and small talk.</p>
-              <span class='guide-go'>Read guides &#8594;</span>
-            </a>
+<!--@GUIDES@-->
           </div>
         </div>
       </section>
 
-      <div class='container latest-head' id='latest'>
-        <div class='section-head reveal'>
-          <p class='eyebrow'>Fresh on the blog</p>
-          <h2>Latest posts</h2>
-        </div>
-      </div>
     </b:if>
 
     <!-- ===== Posts (all views) ===== -->
+    <div class='posts-zone'>
     <div class='container main-wrap'>
+      <b:if cond='data:view.isHomepage'>
+        <div class='section-head reveal latest-head' id='latest'>
+          <p class='eyebrow'>Fresh on the blog</p>
+          <h2>Latest posts</h2>
+        </div>
+      </b:if>
       <b:section class='main' id='main' name='Main' showaddelement='no'>
         <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2' visible='true'>
           <b:widget-settings>
@@ -190,28 +156,42 @@
               <b:else/>
                 <div class='post-grid'>
                   <b:loop values='data:posts' var='post'>
-                    <article class='card reveal'>
-                      <a class='card-thumb' expr:href='data:post.url' tabindex='-1'>
-                        <b:if cond='data:post.featuredImage'>
-                          <b:if cond='data:post.featuredImage.isResizable'>
-                            <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;3:2&quot;)' loading='lazy'/>
-                          <b:else/>
-                            <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
-                          </b:if>
-                        <b:else/>
-                          <span aria-hidden='true' class='card-thumb-fallback'>&#9733;</span>
-                        </b:if>
-                      </a>
-                      <div class='card-body'>
-                        <b:loop index='i' values='data:post.labels' var='label'>
-                          <b:if cond='data:i == 0'>
-                            <a class='card-label' expr:href='data:label.url'><data:label.name/></a>
-                          </b:if>
-                        </b:loop>
-                        <h2 class='card-title'><a expr:href='data:post.url'><data:post.title/></a></h2>
-                        <p class='card-excerpt'><data:post.snippets.short/></p>
-                        <span class='card-meta'><time expr:datetime='data:post.date.iso8601'><data:post.date/></time></span>
+                    <article class='tcg reveal'>
+                      <div class='tcg-inner'>
+                        <div class='tcg-top'><span class='tcg-stage'>Blog Post</span><span class='tcg-no'>No. 000</span></div>
+                        <div class='tcg-head'>
+                          <h2 class='tcg-name'><a expr:href='data:post.url'><data:post.title/></a></h2>
+                          <span aria-hidden='true' class='energy'></span>
+                        </div>
+                        <a class='tcg-art' expr:href='data:post.url' tabindex='-1'>
+                          <span class='tcg-art-in'>
+                            <b:if cond='data:post.featuredImage'>
+                              <b:if cond='data:post.featuredImage.isResizable'>
+                                <img expr:alt='data:post.title' expr:src='resizeImage(data:post.featuredImage, 800, &quot;4:3&quot;)' loading='lazy'/>
+                              <b:else/>
+                                <img expr:alt='data:post.title' expr:src='data:post.featuredImage' loading='lazy'/>
+                              </b:if>
+                            <b:else/>
+                              <span aria-hidden='true' class='tcg-art-star'>&#9733;</span>
+                            </b:if>
+                          </span>
+                        </a>
+                        <div class='tcg-strip'>
+                          <b:loop index='i' values='data:post.labels' var='label'>
+                            <b:if cond='data:i == 0'><a class='tcg-type' expr:href='data:label.url'><data:label.name/></a> &#183; </b:if>
+                          </b:loop>
+                          <time expr:datetime='data:post.date.iso8601'><data:post.date/></time>
+                        </div>
+                        <div class='tcg-move'>
+                          <span aria-hidden='true' class='cost'><i></i></span>
+                          <p class='tcg-text'><data:post.snippets.short/></p>
+                        </div>
+                        <div class='tcg-foot'>
+                          <a class='tcg-read' expr:href='data:post.url'>Read guide &#8594;</a>
+                          <span class='tcg-rarity' aria-hidden='true'>&#9733;</span>
+                        </div>
                       </div>
+                      <span aria-hidden='true' class='tcg-shine'></span>
                     </article>
                   </b:loop>
                 </div>
@@ -260,6 +240,7 @@
 
       <!-- Ad slot: add an AdSense gadget here in Layout (shown on posts and lists) -->
       <b:section class='ad-slot' id='ad-slot' name='Ad slot' showaddelement='yes'/>
+    </div>
     </div>
 
     <!-- ===== Topics & popular (home page) ===== -->
