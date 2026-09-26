@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-theme-v7.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
+- **Upload file:** `dist/oneofkind77-theme-v9.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install
@@ -28,11 +28,20 @@ The blog title in the header, hero and footer comes from **Settings → Title**,
 
 Guide cards link to `/search?q=…` (housing, credit, insurance, driving, work, culture), so they always show matching posts even before labels exist.
 
-## Topic descriptions
+## Topics (two connected series)
 
-The short line under each Start-here topic comes from `TOPIC_NOTES` in `src/script.js` (keyed by label name, lower-case). Labels without an entry show just their name.
+The site is organised around two main topics. Each groups several Blogger labels (`PILLARS` in `src/script.js`, and the matching boxes/menu links in `src/template.xml`):
 
-Gadgets left over from a previous theme that Blogger drops into the Start-here or ad-slot areas are hidden automatically; delete them in **Layout** to clean up.
+| Topic | Labels | "See all" / menu link |
+|---|---|---|
+| Holidays & Seasons | Holidays & Culture, Halloween, Fall Guides, Travel & Outdoors | label *Holidays & Culture* |
+| Money & Daily Life | Money & Insurance, Credit Cards | label *Money & Insurance* |
+
+- **Home → Start here:** each topic lists its newest posts as numbered stops along a road (read from the blog's own feed).
+- **Post pages → Keep reading:** up to three other posts from the same topic, the first marked *Next up*.
+- For the "See all" pages to show everything, give every post its topic's main label too (e.g. a Halloween post also gets *Holidays & Culture*).
+
+Gadgets left over from a previous theme are kept in the hidden *Old gadgets* section; delete them in **Layout** to clean up.
 
 ## Editing
 

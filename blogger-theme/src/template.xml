@@ -48,6 +48,10 @@
       </a>
       <button aria-controls='site-nav' aria-expanded='false' aria-label='Open menu' class='nav-toggle' type='button'><span></span><span></span></button>
       <nav aria-label='Primary' class='nav-links' id='site-nav'>
+        <ul class='pillar-nav'>
+          <li><a href='/search/label/Holidays%20%26%20Culture'>Holidays &amp; Seasons</a></li>
+          <li><a href='/search/label/Money%20%26%20Insurance'>Money &amp; Daily Life</a></li>
+        </ul>
         <b:section class='nav-section' id='nav' maxwidgets='1' showaddelement='no'>
           <b:widget id='PageList1' locked='false' title='' type='PageList' version='2' visible='true'>
           </b:widget>
@@ -69,7 +73,7 @@
         <div class='container hero-content'>
           <p class='eyebrow light'><data:blog.title/></p>
           <h1>Everyday life in America,<br/><em>made simple.</em></h1>
-          <p class='lead'>American holidays and traditions, seasonal guides, money and credit card tips, and travel ideas — everyday life in the United States, explained simply.</p>
+          <p class='lead'>Holidays and seasons, and everyday money — practical guides to life in the United States, one connected story at a time.</p>
           <div class='hero-actions'>
             <a class='btn btn-light' href='#guides'>Start here</a>
             <a class='btn btn-outline-light' href='#latest'>Latest posts</a>
@@ -86,13 +90,27 @@
         <div class='section-head reveal'>
           <p class='eyebrow'>Start here</p>
           <h2>Everyday Life in America</h2>
-          <p class='section-lead'>Holidays and traditions, seasonal how-tos, everyday money tips and places to explore. Pick a topic to begin.</p>
+          <p class='section-lead'>Two roads through life in the U.S. Each one is a series — start at the top and keep going.</p>
         </div>
-        <b:section class='focus-topics' id='focus-topics' name='Start here topics' showaddelement='yes'>
-          <b:widget id='Label1' locked='false' title='' type='Label' version='2' visible='true'>
-          </b:widget>
-        </b:section>
-        <a class='btn btn-outline-light focus-all' href='/search'>Browse all posts &#8594;</a>
+        <div class='pillars'>
+          <article class='pillar reveal' data-labels='Holidays &amp; Culture|Halloween|Fall Guides|Travel &amp; Outdoors'>
+            <span class='pillar-no'>01</span>
+            <h3><a href='/search/label/Holidays%20%26%20Culture'>Holidays &amp; Seasons</a></h3>
+            <p class='pillar-desc'>American holidays, heritage months and seasonal traditions — plus the trips and outdoor days that go with each season.</p>
+            <ol class='pillar-posts'></ol>
+            <a class='pillar-all' href='/search/label/Holidays%20%26%20Culture'>See all in Holidays &amp; Seasons &#8594;</a>
+          </article>
+          <article class='pillar reveal' data-labels='Money &amp; Insurance|Credit Cards'>
+            <span class='pillar-no'>02</span>
+            <h3><a href='/search/label/Money%20%26%20Insurance'>Money &amp; Daily Life</a></h3>
+            <p class='pillar-desc'>Everyday money in the U.S. — insurance, saving, bills and smart spending, explained plainly.</p>
+            <ol class='pillar-posts'></ol>
+            <a class='pillar-all' href='/search/label/Money%20%26%20Insurance'>See all in Money &amp; Daily Life &#8594;</a>
+          </article>
+        </div>
+        <!-- Holds gadgets left over from an older theme; hidden on the site. Safe to delete them in Layout. -->
+        <b:section class='old-gadgets' id='focus-topics' name='Old gadgets (hidden)' showaddelement='yes'/>
+        
       </div>
     </section>
 
@@ -205,6 +223,14 @@
                       </p>
                     </b:if>
                   </b:if>
+                  <b:if cond='data:view.isPost'>
+                    <section aria-live='polite' class='journey-next' hidden='hidden' id='journey-next'>
+                      <p class='eyebrow'>Keep reading</p>
+                      <h2 class='journey-title'>More in <span class='journey-pillar'>this topic</span></h2>
+                      <div class='journey-list'></div>
+                      <a class='text-link journey-all' href='/search'>See the whole series &#8594;</a>
+                    </section>
+                  </b:if>
                 </article>
                 <b:include cond='data:view.isPost' data='post' name='commentPicker'/>
               </b:loop>
@@ -236,7 +262,7 @@
           <p>Search every post on the blog.</p>
           <form action='/search' class='search-box' method='get' role='search'>
             <label class='sr-only' for='cta-q'>Search</label>
-            <input id='cta-q' name='q' placeholder='e.g. Halloween, credit card bonus, Thanksgiving' type='search'/>
+            <input id='cta-q' name='q' placeholder='e.g. Thanksgiving, insurance, fall trips' type='search'/>
             <button class='btn' type='submit'>Search</button>
           </form>
         </div>
