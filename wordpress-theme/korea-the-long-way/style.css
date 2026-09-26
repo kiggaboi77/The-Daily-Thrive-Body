@@ -4,7 +4,7 @@ Theme URI: https://kiggaboi77.com/
 Author: kiggaboi77
 Author URI: https://kiggaboi77.com/
 Description: A modern, Korean-inspired blog theme for WELCOME TO KOREA, THE LONG WAY. Moonlit hanok hero illustration, dancheong accents, red dojang seal branding, readable article typography, and ready-made About, Contact Us and Privacy Policy pages.
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
@@ -145,6 +145,25 @@ body:not(.has-hero) .site-main { padding-top: var(--header-h); }
 .chapter .hangul { position: absolute; right: -4px; top: 18px; font: 800 4.2rem var(--hangul); opacity: 0.05; writing-mode: vertical-rl; transition: opacity 0.3s; }
 .chapter:hover .hangul { opacity: 0.1; }
 .chapter p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- One chapter (single category before AdSense approval) ---------- */
+.chapter-one { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center; padding: clamp(32px, 5vw, 56px); background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: inherit; overflow: hidden; transition: box-shadow .35s, transform .35s; }
+.chapter-one:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+.chapter-one .hangul { position: absolute; right: 28px; bottom: -6px; font: 800 clamp(3.2rem, 6vw, 5.2rem)/1 var(--hangul); color: var(--text); opacity: .045; white-space: nowrap; pointer-events: none; }
+.chapter-one-main { position: relative; display: block; max-width: 640px; }
+.chapter-one-no { display: inline-grid; place-content: center; width: 46px; height: 46px; margin-bottom: 18px; background: var(--seal); color: #fff; font: 600 1.1rem var(--serif); border-radius: 3px; transform: rotate(-3deg); }
+.chapter-one h3 { font-size: clamp(2rem, 4vw, 2.8rem); margin: 0 0 12px; }
+.chapter-one p { color: var(--muted); font-size: 1.05rem; margin: 0 0 22px; }
+.chapter-one-topics { display: flex; flex-wrap: wrap; gap: 8px; }
+.chapter-one-topics span { font-size: .8rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; background: var(--paper); }
+.chapter-one-side { position: relative; display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+.chapter-one-count { color: var(--muted); font-size: .95rem; }
+.chapter-one-count strong { font: 600 2.4rem var(--serif); color: var(--text); margin-right: 4px; }
+.chapter-one:hover .btn { background: var(--seal); }
+@media (max-width: 760px) {
+	.chapter-one { grid-template-columns: 1fr; }
+	.chapter-one-side { align-items: flex-start; }
+}
 
 /* ---------- Journey route ---------- */
 .route { list-style: none; margin: 0; padding: 0; position: relative; }

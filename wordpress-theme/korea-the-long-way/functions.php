@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KTLW_VERSION', '1.0.0' );
+define( 'KTLW_VERSION', '1.1.0' );
 
 /**
  * Theme setup.
@@ -159,11 +159,25 @@ function ktlw_page_url( $slug ) {
 }
 
 /**
- * Chapter link: the category archive if a matching category exists, otherwise a search.
+ * The blog's main category: the one with the most posts.
+ * "Uncategorized" is only used when it is the only category with posts.
  */
-function ktlw_chapter_url( $slug, $search ) {
-	$cat = get_category_by_slug( $slug );
-	return $cat ? get_category_link( $cat ) : add_query_arg( 's', rawurlencode( $search ), home_url( '/' ) );
+function ktlw_main_category() {
+	$cats = get_categories(
+		array(
+			'orderby'    => 'count',
+			'order'      => 'DESC',
+			'hide_empty' => true,
+			'number'     => 5,
+		)
+	);
+	$default = (int) get_option( 'default_category' );
+	foreach ( $cats as $cat ) {
+		if ( (int) $cat->term_id !== $default ) {
+			return $cat;
+		}
+	}
+	return $cats ? $cats[0] : null;
 }
 
 /**

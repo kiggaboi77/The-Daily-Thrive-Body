@@ -8,15 +8,15 @@
 get_header();
 
 $ktlw_hero = get_header_image() ? get_header_image() : get_template_directory_uri() . '/assets/img/hero.svg';
-$ktlw_chapters = array(
-	array( 'etiquette', 'Etiquette', '예절', __( 'Etiquette & Traditions', 'korea-the-long-way' ), __( 'Shoes, bowing, pouring drinks and respecting elders.', 'korea-the-long-way' ), '<path d="M6 44c4-6 10-8 18-8h14c6 0 10-3 14-8 2 6 0 12-6 16-4 3-10 4-16 4H14c-4 0-7-1-8-4Z"/><path d="M14 36c2-5 6-8 12-8"/><path d="M10 54h46"/>' ),
-	array( 'food', 'Korean food', '음식', __( 'Food & Dining', 'korea-the-long-way' ), __( 'The table, the side dishes and the story in each bowl.', 'korea-the-long-way' ), '<path d="M8 32h40c0 11-9 18-20 18S8 43 8 32Z"/><path d="M18 50h20"/><path d="M20 24c-2-4 2-6 0-10M28 24c-2-4 2-6 0-10M36 24c-2-4 2-6 0-10"/><path d="M52 12v36M58 12l-2 36"/>' ),
-	array( 'k-pop-k-drama', 'K-Drama', '한류', __( 'K-POP & K-Drama', 'korea-the-long-way' ), __( 'The culture behind the songs and scenes you love.', 'korea-the-long-way' ), '<rect x="6" y="12" width="52" height="34" rx="3"/><path d="M27 22v14l12-7Z"/><path d="M22 54h20M32 46v8"/>' ),
-	array( 'holidays', 'Chuseok', '명절', __( 'Holidays', 'korea-the-long-way' ), __( 'Chuseok, Seollal and the traditions families keep.', 'korea-the-long-way' ), '<circle cx="40" cy="20" r="12"/><path d="M8 50c0-8 6-13 13-13s13 5 13 13Z"/><path d="M30 54c0-7 5-11 11-11s11 4 11 11Z"/>' ),
-	array( 'language', 'Korean language', '한글', __( 'Language', 'korea-the-long-way' ), __( 'Everyday words and expressions, and what they reveal.', 'korea-the-long-way' ), '<rect x="8" y="8" width="48" height="48" rx="4"/><path d="M18 20h14v14M40 16v32M40 30h8"/><path d="M18 44h14"/>' ),
-	array( 'korea-and-america', 'Korean American', '두 나라', __( 'Korea & America', 'korea-the-long-way' ), __( 'The cultural differences that surprise both sides.', 'korea-the-long-way' ), '<circle cx="24" cy="32" r="16"/><circle cx="40" cy="32" r="16"/>' ),
+$ktlw_topics = array(
+	__( 'Etiquette & Traditions', 'korea-the-long-way' ),
+	__( 'Food & Dining', 'korea-the-long-way' ),
+	__( 'K-POP & K-Drama', 'korea-the-long-way' ),
+	__( 'Holidays', 'korea-the-long-way' ),
+	__( 'Language', 'korea-the-long-way' ),
+	__( 'Korea & America', 'korea-the-long-way' ),
 );
-?>
+$ktlw_cat = ktlw_main_category();?>
 
 <section class="hero">
 	<img class="hero-art" src="<?php echo esc_url( $ktlw_hero ); ?>" alt="<?php esc_attr_e( 'A moonlit Korean landscape: a hanok with glowing paper windows, a pine tree, and a long road winding through misty mountains', 'korea-the-long-way' ); ?>" fetchpriority="high">
@@ -69,19 +69,28 @@ $ktlw_chapters = array(
 <section id="chapters" class="section section-paper">
 	<div class="container">
 		<div class="section-head reveal">
-			<p class="eyebrow"><?php esc_html_e( 'Chapters', 'korea-the-long-way' ); ?></p>
-			<h2><?php esc_html_e( 'Roads into Korean life', 'korea-the-long-way' ); ?></h2>
+			<p class="eyebrow"><?php esc_html_e( 'The chapter', 'korea-the-long-way' ); ?></p>
+			<h2><?php esc_html_e( 'One road into Korean culture', 'korea-the-long-way' ); ?></h2>
 		</div>
-		<div class="chapters">
-			<?php foreach ( $ktlw_chapters as $ktlw_ch ) : ?>
-				<a class="chapter reveal" href="<?php echo esc_url( ktlw_chapter_url( $ktlw_ch[0], $ktlw_ch[1] ) ); ?>">
-					<svg viewBox="0 0 64 64" aria-hidden="true"><?php echo $ktlw_ch[5]; // phpcs:ignore WordPress.Security.EscapeOutput -- static SVG markup. ?></svg>
-					<span class="hangul" aria-hidden="true"><?php echo esc_html( $ktlw_ch[2] ); ?></span>
-					<h3><?php echo esc_html( $ktlw_ch[3] ); ?></h3>
-					<p><?php echo esc_html( $ktlw_ch[4] ); ?></p>
-				</a>
-			<?php endforeach; ?>
-		</div>
+		<a class="chapter-one reveal" href="<?php echo esc_url( $ktlw_cat ? get_category_link( $ktlw_cat ) : ktlw_posts_url() ); ?>">
+			<span class="hangul" aria-hidden="true">한국 문화</span>
+			<span class="chapter-one-main">
+				<span class="chapter-one-no">01</span>
+				<h3><?php echo esc_html( $ktlw_cat ? $ktlw_cat->name : __( 'Korean Culture', 'korea-the-long-way' ) ); ?></h3>
+				<p><?php esc_html_e( 'Every story on this blog lives here — the customs, food, holidays, words and everyday details that make Korea feel like Korea, explained one at a time.', 'korea-the-long-way' ); ?></p>
+				<span class="chapter-one-topics">
+					<?php foreach ( $ktlw_topics as $ktlw_t ) : ?>
+						<span><?php echo esc_html( $ktlw_t ); ?></span>
+					<?php endforeach; ?>
+				</span>
+			</span>
+			<span class="chapter-one-side">
+				<?php if ( $ktlw_cat ) : ?>
+					<span class="chapter-one-count"><strong><?php echo esc_html( number_format_i18n( $ktlw_cat->count ) ); ?></strong> <?php echo esc_html( _n( 'article', 'articles', $ktlw_cat->count, 'korea-the-long-way' ) ); ?></span>
+				<?php endif; ?>
+				<span class="btn"><?php esc_html_e( 'Read the chapter', 'korea-the-long-way' ); ?> &rarr;</span>
+			</span>
+		</a>
 	</div>
 </section>
 

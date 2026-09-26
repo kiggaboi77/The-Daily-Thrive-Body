@@ -23,7 +23,7 @@ Website and WordPress theme for [kiggaboi77.com](https://kiggaboi77.com/) — Ko
 
 - **Menus** (Appearance → Menus): assign *Primary* and *Footer*, or leave empty to get the automatic About / Articles / Contact Us / Privacy Policy links.
 - **Hero photo** (Appearance → Customize → Header Image): optional; replaces the illustration.
-- **Chapters** link to categories with these slugs if they exist: `etiquette`, `food`, `k-pop-k-drama`, `holidays`, `language`, `korea-and-america`.
+- **The chapter**: one panel (single category before AdSense approval) that links to the category with the most posts and lists the topics it covers.
 - **AdSense**: add the code with Site Kit by Google (or Auto ads); ad units can also go in the *After Post Content* widget area.
 
 ## Blogger theme — oneofkind77.com
