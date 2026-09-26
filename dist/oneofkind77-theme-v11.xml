@@ -147,6 +147,8 @@ main { display: block; padding-top: var(--header-h); }
 .focus .section-head { max-width: 760px; }
 .old-gadgets { display: none !important; }
 .ad-slot .widget:not(.HTML):not(.AdSense) { display: none !important; }
+/* Old gadgets (e.g. Featured Post) that Blogger drops next to the posts: keep only the Blog gadget. */
+#main > .widget:not(.Blog) { display: none !important; }
 .pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
 .pillar { display: flex; flex-direction: column; padding: 34px 34px 30px; border-radius: 20px; color: #fffdf9;
   background: rgba(15, 20, 40, .55); border: 1px solid rgba(255, 253, 249, .18); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -236,6 +238,10 @@ main { display: block; padding-top: var(--header-h); }
 .post-single .stripe { margin-bottom: clamp(36px, 5vw, 56px); border-radius: 2px; }
 .post-body { font-size: 1.1rem; line-height: 1.82; overflow-wrap: break-word; }
 .post-body > * { margin-top: 0; }
+/* Pasted page/post HTML often carries fixed widths or side margins; let the theme's column decide. */
+.post-body :is(div, p, span, section, article, font)[style*="width"],
+.post-body :is(div, p, span, section, article, font)[style*="margin"] { max-width: 100% !important; width: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
+.post-body .separator[style*="margin"], .post-body .tr-caption-container { margin-left: auto !important; margin-right: auto !important; }
 .post-body p { margin: 0 0 1.35em; }
 .post-body h2 { font-size: clamp(1.7rem, 3.3vw, 2.2rem); margin: 1.8em 0 0.6em; }
 .post-body h3 { font-size: 1.45rem; margin: 1.6em 0 0.5em; }

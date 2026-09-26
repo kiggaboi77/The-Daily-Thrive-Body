@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-theme-v10.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
+- **Upload file:** `dist/oneofkind77-theme-v11.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install
@@ -42,6 +42,10 @@ The site is organised around two main topics. Each groups several Blogger labels
 - For the "See all" pages to show everything, give every post its topic's main label too (e.g. a Halloween post also gets *Holidays & Culture*).
 
 Gadgets left over from a previous theme are kept in the hidden *Old gadgets* section; delete them in **Layout** to clean up.
+
+## Pages (About, Contact, Privacy)
+
+`pages/about-us.html`, `pages/contact-us.html` and `pages/privacy-policy.html` are clean page bodies (no inline styles) to paste into Blogger's page editor in **HTML view**. The theme styles them.
 
 ## Editing
 
