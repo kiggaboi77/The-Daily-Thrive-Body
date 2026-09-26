@@ -14,6 +14,7 @@ A modern, Korean-inspired blog theme for WELCOME TO KOREA, THE LONG WAY (kiggabo
 * Article pages with readable typography, reading time, tags, author box and previous/next navigation.
 * On activation the theme creates About, Contact Us and Privacy Policy pages (existing pages with the same slug are left untouched).
 * If the homepage is set to "Your latest posts", the theme creates a Home page and an Articles page and sets them as the homepage and posts page.
+* Articles list shows 9 posts per page by default (Appearance → Customize → Articles to change it), with page numbers to reach older posts.
 * Widget areas: "After Post Content" and "Footer" — useful for AdSense ad units.
 * Menus: Primary and Footer. Without menus, the theme links to About, Articles, Contact Us and Privacy Policy automatically.
 * One chapter (single category, as recommended before AdSense approval): it links to the category with the most posts and lists the topics it covers.

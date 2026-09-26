@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KTLW_VERSION', '1.1.1' );
+define( 'KTLW_VERSION', '1.2.0' );
 
 /**
  * Theme setup.
@@ -143,6 +143,52 @@ function ktlw_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'ktlw_body_class' );
+
+/**
+ * Articles per page on the Articles page, categories, tags and search.
+ * Set in Appearance → Customize → Articles (default 9 = three rows of three).
+ */
+function ktlw_articles_per_page() {
+	return max( 3, min( 30, absint( get_theme_mod( 'ktlw_articles_per_page', 9 ) ) ) );
+}
+
+function ktlw_pre_get_posts( $query ) {
+	if ( is_admin() || ! $query->is_main_query() ) {
+		return;
+	}
+	if ( $query->is_home() || $query->is_archive() || $query->is_search() ) {
+		$query->set( 'posts_per_page', ktlw_articles_per_page() );
+	}
+}
+add_action( 'pre_get_posts', 'ktlw_pre_get_posts' );
+
+function ktlw_customize_register( $wp_customize ) {
+	$wp_customize->add_section(
+		'ktlw_articles',
+		array(
+			'title'    => __( 'Articles', 'korea-the-long-way' ),
+			'priority' => 120,
+		)
+	);
+	$wp_customize->add_setting(
+		'ktlw_articles_per_page',
+		array(
+			'default'           => 9,
+			'sanitize_callback' => 'absint',
+		)
+	);
+	$wp_customize->add_control(
+		'ktlw_articles_per_page',
+		array(
+			'section'     => 'ktlw_articles',
+			'label'       => __( 'Articles per page', 'korea-the-long-way' ),
+			'description' => __( 'How many articles to show on each page of the Articles list before moving to the next page. Multiples of 3 fill the rows evenly.', 'korea-the-long-way' ),
+			'type'        => 'number',
+			'input_attrs' => array( 'min' => 3, 'max' => 30, 'step' => 1 ),
+		)
+	);
+}
+add_action( 'customize_register', 'ktlw_customize_register' );
 
 /**
  * Shorter excerpts with a clean ending.
