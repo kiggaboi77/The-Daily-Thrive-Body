@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KTLW_VERSION', '1.1.0' );
+define( 'KTLW_VERSION', '1.1.1' );
 
 /**
  * Theme setup.
