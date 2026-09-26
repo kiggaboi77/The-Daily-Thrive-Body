@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-blogger-theme.xml`
+- **Upload file:** `dist/oneofkind77-theme-v6.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install

@@ -17,8 +17,11 @@
   document.documentElement.className += ' js';
   //]]></script>
   <b:skin version='1.0.0'><![CDATA[
-/*@SKIN@*/
+/* Theme styles are in the <style> block below, outside Blogger's skin processor. */
   ]]></b:skin>
+  <style>/*<![CDATA[*/
+/*@SKIN@*/
+  /*]]>*/</style>
   <b:template-skin>
     <![CDATA[
     body#layout .site-header, body#layout .site-footer, body#layout .container { position: static; width: auto; }

@@ -12,6 +12,7 @@ import re
 import urllib.parse
 import xml.dom.minidom
 
+VERSION = "v6"  # bump when publishing a new file, so downloads are easy to tell apart
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "src"
 DIST = ROOT.parent / "dist"
@@ -34,6 +35,7 @@ theme = template.replace("/*@SKIN@*/", skin).replace("/*@SCRIPT@*/", script)
 xml.dom.minidom.parseString(theme.encode("utf-8"))  # must be well-formed XML
 DIST.mkdir(exist_ok=True)
 (DIST / "oneofkind77-blogger-theme.xml").write_text(theme)
+(DIST / f"oneofkind77-theme-{VERSION}.xml").write_text(theme)
 
 # ---------- Preview pages (sample content, mirrors the template's rendered markup) ----------
 head = f"""<!DOCTYPE html>
