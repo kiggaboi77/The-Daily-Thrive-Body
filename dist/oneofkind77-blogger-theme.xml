@@ -317,6 +317,7 @@ main { display: block; padding-top: var(--header-h); }
 .site-footer { background: var(--ink-2); color: #fffdf9; }
 .footer-inner { padding: 56px 0 40px; display: grid; justify-items: center; gap: 16px; text-align: center; }
 .footer-tagline { margin: 0; font: italic 500 1.12rem var(--serif); color: rgba(255,253,249,.72); }
+.footer-gadgets { display: none !important; }
 .footer-links .widget { margin: 0; }
 .footer-links .widget > .title, .footer-links h3 { display: none; }
 .footer-links ul { list-style: none; margin: 8px 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 26px; }
@@ -627,7 +628,15 @@ main { display: block; padding-top: var(--header-h); }
         </span>
       </a>
       <p class='footer-tagline'>Everyday life in the United States, made simple.</p>
-      <b:section class='footer-links' id='footer' name='Footer' showaddelement='yes'>
+      <nav aria-label='Site pages' class='footer-links fixed-links'>
+        <ul>
+          <li><a href='/p/about-us.html'>About Us</a></li>
+          <li><a href='/p/contact-us.html'>Contact Us</a></li>
+          <li><a href='/p/privacy-policy.html'>Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <!-- Old footer gadgets are kept here but hidden; the links above are fixed in the theme. -->
+      <b:section class='footer-gadgets' id='footer' name='Footer (hidden)' showaddelement='yes'>
         <b:widget id='PageList2' locked='false' title='' type='PageList' version='2' visible='true'>
         </b:widget>
       </b:section>

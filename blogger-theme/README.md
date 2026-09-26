@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-theme-v11.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
+- **Upload file:** `dist/oneofkind77-theme-v12.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install
@@ -10,7 +10,7 @@ A modern Blogger (Blogspot) theme for an English blog about everyday life in the
 1. **Back up your current theme first:** Blogger → **Theme** → ▾ (next to *Customize*) → **Backup** → *Download*.
 2. Same menu → **Restore** → upload `oneofkind77-blogger-theme.xml`.
 3. Blogger → **Layout**:
-   - **Nav** (top menu) and **Footer** use the *Pages* gadget — click *Edit* and tick the pages to show (e.g. About, Contact, Privacy Policy).
+   - **Footer** links are fixed in the theme: `/p/about-us.html`, `/p/contact-us.html`, `/p/privacy-policy.html` (the old footer Pages gadget is kept hidden). Keep those three pages published at those addresses.
    - **Start here topics** shows your labels (most-used first); **Popular** shows your most-read posts.
    - **Hero photo (home page)**: add an *Image* gadget with a real photo to replace the illustration.
    - **Ad slot** (below posts): *Add a Gadget* → *AdSense* if you want a fixed ad unit. Auto ads work without it.

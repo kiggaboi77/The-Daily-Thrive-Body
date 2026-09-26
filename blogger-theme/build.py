@@ -12,7 +12,7 @@ import re
 import urllib.parse
 import xml.dom.minidom
 
-VERSION = "v11"  # bump when publishing a new file, so downloads are easy to tell apart
+VERSION = "v12"  # bump when publishing a new file, so downloads are easy to tell apart
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "src"
 DIST = ROOT.parent / "dist"
@@ -59,7 +59,7 @@ def render(fragment, body_class, main_html):
 header = between("<header class='site-header'", "<main id='main-content'>")
 header = re.sub(r"<b:section.*?</b:section>", "<div class='widget PageList'><div class='widget-content'><ul><li class='selected'><a href='index.html'>Home</a></li><li><a href='#'>About</a></li><li><a href='#'>Contact</a></li><li><a href='#'>Privacy Policy</a></li></ul></div></div>", header, flags=re.S)
 footer = between("<footer class='site-footer'>", "<script>\n  //<![CDATA[\n/*@SCRIPT@*/")
-footer = re.sub(r"<b:section.*?</b:section>", "<div class='section footer-links' id='footer'><div class='widget PageList'><div class='widget-content'><ul><li><a href='#'>About</a></li><li><a href='#'>Contact</a></li><li><a href='#'>Privacy Policy</a></li></ul></div></div></div>", footer, flags=re.S)
+footer = re.sub(r"<b:section.*?</b:section>", "", footer, flags=re.S)
 home_top = between("<!-- ===== Hero ===== -->", "\n    </b:if>\n\n    <!-- ===== Start here")
 focus = between("<section class='band desert-bg home-only' id='guides'>", "\n\n    <!-- ===== Posts")
 cta = between("<section class='cta-wrap'>", "</b:if>\n  </main>")
