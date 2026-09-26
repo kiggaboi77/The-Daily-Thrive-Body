@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-theme-v6.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
+- **Upload file:** `dist/oneofkind77-theme-v7.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install
@@ -27,6 +27,12 @@ The blog title in the header, hero and footer comes from **Settings → Title**,
 - Light and dark mode, mobile menu, no external scripts.
 
 Guide cards link to `/search?q=…` (housing, credit, insurance, driving, work, culture), so they always show matching posts even before labels exist.
+
+## Topic descriptions
+
+The short line under each Start-here topic comes from `TOPIC_NOTES` in `src/script.js` (keyed by label name, lower-case). Labels without an entry show just their name.
+
+Gadgets left over from a previous theme that Blogger drops into the Start-here or ad-slot areas are hidden automatically; delete them in **Layout** to clean up.
 
 ## Editing
 

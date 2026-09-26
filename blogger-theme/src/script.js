@@ -16,6 +16,37 @@
     hero.classList.add('has-photo');
   }
 
+  // Start here: add a short description under each topic (label). Keys are label names, lower-case.
+  var TOPIC_NOTES = {
+    'credit cards': 'Rewards, rotating bonus categories and getting the most from your cards.',
+    'fall guides': 'Seasonal how-tos for autumn in the U.S.',
+    'halloween': 'Costumes, candy, trick-or-treating and how Americans celebrate.',
+    'holidays & culture': 'American holidays and traditions, and the stories behind them.',
+    'money & insurance': 'Everyday money matters: saving, insurance and smart spending.',
+    'travel & outdoors': 'Trips, parks and outdoor ideas across the United States.'
+  };
+  document.querySelectorAll('.focus-topics .Label li a').forEach(function (a) {
+    var name = '';
+    a.childNodes.forEach(function (n) { if (n.nodeType === 3) name += n.textContent; });
+    name = name.trim();
+    if (!name) return;
+    var text = document.createElement('span');
+    text.className = 'topic-text';
+    var title = document.createElement('span');
+    title.className = 'topic-name';
+    title.textContent = name;
+    text.appendChild(title);
+    var note = TOPIC_NOTES[name.toLowerCase()];
+    if (note) {
+      var p = document.createElement('span');
+      p.className = 'topic-note';
+      p.textContent = note;
+      text.appendChild(p);
+    }
+    Array.prototype.slice.call(a.childNodes).forEach(function (n) { if (n.nodeType === 3) a.removeChild(n); });
+    a.insertBefore(text, a.firstChild);
+  });
+
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.getElementById('site-nav');
   if (toggle && nav) {

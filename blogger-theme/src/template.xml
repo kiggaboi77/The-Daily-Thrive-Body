@@ -69,7 +69,7 @@
         <div class='container hero-content'>
           <p class='eyebrow light'><data:blog.title/></p>
           <h1>Everyday life in America,<br/><em>made simple.</em></h1>
-          <p class='lead'>Tipping, shopping, holidays, small talk and the unwritten rules of daily life in the United States — explained simply, from real experience.</p>
+          <p class='lead'>American holidays and traditions, seasonal guides, money and credit card tips, and travel ideas — everyday life in the United States, explained simply.</p>
           <div class='hero-actions'>
             <a class='btn btn-light' href='#guides'>Start here</a>
             <a class='btn btn-outline-light' href='#latest'>Latest posts</a>
@@ -86,7 +86,7 @@
         <div class='section-head reveal'>
           <p class='eyebrow'>Start here</p>
           <h2>Everyday Life in America</h2>
-          <p class='section-lead'>The small, everyday things nobody explains — how tipping works, what to say in small talk, how holidays are celebrated and how to get daily errands done. Pick a topic to begin.</p>
+          <p class='section-lead'>Holidays and traditions, seasonal how-tos, everyday money tips and places to explore. Pick a topic to begin.</p>
         </div>
         <b:section class='focus-topics' id='focus-topics' name='Start here topics' showaddelement='yes'>
           <b:widget id='Label1' locked='false' title='' type='Label' version='2' visible='true'>
@@ -236,7 +236,7 @@
           <p>Search every post on the blog.</p>
           <form action='/search' class='search-box' method='get' role='search'>
             <label class='sr-only' for='cta-q'>Search</label>
-            <input id='cta-q' name='q' placeholder='e.g. tipping, Thanksgiving, grocery shopping' type='search'/>
+            <input id='cta-q' name='q' placeholder='e.g. Halloween, credit card bonus, Thanksgiving' type='search'/>
             <button class='btn' type='submit'>Search</button>
           </form>
         </div>

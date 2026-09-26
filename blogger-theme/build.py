@@ -12,7 +12,7 @@ import re
 import urllib.parse
 import xml.dom.minidom
 
-VERSION = "v6"  # bump when publishing a new file, so downloads are easy to tell apart
+VERSION = "v7"  # bump when publishing a new file, so downloads are easy to tell apart
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "src"
 DIST = ROOT.parent / "dist"
@@ -76,7 +76,7 @@ cards = "".join(f"""<article class='post-card reveal'><a class='post-card-img' h
 <div class='post-card-body'><p class='post-card-meta'><a class='post-card-label' href='#'>{l}</a><time>September {20 - i}, 2026</time></p>
 <h2 class='post-card-title'><a href='post.html'>{t}</a></h2><p class='post-card-excerpt'>{e}</p><a class='post-card-more' href='post.html'>Read more &#8594;</a></div></article>""" for i, (l, t, e) in enumerate(posts))
 grid = f"<div class='post-grid'>{cards}</div><div class='blog-pager' id='blog-pager'><a class='blog-pager-older-link' href='#'>More posts</a></div>"
-labels = "".join(f"<li><a class='label-name' href='#'>{n}<span class='label-count'>{c}</span></a></li>" for n, c in [("Tipping", 5), ("Holidays", 4), ("Small Talk", 3), ("Shopping", 3)])
+labels = "".join(f"<li><a class='label-name' href='#'>{n}<span class='label-count'>{c}</span></a></li>" for n, c in [("Credit Cards", 1), ("Fall Guides", 2), ("Halloween", 3), ("Holidays & Culture", 2), ("Money & Insurance", 1), ("Travel & Outdoors", 1)])
 focus = re.sub(r"<b:section.*?</b:section>", f"<div class='section focus-topics' id='focus-topics'><div class='widget Label'><div class='widget-content list-label-widget-content'><ul>{labels}</ul></div></div></div>", focus, flags=re.S)
 popular = "".join(f"<article class='post'><div class='post-content'><a class='post-image-link' href='post.html'><img class='post-thumb' alt='' src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 3 2%22%3E%3Crect width=%223%22 height=%222%22 fill=%22%232b3e6b%22/%3E%3C/svg%3E'></a><h3 class='post-title'><a href='post.html'>{t}</a></h3></div></article>" for _, t, _ in posts[:4])
 topics = f"""<section class='band section-paper home-only' id='topics'><div class='container popular-wrap'>
