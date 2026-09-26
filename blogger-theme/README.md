@@ -2,7 +2,7 @@
 
 A modern Blogger (Blogspot) theme for an English blog about everyday life in the United States.
 
-- **Upload file:** `dist/oneofkind77-theme-v9.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
+- **Upload file:** `dist/oneofkind77-theme-v10.xml` (same as `dist/oneofkind77-blogger-theme.xml`; the version number makes the newest download easy to spot)
 - **Preview (sample content):** `blogger-theme/preview/index.html`, `preview/post.html`
 
 ## Install
@@ -38,7 +38,7 @@ The site is organised around two main topics. Each groups several Blogger labels
 | Money & Daily Life | Money & Insurance, Credit Cards | label *Money & Insurance* |
 
 - **Home → Start here:** each topic lists its newest posts as numbered stops along a road (read from the blog's own feed).
-- **Post pages → Keep reading:** up to three other posts from the same topic, the first marked *Next up*.
+- **Post pages → Keep reading:** up to three other posts from the same topic, the first marked *Next up*. A post with no topic label shows the newest posts on the blog instead.
 - For the "See all" pages to show everything, give every post its topic's main label too (e.g. a Halloween post also gets *Holidays & Culture*).
 
 Gadgets left over from a previous theme are kept in the hidden *Old gadgets* section; delete them in **Layout** to clean up.

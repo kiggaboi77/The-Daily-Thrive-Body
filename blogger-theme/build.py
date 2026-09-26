@@ -12,7 +12,7 @@ import re
 import urllib.parse
 import xml.dom.minidom
 
-VERSION = "v9"  # bump when publishing a new file, so downloads are easy to tell apart
+VERSION = "v10"  # bump when publishing a new file, so downloads are easy to tell apart
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "src"
 DIST = ROOT.parent / "dist"

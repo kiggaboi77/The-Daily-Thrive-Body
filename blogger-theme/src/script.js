@@ -24,8 +24,9 @@
   ];
 
   function feedFor(label) {
-    if (window.__feedMock) return Promise.resolve(window.__feedMock[label] || []);
-    return fetch('/feeds/posts/summary/-/' + encodeURIComponent(label) + '?alt=json&max-results=25')
+    if (window.__feedMock) return Promise.resolve(window.__feedMock[label || '*'] || []);
+    var path = label ? '/feeds/posts/summary/-/' + encodeURIComponent(label) : '/feeds/posts/summary';
+    return fetch(path + '?alt=json&max-results=25')
       .then(function (r) { return r.ok ? r.json() : { feed: {} }; })
       .then(function (d) {
         return (d.feed.entry || []).map(function (e) {
@@ -61,6 +62,8 @@
   if (next) {
     var tags = Array.prototype.map.call(document.querySelectorAll('.post-tags a'), function (a) { return a.textContent.replace(/^#/, '').trim(); });
     var pillar = PILLARS.filter(function (pl) { return pl.labels.some(function (l) { return tags.indexOf(l) !== -1; }); })[0];
+    // A post without a topic label still gets "Keep reading" — from the newest posts on the blog.
+    if (!pillar) pillar = { name: 'the blog', url: '/search', labels: [null] };
     if (pillar) {
       var here = location.pathname;
       postsFor(pillar.labels).then(function (posts) {
@@ -74,7 +77,7 @@
           var th = el('span', 'journey-thumb');
           if (p.thumb) { var img = el('img'); img.src = p.thumb; img.alt = ''; img.loading = 'lazy'; th.appendChild(img); }
           var tx = el('span');
-          tx.appendChild(el('span', 'journey-kicker', i === 0 ? 'Next up' : pillar.name));
+          tx.appendChild(el('span', 'journey-kicker', i === 0 ? 'Next up' : (pillar.labels[0] ? pillar.name : 'Latest')));
           tx.appendChild(el('span', 'journey-name', p.title));
           a.appendChild(th); a.appendChild(tx); wrap.appendChild(a);
         });
