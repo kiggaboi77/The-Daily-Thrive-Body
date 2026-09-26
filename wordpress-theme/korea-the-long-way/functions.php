@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'KTLW_VERSION', '1.2.0' );
+define( 'KTLW_VERSION', '1.3.0' );
 
 /**
  * Theme setup.
@@ -117,6 +117,16 @@ function ktlw_widgets_init() {
 				'name'        => __( 'After Post Content', 'korea-the-long-way' ),
 				'id'          => 'after-post',
 				'description' => __( 'Shown below each article. A good spot for an ad unit or related links.', 'korea-the-long-way' ),
+			)
+		)
+	);
+	register_sidebar(
+		array_merge(
+			$shared,
+			array(
+				'name'        => __( 'Article Sidebar', 'korea-the-long-way' ),
+				'id'          => 'post-sidebar',
+				'description' => __( 'Shown beside each article on wide screens (below it on smaller screens). A good spot for a vertical ad unit.', 'korea-the-long-way' ),
 			)
 		)
 	);

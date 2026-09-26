@@ -25,7 +25,8 @@ Website and WordPress theme for [kiggaboi77.com](https://kiggaboi77.com/) — Ko
 - **Hero photo** (Appearance → Customize → Header Image): optional; replaces the illustration.
 - **Articles per page** (Appearance → Customize → Articles): default 9; older posts move to page 2, 3…
 - **The chapter**: one panel (single category before AdSense approval) that links to the category with the most posts and lists the topics it covers.
-- **AdSense**: add the code with Site Kit by Google (or Auto ads); ad units can also go in the *After Post Content* widget area.
+- **Article sidebar**: wide screens show "On this page" contents on the left and More stories / word of the day on the right. Put a vertical ad unit in the *Article Sidebar* widget area.
+- **AdSense**: add the code with Site Kit by Google (or Auto ads); ad units can also go in the *Article Sidebar* or *After Post Content* widget areas.
 
 ## Blogger theme — oneofkind77.com
 
