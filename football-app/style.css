@@ -48,3 +48,20 @@ dialog::backdrop{background:#000a}
 .squad small{margin-left:auto;color:var(--mute)}
 footer{text-align:center;color:var(--mute);font-size:12px;padding:20px}
 .empty{color:var(--mute);padding:30px;text-align:center}
+.avatar{background-size:cover;background-position:center top}
+.avatar.img{color:transparent;text-shadow:none}
+.fee{color:var(--gold);border-color:var(--gold)}
+.sum{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.panel h3{margin:0 0 6px;font-size:15px;color:var(--gold)}.panel p{margin:4px 0 8px;color:var(--mute);font-size:13px}
+.panel input,.panel button,.btn{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:7px 12px;font:inherit;cursor:pointer}
+.panel input{cursor:text;min-width:160px}.btn.pri,.panel button.pri{background:var(--gold);color:#222;border-color:var(--gold)}
+.panel button:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;align-items:center;padding:8px;border-radius:8px;background:var(--bg);margin-top:6px;cursor:pointer}
+.row img,.row .th{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;background:var(--line);flex:none}
+.row small{color:var(--mute);display:block}.row .r{margin-left:auto;text-align:right;white-space:nowrap}
+.bar{height:6px;border-radius:3px;background:var(--gold);margin-top:4px}
+.api{margin:0 18px 14px;padding:10px;border:1px dashed var(--line);border-radius:10px;font-size:13px;color:var(--mute)}
+.api b{color:var(--text)}
+@media(max-width:520px){.dh{flex-direction:column;align-items:flex-start}.dh .card{width:140px}.grid{grid-template-columns:repeat(2,1fr)}main{padding:12px}}
+body{padding-bottom:env(safe-area-inset-bottom)}

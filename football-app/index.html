@@ -2,8 +2,14 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>풋볼 카드</title>
+<meta name="theme-color" content="#0f1420">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +18,8 @@
   <nav>
     <button data-tab="players" class="on">선수</button>
     <button data-tab="clubs">구단</button>
+    <button data-tab="market">이적시장</button>
+    <button data-tab="api">API</button>
   </nav>
 </header>
 <main>
@@ -23,8 +31,9 @@
   <div id="view"></div>
 </main>
 <dialog id="dlg"></dialog>
-<footer>샘플 데이터 · <code>data.js</code>를 수정하면 선수·구단·가족 정보를 추가할 수 있어요</footer>
+<footer>샘플 데이터 · 이적료는 대략치 · 사진은 Wikipedia/TheSportsDB 출처 · <span id="net"></span></footer>
 <script src="data.js"></script>
+<script src="extra.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
