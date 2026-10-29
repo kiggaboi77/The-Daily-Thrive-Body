@@ -1,0 +1,50 @@
+:root{--bg:#0f1420;--panel:#182033;--text:#e8ecf5;--mute:#8d97b0;--line:#27324d;--gold:#e9c46a}
+@media(prefers-color-scheme:light){:root{--bg:#f3f5fa;--panel:#fff;--text:#161b2b;--mute:#667088;--line:#dde2ee}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,"Noto Sans KR",sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:5;flex-wrap:wrap;gap:8px}
+h1{margin:0;font-size:20px}
+nav button{background:none;border:1px solid var(--line);color:var(--text);padding:6px 16px;cursor:pointer;font:inherit}
+nav button:first-child{border-radius:8px 0 0 8px}nav button:last-child{border-radius:0 8px 8px 0;border-left:0}
+nav button.on{background:var(--gold);color:#222;border-color:var(--gold)}
+main{max-width:1100px;margin:0 auto;padding:16px}
+#filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px;align-items:center}
+#filters input[type=search],select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font:inherit}
+#filters input[type=search]{flex:1;min-width:180px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.card{--c:#888;position:relative;border-radius:14px;padding:12px;cursor:pointer;color:#14110a;
+  background:linear-gradient(160deg,#f7e9b5,#d9b45a 55%,#b88a2e);border:2px solid #fff6;box-shadow:0 4px 14px #0005;transition:transform .15s}
+.card:hover{transform:translateY(-4px)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start}
+.card .ovr{font-size:32px;font-weight:800;line-height:1}
+.card .p{font-size:12px;font-weight:700}
+.card .flag{font-size:24px}
+.card .avatar{height:84px;margin:8px 0;border-radius:50%;aspect-ratio:1;display:grid;place-items:center;font-size:30px;font-weight:800;color:#fff;background:var(--c);margin-inline:auto;text-shadow:0 1px 3px #0008}
+.card .nm{text-align:center;font-weight:800;border-top:1px solid #0003;padding-top:6px}
+.card .cl{text-align:center;font-size:12px;opacity:.8}
+.card.retired{filter:grayscale(.7)}
+.clubs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.club{background:var(--panel);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:12px;cursor:pointer}
+.club small{color:var(--mute)}
+dialog{border:0;border-radius:16px;background:var(--panel);color:var(--text);width:min(720px,94vw);max-height:90vh;padding:0}
+dialog::backdrop{background:#000a}
+.dh{padding:18px;display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--line)}
+.dh .card{width:150px;flex:none;cursor:default}.dh .card:hover{transform:none}
+.dh h2{margin:0 0 4px}.dh p{margin:2px 0;color:var(--mute)}
+.x{margin-left:auto;align-self:flex-start;background:none;border:0;color:var(--text);font-size:24px;cursor:pointer}
+.sec{padding:14px 18px}.sec h3{margin:0 0 8px;font-size:15px;color:var(--gold)}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tl li{padding:0 0 12px 16px;position:relative}
+.tl li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--c,var(--gold))}
+.tl b{cursor:pointer;text-decoration:underline dotted}
+.tag{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:99px;padding:0 8px;color:var(--mute);margin-left:4px}
+.move{color:var(--mute);font-size:13px;margin:-6px 0 8px 16px}
+.fam{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:13px}
+.chip.link{cursor:pointer;border-color:var(--gold)}
+.chip small{display:block;color:var(--mute)}
+.squad{display:grid;gap:6px}.squad div{display:flex;gap:10px;padding:6px 8px;border-radius:8px;background:var(--bg);cursor:pointer;align-items:center}
+.squad .pos{width:34px;color:var(--gold);font-weight:700;font-size:12px}
+.squad small{margin-left:auto;color:var(--mute)}
+footer{text-align:center;color:var(--mute);font-size:12px;padding:20px}
+.empty{color:var(--mute);padding:30px;text-align:center}

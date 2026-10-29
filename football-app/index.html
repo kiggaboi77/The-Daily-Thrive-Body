@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>풋볼 카드</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>⚽ 풋볼 카드</h1>
+  <nav>
+    <button data-tab="players" class="on">선수</button>
+    <button data-tab="clubs">구단</button>
+  </nav>
+</header>
+<main>
+  <section id="filters">
+    <input id="q" type="search" placeholder="선수·구단·국적 검색">
+    <select id="pos"><option value="">전체 포지션</option></select>
+    <label><input type="checkbox" id="active"> 현역만</label>
+  </section>
+  <div id="view"></div>
+</main>
+<dialog id="dlg"></dialog>
+<footer>샘플 데이터 · <code>data.js</code>를 수정하면 선수·구단·가족 정보를 추가할 수 있어요</footer>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
