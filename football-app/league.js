@@ -125,11 +125,21 @@ function renderLeague() {
   $('#view').innerHTML = `<div class="lg"><aside>${side}</aside><section class="lgmain">${main}</section></div>`;
 }
 
+function countryBanner(c) {
+  const h = hash(c.code), g1 = ['#2e7d32', '#1565c0', '#6a1b9a', '#c62828', '#00838f', '#ef6c00'][h % 6];
+  return `<div class="banner" style="--g:${g1}"><svg viewBox="0 0 600 140" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <rect width="600" height="140" fill="${g1}"/><circle cx="470" cy="40" r="26" fill="#ffd54a" stroke="#222" stroke-width="4"/>
+    <path d="M0 110 Q150 70 300 100 T600 90 V140 H0Z" fill="#43a851" stroke="#222" stroke-width="4"/>
+    <path d="M330 118 L350 78 H450 L470 118Z" fill="#fff" stroke="#222" stroke-width="4" stroke-linejoin="round"/><path d="M345 118 L360 90 H440 L455 118Z" fill="#43a851" stroke="#222" stroke-width="3"/>
+    <circle cx="520" cy="112" r="14" fill="#fff" stroke="#222" stroke-width="4"/><path d="M520 104 l7 5 -3 8 h-8 l-3 -8z" fill="#222"/></svg>
+    <div class="bn-t"><span>${c.flagEmoji}</span><div><h2>${c.ko}</h2><p>${c.league} · 구단 ${c.clubs.length}개</p></div></div></div>`;
+}
 function countryView(c) {
-  return `<h2 class="ttl">${c.flagEmoji} ${c.ko} · ${c.league}</h2><p class="sub">구단 ${c.clubs.length}개 · 구단을 눌러 선수단을 확인하세요</p>
+  return `${countryBanner(c)}<p class="sub">구단과 대표 선수 이름이 한눈에 보여요 · 구단을 누르면 포메이션 그림과 선수 카드가 열립니다</p>
   <div class="crests">${c.clubs.map(cl => {
-    const n = cl.players.filter(Boolean).length;
-    return `<button class="crest" data-lclub="${cl.id}">${cartoonCrest(cl.en, cl.c1, cl.c2)}<b>${esc(cl.ko)}</b><small>${esc(cl.en)}</small><i>${n ? `선수 ${n}명` : '준비 중'}</i></button>`;
+    const names = cl.players.filter(Boolean);
+    return `<button class="crest" data-lclub="${cl.id}">${cartoonCrest(cl.en, cl.c1, cl.c2)}<b>${esc(cl.ko)}</b><small>${esc(cl.en)}</small>
+      <div class="names">${names.length ? names.map(p => `<span><em>${esc(p.pos)}</em>${esc(p.name)}</span>`).join('') : '<i>선수 정보 준비 중</i>'}</div></button>`;
   }).join('')}</div>`;
 }
 
@@ -169,9 +179,11 @@ async function loadApiSquad(id) {
 }
 
 /* ----- 선수 카드 ----- */
+const lgPlayerById = id => LG.flatMap(c => c.clubs).flatMap(c => c.players).find(x => x && x.id === id) || Object.values(lgState.apiPlayers).flat().find(x => x.id === id);
 function openLgPlayer(id) {
-  const p = LG.flatMap(c => c.clubs).flatMap(c => c.players).find(x => x && x.id === id) || Object.values(lgState.apiPlayers).flat().find(x => x.id === id);
+  const p = lgPlayerById(id);
   if (!p) return;
+  delete $('#dlg').dataset.prof;
   const foot = p.foot, role = ROLE[p.pos] || '';
   $('#dlg').innerHTML = `<div class="lcard" style="--c1:${p.c1};--c2:${p.c2}">
     <button class="x" aria-label="닫기">×</button>
@@ -187,8 +199,9 @@ function openLgPlayer(id) {
     </div>
     <div class="feet"><span class="${foot === 'L' || foot === 'B' ? 'hl' : ''}">왼발</span><span class="${foot === 'R' || foot === 'B' ? 'hl' : ''}">오른발</span></div>
     <div class="lc-role"><small>역할</small>${role}</div>
+    <button class="pri prof-btn" data-prof="${esc(p.id)}">📋 선수 프로파일 보기</button>
     <p class="lc-note">만화 캐릭터는 실제 모습과 무관한 일러스트입니다.</p></div>`;
-  $('#dlg').showModal();
+  if (!$('#dlg').open) $('#dlg').showModal();
 }
 
 /* ----- 이벤트 ----- */

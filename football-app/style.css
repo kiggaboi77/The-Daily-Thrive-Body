@@ -108,3 +108,31 @@ body{padding-bottom:env(safe-area-inset-bottom)}
 @media(max-width:760px){.lg{grid-template-columns:1fr}.lg aside{position:static;flex-direction:row;overflow-x:auto;padding-bottom:4px}.ctry{flex:none}.ctry em{display:none}}
 .chead>div:last-child{background:#000b;padding:6px 14px;border-radius:10px}
 .pp .av.dashed{width:46px;height:46px;max-width:none;flex:none;font-size:18px}
+
+/* ---- 선수 프로파일 ---- */
+dialog{width:min(860px,96vw)}
+.prof-btn{display:block;width:100%;margin-top:12px;padding:10px;border-radius:10px;border:2px solid #222;background:#ffd54a;color:#222;font:inherit;font-weight:800;cursor:pointer}
+.prof{display:grid;grid-template-columns:260px 1fr;position:relative}
+.prof .x{position:absolute;right:10px;top:6px;z-index:2}
+.pf-side{padding:20px;background:linear-gradient(170deg,var(--c1),var(--c2));color:#fff;text-align:center;border-radius:16px 0 0 16px}
+.pf-photo{width:200px;height:240px;margin:0 auto 10px;border:4px solid #fff;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 6px 0 #0004}
+.pf-photo img,.pf-photo svg{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.pf-side h2{margin:0;text-shadow:0 2px 4px #000a}.pf-sub{margin:2px 0 10px;text-shadow:0 1px 3px #000a}
+.pf-side dl{margin:0 0 12px;text-align:left;background:#000a;border-radius:10px;padding:8px 12px}
+.pf-side dt{font-size:11px;opacity:.7;margin-top:6px}.pf-side dd{margin:0;font-weight:700}
+.pf-side .btn2{color:#fff;border-color:#fff8;background:#0006}
+.pf-main{padding:20px}.pf-main section{margin-bottom:16px}.pf-main h3{margin:0 0 6px;color:var(--gold);font-size:15px}.pf-main p{margin:0}
+.src{margin-top:8px;font-size:12px;color:var(--mute)}.src a{color:var(--gold)}
+@media(max-width:640px){.prof{grid-template-columns:1fr}.pf-side{border-radius:16px 16px 0 0}}
+
+/* ---- 나라 배너 · 구단별 선수 이름 ---- */
+.banner{position:relative;border-radius:16px;overflow:hidden;border:3px solid #222;margin-bottom:10px;box-shadow:0 4px 0 #0004}
+.banner svg{display:block;width:100%;height:140px}
+.bn-t{position:absolute;left:18px;top:50%;transform:translateY(-50%);display:flex;gap:14px;align-items:center;background:#000a;color:#fff;border-radius:14px;padding:8px 16px}
+.bn-t span{font-size:44px;line-height:1}.bn-t h2{margin:0}.bn-t p{margin:0;opacity:.85;font-size:13px}
+.crests{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.crest{align-items:center}
+.names{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;margin-top:8px;width:100%}
+.names span{font-size:11px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:0 5px;color:var(--text)}
+.names em{font-style:normal;color:var(--gold);font-weight:800;margin-right:3px;font-size:9px}
+.names i{font-style:normal;font-size:11px;color:var(--mute)}
