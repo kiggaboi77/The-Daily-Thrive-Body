@@ -10,6 +10,7 @@ cd football-app && python3 -m http.server 8000
 
 ## 데이터
 - `data.js` 선수·구단·가족 / `extra.js` 이적료(`FEES`, 백만 유로 대략치)·위키 문서명(`WIKI`)
+- `leagues-data.js` 나라·구단·선수단(4-3-3 순서), `league.js` 만화 그림 생성·리그 화면
 - 사진: Wikipedia REST API 썸네일(자동) → API 탭에서 갱신하면 TheSportsDB 사진 우선
 - API 탭: TheSportsDB(무료 키 `3`, 분당 30회)로 현재 팀·포지션 갱신, 이름 검색 후 선수 추가(이 기기 localStorage에 저장)
 - 사진 저작권은 각 출처(Wikimedia Commons 등) 라이선스를 따릅니다. 배포 시 확인하세요.

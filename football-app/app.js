@@ -13,7 +13,7 @@ let apiKey = store.get('fc.key', '3');
 let sync = store.get('fc.sync', {});      // 선수id → API 최신 정보
 let wikiCache = store.get('fc.wiki', {}); // 선수id → 위키 사진 URL
 let custom = store.get('fc.custom', []);  // API 검색으로 추가한 선수
-let tab = 'players';
+let tab = 'league';
 let byId = {};
 
 function clubFor(name) {
@@ -75,8 +75,8 @@ function cardHTML(p) {
 /* ---------- 탭 ---------- */
 function render() {
   $('#filters').style.display = tab === 'players' ? '' : 'none';
-  ({players: renderPlayers, clubs: renderClubs, market: renderMarket, api: renderApi})[tab]();
-  hydrate();
+  ({league: renderLeague, players: renderPlayers, clubs: renderClubs, market: renderMarket, api: renderApi})[tab]();
+  if (tab !== 'league') hydrate();
 }
 function renderPlayers() {
   const q = $('#q').value.trim().toLowerCase(), pos = $('#pos').value, active = $('#active').checked;
