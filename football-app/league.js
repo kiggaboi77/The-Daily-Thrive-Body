@@ -91,7 +91,8 @@ const LG = LEAGUES.map(c => ({
     const players = sq.split(',').map((tok, si) => {
       if (tok === '-') return null;
       const [name, pos, foot, nat] = tok.split('/');
-      return {id: `${c.code}-${ci}-${si}`, name, pos, foot, nat, flag: flagOf(nat), slot: si, club: ko, clubEn: en, c1, c2};
+      const [full, num] = ((typeof FULLNO !== 'undefined' && (FULLNO[`${c.code}-${ci}`] || [])[si]) || '').split('|');
+      return {id: `${c.code}-${ci}-${si}`, name, full: full || name, num: num || '', pos, foot, nat, flag: flagOf(nat), slot: si, club: ko, clubEn: en, c1, c2};
     });
     return {id: `${c.code}-${ci}`, ko, en, c1, c2, players, country: c.ko};
   })
@@ -107,7 +108,7 @@ function pitchSVG(club) {
   const pl = club.players.map((p, i) => {
     const [x, y] = SLOTS[i];
     if (!p) return `<div class="pp empty" style="left:${x}%;top:${y}%"><div class="av dashed">?</div><span class="pn">미등록</span><span class="pt">${SLOT_POS[i]}</span></div>`;
-    return `<div class="pp" data-lp="${p.id}" style="left:${x}%;top:${y}%">${playerBadge(p)}<span class="pn">${esc(p.name)}</span><span class="pt">${esc(p.pos)}</span></div>`;
+    return `<div class="pp" data-lp="${p.id}" style="left:${x}%;top:${y}%">${playerBadge(p)}<span class="pn">${p.num ? esc(p.num) + ' ' : ''}${esc(p.name)}</span><span class="pt">${esc(p.pos)}</span></div>`;
   }).join('');
   return `<div class="pitch"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
     <rect width="100" height="100" fill="#3c9d4a"/>${[0, 2, 4, 6, 8].map(i => `<rect y="${i * 10 + 0}" width="100" height="10" fill="#43a851"/>`).join('')}
@@ -149,10 +150,10 @@ function clubView(cl) {
   const api = lgState.apiPlayers[cl.id];
   return `<div class="crumb"><button data-lback="country">← ${c.ko}</button></div>
   <div class="chead" style="--c1:${cl.c1};--c2:${cl.c2}"><div class="cr">${cartoonCrest(cl.en, cl.c1, cl.c2)}</div><div><h2>${esc(cl.ko)}</h2><p>${esc(cl.en)} · ${c.flagEmoji} ${c.ko}</p></div></div>
-  <h3 class="sec2">포메이션 4-3-3</h3>${pitchSVG(cl)}
-  <p class="hint">선수를 누르면 카드가 열려요. 점선 칸은 아직 등록되지 않은 자리입니다.</p>
-  <h3 class="sec2">선수 명단 (${list.length}명)</h3>
-  ${list.length ? `<div class="roster">${list.map(p => `<div class="rrow" data-lp="${p.id}">${playerBadge(p)}<div><b>${esc(p.name)}</b><small>${p.flag} ${POSITIONS[p.pos] || p.pos}</small></div><span class="pos">${esc(p.pos)}</span><span class="ft">${FOOT[p.foot] || '-'}</span></div>`).join('')}</div>` : '<p class="hint">등록된 선수가 없어요. 아래 버튼으로 API에서 불러올 수 있어요.</p>'}
+  <div class="split"><div class="lineup"><h3 class="sec2">선수 명단 (${list.length}명)</h3>
+    ${list.length ? list.map(p => `<div class="lrow" data-lp="${p.id}"><span class="no">${p.num || '–'}</span>${playerBadge(p)}<div class="ln"><b>${esc(p.full)}</b><small>${p.flag} ${POSITIONS[p.pos] || p.pos} · ${FOOT[p.foot] || '-'}</small></div><span class="pos">${esc(p.pos)}</span></div>`).join('') : '<p class="hint">등록된 선수가 없어요. 아래 버튼으로 API에서 불러올 수 있어요.</p>'}
+    <p class="hint">등번호는 시즌마다 바뀌고 일부는 비어 있어요(–).</p></div>
+  <div class="pitchwrap"><h3 class="sec2">포메이션 4-3-3</h3>${pitchSVG(cl)}<p class="hint">선수를 누르면 카드가 열려요. 점선 칸은 아직 등록되지 않은 자리입니다.</p></div></div>
   <div class="panel"><h3>API로 선수단 불러오기</h3><p>TheSportsDB에서 이 구단의 선수 목록을 가져와 만화 카드로 보여줍니다. (인터넷 필요)</p>
     <button class="pri" data-lapi="${cl.id}">불러오기</button><div id="apisq">${api ? apiRoster(api) : ''}</div></div>`;
 }
@@ -189,9 +190,10 @@ function openLgPlayer(id) {
     <button class="x" aria-label="닫기">×</button>
     <div class="lc-top"><span class="lc-pos">${esc(p.pos)}</span><span class="lc-flag">${p.flag}</span></div>
     <div class="lc-art">${cartoonPlayer(p.name + p.clubEn, p.c1, p.c2, p.pos)}</div>
-    <div class="lc-name">${esc(p.name)}</div>
+    <div class="lc-name">${esc(p.full || p.name)}</div>
     <div class="lc-club">${esc(p.club)}</div>
     <div class="lc-info">
+      ${p.num ? `<div><small>등번호</small><b>#${esc(p.num)}</b></div>` : ''}
       <div><small>포지션</small><b>${POSITIONS[p.pos] || p.pos}</b></div>
       <div><small>주발</small><b>${FOOT[foot] || '정보 없음'}</b></div>
       <div><small>국적</small><b>${p.flag} ${esc(p.nation || NATION[p.nat] || p.nat || '-')}</b></div>

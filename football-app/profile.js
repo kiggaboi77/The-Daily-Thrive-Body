@@ -11,7 +11,7 @@ const claimIds = (cl, prop) => (cl[prop] || []).map(c => c.mainsnak?.datavalue?.
 const claimYear = (c, prop) => { const t = c.qualifiers?.[prop]?.[0]?.datavalue?.value?.time; return t ? +t.slice(1, 5) : null; };
 
 async function fetchWikiProfile(p) {
-  const q = `${p.name} ${p.clubEn} footballer`;
+  const q = `${p.full || p.name} ${p.clubEn} footballer`;
   const hit = (await jget(`${WIKI_API}?action=query&list=search&srsearch=${enc(q)}&srlimit=1&format=json&origin=*`)).query?.search?.[0]?.title;
   if (!hit) throw new Error('위키백과에서 찾지 못했어요');
   const pg = Object.values((await jget(`${WIKI_API}?action=query&titles=${enc(hit)}&prop=pageprops|pageimages|extracts&ppprop=wikibase_item&piprop=thumbnail&pithumbsize=600&exintro=1&explaintext=1&exsentences=3&format=json&origin=*`)).query?.pages || {})[0] || {};
@@ -55,7 +55,7 @@ function starData(star, p) {
 function profHTML(p, d, state) {
   const art = cartoonPlayer(p.name + p.clubEn, p.c1, p.c2, p.pos);
   const photo = d?.photo ? `<img class="pf-img" src="${esc(d.photo)}" alt="${esc(p.name)}" referrerpolicy="no-referrer">` : art;
-  const facts = [['포지션', POSITIONS[p.pos] || p.pos], ['주발', FOOT[p.foot] || '정보 없음'], ['소속', p.club],
+  const facts = [...(p.num ? [['등번호', '#' + p.num]] : []), ['포지션', POSITIONS[p.pos] || p.pos], ['주발', FOOT[p.foot] || '정보 없음'], ['소속', p.club],
     ['국적', `${p.flag} ${p.nation || NATION[p.nat] || d?.nation || '-'}`], ...(d?.born ? [['생년월일', d.born]] : [])];
   const intro = d?.intro || `${ROLE[p.pos] || ''}`;
   const introTag = d?.introLang === 'local' ? '' : d?.introLang ? `<span class="tag">${d.introLang === 'ko' ? '위키백과(한국어)' : 'Wikipedia(영문)'}</span>` : '<span class="tag">포지션 기본 설명</span>';
@@ -66,7 +66,7 @@ function profHTML(p, d, state) {
     : `<p class="hint">${state === 'loading' ? '불러오는 중…' : '알려진 가족 정보가 없어요'}</p>`;
   const src = d?.local ? '정보: 앱에 직접 입력한 요약' : d?.title ? `출처: <a href="https://en.wikipedia.org/wiki/${enc(d.title.replace(/ /g, '_'))}" target="_blank" rel="noopener">Wikipedia · ${esc(d.title)}</a> / Wikidata — 자동 검색 결과라 동명이인일 수 있어요.` : '';
   return `<div class="prof" style="--c1:${p.c1};--c2:${p.c2}"><button class="x" aria-label="닫기">×</button>
-  <aside class="pf-side"><div class="pf-photo">${photo}</div><h2>${esc(p.name)}</h2><p class="pf-sub">${p.flag} ${esc(p.club)}</p>
+  <aside class="pf-side"><div class="pf-photo">${photo}</div><h2>${esc(p.full || p.name)}</h2><p class="pf-sub">${p.flag} ${esc(p.club)}</p>
     <dl>${facts.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
     <button class="btn2" data-lp="${esc(p.id)}">← 선수 카드</button></aside>
   <div class="pf-main">

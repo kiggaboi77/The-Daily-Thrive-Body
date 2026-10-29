@@ -26,7 +26,7 @@ FC 바르셀로나;FC Barcelona;#a50044;#004d98;J. García/GK/R/es,Koundé/RB/R/
 아틀레틱 빌바오;Athletic Club;#ee2523;#ffffff;U. Simón/GK/R/es,De Marcos/RB/R/es,Vivian/CB/R/es,Laporte/CB/L/es,Yuri/LB/L/es,Vesga/DM/R/es,Jauregizar/CM/R/es,Sancet/CM/R/es,I. Williams/RW/R/gh,Guruzeta/ST/R/es,N. Williams/LW/R/es
 레알 소시에다드;Real Sociedad;#0067b1;#ffffff;Remiro/GK/R/es,Aramburu/RB/R/ve,Zubeldia/CB/R/es,Caleta-Car/CB/R/hr,Sergio Gómez/LB/L/es,Turrientes/DM/R/es,Brais Méndez/CM/L/es,Sučić/CM/R/hr,Barrenetxea/RW/R/es,Oyarzabal/ST/R/es,Kubo/LW/L/jp
 비야레알;Villarreal;#fbe10f;#005187;L. Júnior/GK/R/br,Foyth/RB/R/ar,Rafa Marín/CB/R/es,Veiga/CB/R/es,Pedraza/LB/L/es,Comesaña/DM/R/ar,Parejo/CM/R/es,Gueye/CM/R/sn,Pépé/RW/L/ci,Mikautadze/ST/R/ge,Buchanan/LW/R/ca
-레알 베티스;Real Betis;#0bb363;#ffffff;Vicente/GK/R/es,Bellerín/RB/R/es,Natan/CB/R/br,Bartra/CB/R/es,Perraud/LB/L/fr,Altimira/DM/R/es,Fornals/CM/L/es,Lo Celso/CM/L/ar,Antony/RW/L/br,Cucho/ST/R/co,Ezzalzouli/LW/R/ma
+레알 베티스;Real Betis;#0bb363;#ffffff;Valles/GK/R/es,Bellerín/RB/R/es,Natan/CB/R/br,Bartra/CB/R/es,Perraud/LB/L/fr,Altimira/DM/R/es,Fornals/CM/L/es,Lo Celso/CM/L/ar,Antony/RW/L/br,Cucho/ST/R/co,Ezzalzouli/LW/R/ma
 세비야;Sevilla FC;#f43333;#ffffff;Vlachodimos/GK/R/gr,Carmona/RB/R/es,Badé/CB/R/fr,Marcão/CB/R/br,Pedrosa/LB/L/es,Sow/DM/R/ch,Agoumé/CM/R/fr,Vargas/CM/R/ch,Lukebakio/RW/R/be,I. Romero/ST/R/es,Ejuke/LW/L/ng
 발렌시아;Valencia CF;#f08a00;#111111;Dimitrievski/GK/R/mk,Foulquier/RB/R/fr,Tárrega/CB/R/es,Copete/CB/L/es,Gayà/LB/L/es,Guerra/DM/R/es,Barrenechea/CM/R/ar,Almeida/CM/R/es,D. López/RW/R/es,Hugo Duro/ST/R/es,Rioja/LW/R/es
 지로나;Girona FC;#cd2534;#ffffff;Gazzaniga/GK/R/ar,Arnau/RB/R/es,D. López/CB/R/es,Krejčí/CB/L/cz,Miguel/LB/L/es,Witsel/DM/R/be,van de Beek/CM/R/nl,Ounahi/CM/R/ma,Tsygankov/RW/L/ua,Stuani/ST/R/uy,B. Gil/LW/L/es
@@ -75,9 +75,9 @@ FC 장크트 파울리;FC St. Pauli;#6b3e26;#ffffff;Vasilj/GK/R/ba,-,-,-,-,-,-,-
 올림피크 마르세유;Olympique de Marseille;#2faee0;#ffffff;Rulli/GK/R/ar,Pavard/RB/R/fr,Balerdi/CB/R/ar,Egan-Riley/CB/R/en,Medina/LB/L/ar,O'Riley/DM/R/ie,Højbjerg/CM/R/dk,Ndiaye/CM/R/sn,Greenwood/RW/L/en,Aubameyang/ST/R/ga,Gouiri/LW/R/dz
 AS 모나코;AS Monaco;#e30613;#ffffff;Köhn/GK/R/ch,Vanderson/RB/R/br,Salisu/CB/R/gh,Kehrer/CB/R/de,Caio Henrique/LB/L/br,Zakaria/DM/R/ch,Akliouche/CM/R/fr,Golovin/CM/R/ru,Ben Seghir/RW/R/ma,Embolo/ST/R/ch,Minamino/LW/R/jp
 올림피크 리옹;Olympique Lyonnais;#1b2f5b;#e30613;Descamps/GK/R/fr,Maitland-Niles/RB/R/en,Mata/CB/R/fr,Niakhaté/CB/R/fr,Tagliafico/LB/L/ar,Tolisso/DM/R/fr,Tessmann/CM/R/us,Morton/CM/R/en,Šulc/RW/L/cz,Lacazette/ST/R/fr,Nuamah/LW/R/gh
-릴 OSC;Lille OSC;#d2232a;#1c2d5a;Özer/GK/R/tr,Meunier/RB/R/be,Diakité/CB/R/fr,Alexsandro/CB/L/br,Ismaily/LB/L/br,André/DM/R/br,Bouaddi/CM/R/fr,Gomes/CM/R/en,-,David/ST/R/ca,-
+릴 OSC;Lille OSC;#d2232a;#1c2d5a;Özer/GK/R/tr,Meunier/RB/R/be,Diakité/CB/R/fr,Alexsandro/CB/L/br,Ismaily/LB/L/br,André/DM/R/br,Bouaddi/CM/R/fr,Gomes/CM/R/en,-,-,-
 OGC 니스;OGC Nice;#c8102e;#111111;Bulka/GK/R/pl,Mendy/RB/R/fr,Dante/CB/R/br,Bombito/CB/R/ca,Bard/LB/L/fr,Boudaoui/DM/R/dz,Diop/CM/R/fr,Sanson/CM/R/fr,Guessand/RW/R/ci,Laborde/ST/R/fr,Boga/LW/L/ci
-RC 랑스;RC Lens;#e8b800;#d2232a;Risser/GK/R/fr,Aguilar/RB/R/fr,Danso/CB/R/at,Sarr/CB/R/fr,Gradit/LB/L/fr,Samed/DM/R/ma,Thomasson/CM/R/fr,Diouf/CM/R/fr,Thauvin/RW/L/fr,Wahi/ST/R/fr,Sotoca/LW/R/fr
+RC 랑스;RC Lens;#e8b800;#d2232a;Risser/GK/R/fr,Aguilar/RB/R/fr,Danso/CB/R/at,Sarr/CB/R/fr,Gradit/LB/L/fr,Samed/DM/R/ma,Thomasson/CM/R/fr,-,Thauvin/RW/L/fr,-,Sotoca/LW/R/fr
 스타드 렌;Stade Rennais;#c8102e;#111111;Samba/GK/R/cg,-,Faye/CB/R/sn,-,Truffert/LB/L/fr,-,-,-,-,-,-
 스타드 브레스트;Stade Brestois;#e30613;#ffffff;Bizot/GK/R/fr,-,Chardonnet/CB/R/fr,-,-,Magnetti/DM/R/fr,Camara/CM/R/ml,-,-,Ajorque/ST/R/fr,-
 스트라스부르;RC Strasbourg;#0b6fb8;#ffffff;Penders/GK/R/be,-,-,-,-,-,-,-,-,Emegha/ST/R/nl,-
