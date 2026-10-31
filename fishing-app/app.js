@@ -1,5 +1,5 @@
 const UI = {
-  ko: { title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
+  ko: { area: "세부 지역", allAreas: "전체 지역", fishNote: "어종별 시즌은 대략적인 가이드입니다. 크기·수량·금어기는 주/연방마다 다르고 자주 바뀌니 출항 전 NOAA·주 정부 규정을 확인하세요.", tag: { guide: "시즌 가이드", last: "작년 자료", reg: "규정(확인 필요)", old: "예전/연도 미상 자료" }, title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
     reportNote: "검색으로 확인된 리포트만 출처 링크와 함께 표시합니다. '작년' 표시는 올해 자료가 없어 계절 참고용입니다. 출항 전 업체에 확인하세요.",
     all: "전체", noBoat: "조건에 맞는 배가 없습니다.", perPerson: "인당", perBoat: "배 전체", info: "배 정보", book: "예약하기", source: "출처",
     length: "길이", cap: "정원", ft: "ft", people: "명", amen: "시설/장비", reviews: "리뷰", call: "전화", mail: "이메일", bookTitle: "예약 문의",
@@ -7,7 +7,7 @@ const UI = {
     footer: "배·가격·연락처·리뷰는 샘플 데이터입니다. 실제 업체 정보로 교체 후 사용하세요.",
     k: { half: "반나절", full: "종일", ext: "연장/숙박", night: "야간" },
     a: { rod: "낚싯대 대여", bait: "미끼 제공", galley: "매점", cabin: "선실", ice: "얼음/쿨러", ac: "에어컨" } },
-  en: { title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
+  en: { area: "Area", allAreas: "All areas", fishNote: "Seasons are an approximate guide. Size, bag limits and closures differ by state/federal rules and change often — check NOAA and your state before you go.", tag: { guide: "Season guide", last: "Last year", reg: "Regulation (verify)", old: "Older / undated" }, title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
     reportNote: "Only reports found via search are shown, with source links. “Last year” means no current data was found and it is seasonal reference. Confirm with the operator before you go.",
     all: "All", noBoat: "No boats match.", perPerson: "per person", perBoat: "whole boat", info: "Boat info", book: "Book now", source: "Source",
     length: "Length", cap: "Capacity", ft: "ft", people: "people", amen: "Amenities", reviews: "Reviews", call: "Call", mail: "Email", bookTitle: "Book this trip",
@@ -15,7 +15,7 @@ const UI = {
     footer: "Boats, prices, contacts and reviews are sample data. Replace with real operator info before use.",
     k: { half: "Half day", full: "Full day", ext: "Extended / overnight", night: "Night" },
     a: { rod: "Rod rental", bait: "Bait included", galley: "Galley", cabin: "Cabin", ice: "Ice / cooler", ac: "A/C" } },
-  es: { title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
+  es: { area: "Zona", allAreas: "Todas las zonas", fishNote: "Las temporadas son una guía aproximada. Tallas, límites y vedas cambian según el estado/federal; revisa NOAA y tu estado antes de ir.", tag: { guide: "Guía de temporada", last: "Año pasado", reg: "Norma (verificar)", old: "Antiguo / sin fecha" }, title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
     reportNote: "Solo se muestran reportes encontrados en la búsqueda, con enlace a la fuente. “Año pasado” es referencia estacional. Confirma con el operador antes de ir.",
     all: "Todos", noBoat: "No hay barcos que coincidan.", perPerson: "por persona", perBoat: "barco completo", info: "Info del barco", book: "Reservar", source: "Fuente",
     length: "Eslora", cap: "Capacidad", ft: "pies", people: "personas", amen: "Servicios", reviews: "Reseñas", call: "Llamar", mail: "Correo", bookTitle: "Reservar este viaje",
@@ -27,7 +27,7 @@ const UI = {
 
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
 const $ = id => document.getElementById(id);
-const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null };
+const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null, area: null };
 function seasonOf(d) { const m = d.getMonth() + 1; return Object.keys(DATA.seasons).find(s => DATA.seasons[s].m.includes(m)); }
 const t = () => UI[state.lang];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -42,17 +42,24 @@ function render() {
   $("regions").innerHTML = Object.keys(DATA.regions).map(r => chip(DATA.regions[r][state.lang], state.region === r, `data-region="${r}"`)).join("");
   $("seasons").innerHTML = Object.keys(DATA.seasons).map(s => chip(DATA.seasons[s][state.lang], state.season === s, `data-season="${s}"`)).join("");
 
-  const inSeason = DATA.fish.filter(f => (f.s[state.region] || []).includes(state.season));
+  const regionAreas = Object.keys(DATA.areas).filter(k => DATA.areas[k].region === state.region);
+  if (state.area && !regionAreas.includes(state.area)) state.area = null;
+  $("areaSec").style.display = regionAreas.length > 1 ? "" : "none";
+  $("areas").innerHTML = chip(t().allAreas, !state.area, `data-area=""`) + regionAreas.map(k => chip(DATA.areas[k][state.lang], state.area === k, `data-area="${k}"`)).join("");
+  const scope = state.area ? [state.area] : regionAreas;
+  const fishById = Object.fromEntries(DATA.fish.map(f => [f.id, f]));
+  const inSeasonIn = (id, area) => ((fishById[id] || { s: {} }).s[area] || []).includes(state.season);
+  const inSeason = DATA.fish.filter(f => scope.some(k => inSeasonIn(f.id, k) && DATA.boats.some(b => b.area === k && b.fish.includes(f.id))));
   if (state.fish && !inSeason.some(f => f.id === state.fish)) state.fish = null;
   $("fish").innerHTML = chip(t().all, !state.fish, `data-fish=""`) + inSeason.map(f => chip(`<span class="e">${f.e}</span>${fishName(f)}`, state.fish === f.id, `data-fish="${f.id}"`, "fish")).join("");
   $("types").innerHTML = chip(t().all, !state.type, `data-type=""`) + Object.keys(DATA.types).map(k => chip(DATA.types[k][state.lang], state.type === k, `data-type="${k}"`)).join("");
 
-  const boats = DATA.boats.filter(b => b.region === state.region && (!state.type || b.type === state.type) &&
-    (state.fish ? b.fish.includes(state.fish) : b.fish.some(id => inSeason.some(f => f.id === id))));
+  const boats = DATA.boats.filter(b => b.region === state.region && (!state.area || b.area === state.area) && (!state.type || b.type === state.type) &&
+    (state.fish ? b.fish.includes(state.fish) && inSeasonIn(state.fish, b.area) : b.fish.some(id => inSeasonIn(id, b.area))));
   $("boats").innerHTML = boats.length ? boats.map(boatCard).join("") : `<p class="muted">${t().noBoat}</p>`;
 
   $("reports").innerHTML = DATA.reports.filter(r => r.region === state.region).map(r => `
-    <div class="card rep"><div class="muted">${r.date}${r.seasonal ? ` · <b>${t().seasonal}</b>` : ""}</div>
+    <div class="card rep"><div class="muted">${r.date}${r.tag ? ` · <b>${t().tag[r.tag]}</b>` : ""}</div>
     <div>${esc(r[state.lang])}</div><div class="muted">${t().source}: <a href="${r.url}" target="_blank" rel="noopener">${esc(r.src)}</a></div></div>`).join("");
 }
 
@@ -91,6 +98,7 @@ document.addEventListener("click", e => {
   const ds = d.dataset || {};
   if (d.id === "modal" || d.id === "close") return $("modal").classList.remove("open");
   if (ds.lang) { state.lang = ds.lang; store("lang", ds.lang); }
+  else if ("area" in ds) { state.area = ds.area || null; state.fish = null; }
   else if (ds.region) { state.region = ds.region; state.fish = null; }
   else if (ds.season) { state.season = ds.season; }
   else if ("fish" in ds) { state.fish = ds.fish || null; }
