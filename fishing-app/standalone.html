@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>US Fishing Boats · 미국 낚시 배 · Barcos de pesca EE.UU.</title>
+<style>
+:root{--navy:#0b3954;--teal:#087e8b;--sand:#f4efe6;--coral:#ff5a5f;--ink:#1c2b33;--card:#fff;--line:#d9e2e7}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR",sans-serif;background:var(--sand);color:var(--ink);line-height:1.5}
+header{background:linear-gradient(135deg,var(--navy),var(--teal));color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header h1{margin:0;font-size:1.25rem}
+.lang button{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4);padding:6px 12px;border-radius:999px;cursor:pointer;margin-left:6px;font-size:.9rem}
+.lang button.on{background:#fff;color:var(--navy);font-weight:700}
+main{max-width:1000px;margin:0 auto;padding:16px}
+section{margin-bottom:26px}
+h2{font-size:1.1rem;color:var(--navy);margin:0 0 10px}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:2px solid var(--line);background:var(--card);padding:9px 15px;border-radius:999px;cursor:pointer;font-size:.95rem;color:var(--ink)}
+.chip.on{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:700}
+.fish{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 12px;min-width:92px;border-radius:14px}
+.fish .e{font-size:1.5rem}
+.fish.on{background:var(--coral);border-color:var(--coral)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.card h3{margin:0;font-size:1.05rem}
+.muted{color:#5b6b73;font-size:.88rem}
+.tag{display:inline-block;background:#e3f2f4;color:var(--navy);padding:2px 9px;border-radius:999px;font-size:.78rem;margin:2px 3px 0 0}
+.stars{color:#f5a623;letter-spacing:1px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+td{padding:4px 0;border-top:1px solid var(--line)}
+td:last-child{text-align:right;font-weight:700}
+.btns{display:flex;gap:8px;margin-top:auto}
+button.act{flex:1;padding:10px;border-radius:10px;border:0;cursor:pointer;font-size:.95rem;font-weight:700}
+.book{background:var(--coral);color:#fff}
+.info{background:#e3f2f4;color:var(--navy)}
+.rep{border-left:4px solid var(--teal)}
+.rep a{color:var(--teal)}
+.notice{background:#fff8e1;border:1px solid #f0d98a;padding:10px 12px;border-radius:10px;font-size:.85rem}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:14px;z-index:20}
+.modal.open{display:flex}
+.box{background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:20px;position:relative}
+.x{position:absolute;right:12px;top:8px;background:none;border:0;font-size:1.7rem;cursor:pointer}
+.contact a{display:block;font-size:1.15rem;font-weight:700;color:var(--teal);margin:8px 0;word-break:break-all}
+.review{border-top:1px solid var(--line);padding:8px 0}
+footer{text-align:center;color:#5b6b73;font-size:.8rem;padding:20px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🎣 <span data-i="title"></span></h1>
+  <div class="lang" id="lang"></div>
+</header>
+<main>
+  <section><h2 data-i="region"></h2><div class="row" id="regions"></div></section>
+  <section><h2 data-i="season"></h2><div class="row" id="seasons"></div></section>
+  <section><h2>🐟 <span data-i="fishBtn"></span></h2><div class="row" id="fish"></div></section>
+  <section><h2 data-i="boatType"></h2><div class="row" id="types"></div></section>
+  <section><h2 data-i="boats"></h2><div class="grid" id="boats"></div></section>
+  <section><h2>📰 <span data-i="reports"></span></h2><div class="notice" data-i="reportNote" style="margin-bottom:10px"></div><div class="grid" id="reports"></div></section>
+</main>
+<footer data-i="footer"></footer>
+<div class="modal" id="modal"><div class="box"><button class="x" id="close">×</button><div id="mbody"></div></div></div>
+<script>
+// NOTE: Boats, prices, schedules, contacts and reviews below are SAMPLE data (555-01xx phones, example.com emails).
+// Replace with real operator data before publishing. Fishing reports are real, with source links.
+const DATA = {
+  regions: {
+    east:    { ko: "동부", en: "East", es: "Este" },
+    central: { ko: "중부 (걸프)", en: "Central (Gulf)", es: "Centro (Golfo)" },
+    west:    { ko: "서부", en: "West", es: "Oeste" }
+  },
+  seasons: {
+    spring: { ko: "봄", en: "Spring", es: "Primavera", m: [3, 4, 5] },
+    summer: { ko: "여름", en: "Summer", es: "Verano", m: [6, 7, 8] },
+    fall:   { ko: "가을", en: "Fall", es: "Otoño", m: [9, 10, 11] },
+    winter: { ko: "겨울", en: "Winter", es: "Invierno", m: [12, 1, 2] }
+  },
+  types: {
+    party:     { ko: "파티 보트 (공동 승선)", en: "Party boat (per person)", es: "Barco grupal (por persona)" },
+    charter:   { ko: "프라이빗 차터 (전체 대여)", en: "Private charter (whole boat)", es: "Chárter privado (barco completo)" },
+    overnight: { ko: "장거리·숙박 트립", en: "Long-range / overnight", es: "Largo alcance / noche" }
+  },
+  // seasons per region
+  fish: [
+    { id: "bluefin", e: "🐟", ko: "참다랑어", en: "Bluefin tuna", es: "Atún rojo", s: { west: ["summer", "fall"], east: ["fall", "winter"] } },
+    { id: "yellowfin", e: "🐟", ko: "황다랑어", en: "Yellowfin tuna", es: "Atún aleta amarilla", s: { west: ["summer", "fall"], east: ["summer", "fall"], central: ["spring", "summer", "fall"] } },
+    { id: "yellowtail", e: "🐠", ko: "옐로테일(방어류)", en: "Yellowtail", es: "Jurel de California", s: { west: ["spring", "summer", "fall"] } },
+    { id: "halibut", e: "🐡", ko: "광어(할리벗)", en: "California halibut", es: "Halibut de California", s: { west: ["spring", "summer"] } },
+    { id: "rockfish", e: "🐠", ko: "락피시(우럭류)", en: "Rockfish", es: "Rocote", s: { west: ["spring", "summer", "fall", "winter"] } },
+    { id: "salmon", e: "🐟", ko: "연어", en: "Salmon", es: "Salmón", s: { west: ["summer"] } },
+    { id: "striper", e: "🐟", ko: "줄무늬농어", en: "Striped bass", es: "Lubina rayada", s: { east: ["spring", "fall"] } },
+    { id: "fluke", e: "🐡", ko: "플루크(여름넙치)", en: "Fluke", es: "Platija de verano", s: { east: ["summer"] } },
+    { id: "tautog", e: "🐠", ko: "타우토그(블랙피시)", en: "Tautog (blackfish)", es: "Tautog", s: { east: ["fall", "winter"] } },
+    { id: "mahi", e: "🐬", ko: "만새기(마히마히)", en: "Mahi-mahi", es: "Dorado", s: { east: ["spring", "summer"], central: ["spring", "summer"] } },
+    { id: "sailfish", e: "🐟", ko: "돛새치", en: "Sailfish", es: "Pez vela", s: { east: ["fall", "winter"] } },
+    { id: "grouper", e: "🐠", ko: "그루퍼(농어류)", en: "Grouper", es: "Mero", s: { east: ["fall", "winter", "spring"], central: ["fall", "winter"] } },
+    { id: "snapper", e: "🐠", ko: "레드 스내퍼(퉁돔류)", en: "Red snapper", es: "Huachinango del Golfo", s: { central: ["summer", "fall"], east: ["summer"] } },
+    { id: "redfish", e: "🐟", ko: "레드피시(레드드럼)", en: "Redfish (red drum)", es: "Corvina roja", s: { central: ["fall", "winter"] } },
+    { id: "trout", e: "🐟", ko: "스펙클드 트라우트", en: "Speckled trout", es: "Trucha moteada", s: { central: ["fall", "winter", "spring"] } },
+    { id: "kingfish", e: "🐟", ko: "킹 매커럴(삼치류)", en: "King mackerel", es: "Carite", s: { central: ["spring", "fall"], east: ["fall"] } }
+  ],
+  boats: [
+    { id: "e1", region: "east", port: "Montauk, NY", name: "Montauk Star (sample)", type: "party", fish: ["striper", "fluke", "tautog", "bluefin"], length: 85, cap: 60, rating: 4.6,
+      trips: [{ k: "half", t: "8:00 AM – 1:00 PM", p: 85 }, { k: "full", t: "6:00 AM – 4:00 PM", p: 140 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (631) 555-0101", email: "book@example.com",
+      reviews: [{ n: "Mike R.", s: 5, d: "2026-09", t: "Great crew, helped my kids land their first fluke." }, { n: "Dana L.", s: 4, d: "2026-08", t: "Crowded on weekends but plenty of fish." }] },
+    { id: "e2", region: "east", port: "Key West, FL", name: "Southern Cross Charters (sample)", type: "charter", fish: ["mahi", "sailfish", "grouper", "kingfish", "snapper"], length: 42, cap: 6, rating: 4.9,
+      trips: [{ k: "half", t: "7:00 AM – 12:00 PM", p: 650 }, { k: "full", t: "7:00 AM – 3:00 PM", p: 1050 }],
+      amen: ["rod", "bait", "ice", "ac"], phone: "+1 (305) 555-0102", email: "captain@example.com",
+      reviews: [{ n: "Andrew G.", s: 5, d: "2026-10", t: "Captain put us on fish all day. Highly recommend." }, { n: "Sofia M.", s: 5, d: "2026-07", t: "¡Excelente experiencia! Muy profesional." }] },
+    { id: "e3", region: "east", port: "Fort Lauderdale, FL", name: "Gulf Stream Express (sample)", type: "party", fish: ["mahi", "kingfish", "sailfish", "yellowfin"], length: 65, cap: 40, rating: 4.4,
+      trips: [{ k: "half", t: "9:00 AM – 1:30 PM", p: 60 }, { k: "night", t: "7:00 PM – 11:00 PM", p: 55 }],
+      amen: ["rod", "bait", "galley"], phone: "+1 (954) 555-0103", email: "info@example.com",
+      reviews: [{ n: "Jin Park", s: 4, d: "2026-09", t: "가격 대비 만족. 초보자도 편해요." }] },
+    { id: "c1", region: "central", port: "Galveston, TX", name: "Bay & Gulf Party Boats (sample)", type: "party", fish: ["snapper", "kingfish", "yellowfin"], length: 100, cap: 70, rating: 4.3,
+      trips: [{ k: "half", t: "6:00 AM – 12:00 PM", p: 95 }, { k: "ext", t: "6:00 AM – 8:00 PM (extended)", p: 190 }],
+      amen: ["rod", "bait", "galley", "ac"], phone: "+1 (409) 555-0111", email: "tickets@example.com",
+      reviews: [{ n: "Carlos V.", s: 5, d: "2026-10", t: "Limit de huachinango, la tripulación muy amable." }, { n: "Beth K.", s: 4, d: "2026-09", t: "Rough seas, but the crew was great." }] },
+    { id: "c2", region: "central", port: "Freeport, TX", name: "Red & Trout Guides (sample)", type: "charter", fish: ["redfish", "trout", "snapper"], length: 24, cap: 4, rating: 4.8,
+      trips: [{ k: "half", t: "6:30 AM – 11:30 AM", p: 500 }, { k: "full", t: "6:30 AM – 2:30 PM", p: 750 }],
+      amen: ["rod", "bait", "ice"], phone: "+1 (979) 555-0112", email: "guide@example.com",
+      reviews: [{ n: "Tom H.", s: 5, d: "2026-10", t: "We limited out on redfish before lunch." }] },
+    { id: "c3", region: "central", port: "Venice, LA", name: "Delta Offshore (sample)", type: "overnight", fish: ["yellowfin", "mahi", "grouper", "kingfish"], length: 60, cap: 12, rating: 4.7,
+      trips: [{ k: "night", t: "Overnight (24h)", p: 450 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (985) 555-0113", email: "trips@example.com",
+      reviews: [{ n: "Ray D.", s: 5, d: "2026-05", t: "Yellowfin all day, comfortable bunks." }] },
+    { id: "w1", region: "west", port: "San Diego, CA", name: "Point Loma Fleet (sample)", type: "party", fish: ["yellowtail", "rockfish", "bluefin", "yellowfin"], length: 90, cap: 45, rating: 4.7,
+      trips: [{ k: "half", t: "6:30 AM – 12:30 PM", p: 85 }, { k: "full", t: "5:30 AM – 5:00 PM", p: 160 }, { k: "ext", t: "Overnight (1.5 day)", p: 350 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (619) 555-0121", email: "reserve@example.com",
+      reviews: [{ n: "Lisa C.", s: 5, d: "2026-10", t: "Full-day trip: bluefin limits for our whole group." }, { n: "Daniel Kim", s: 5, d: "2026-09", t: "친절한 선원들, 참치 손맛 최고!" }] },
+    { id: "w2", region: "west", port: "Newport Beach, CA", name: "Pacific Dawn Charters (sample)", type: "charter", fish: ["halibut", "yellowtail", "rockfish"], length: 36, cap: 6, rating: 4.8,
+      trips: [{ k: "half", t: "7:00 AM – 12:00 PM", p: 700 }, { k: "full", t: "6:00 AM – 3:00 PM", p: 1200 }],
+      amen: ["rod", "bait", "ice", "ac"], phone: "+1 (949) 555-0122", email: "hello@example.com",
+      reviews: [{ n: "Priya S.", s: 5, d: "2026-07", t: "Perfect family trip. We caught halibut!" }] },
+    { id: "w3", region: "west", port: "Westport, WA", name: "Grays Harbor Salmon Co. (sample)", type: "party", fish: ["salmon", "rockfish"], length: 55, cap: 24, rating: 4.5,
+      trips: [{ k: "full", t: "6:00 AM – 3:00 PM", p: 150 }],
+      amen: ["rod", "bait", "galley"], phone: "+1 (360) 555-0123", email: "book2@example.com",
+      reviews: [{ n: "Erik J.", s: 4, d: "2026-08", t: "Good salmon day, cold start." }] }
+  ],
+  // Real reports; summaries are paraphrased from the source pages.
+  reports: [
+    { region: "east", date: "2026-10-08", seasonal: false, src: "The Fisherman (Long Island forecast)", url: "https://www.thefisherman.com/long-island-video-fishing-forecast-october-8th-2026/",
+      ko: "롱아일랜드: 플루크 시즌은 10월 15일까지 열려 있고, 블랙피시(타우토그) 시즌은 롱아일랜드 사운드와 뉴욕 바이트에서 개시일·어획 제한이 다르게 시작됩니다.",
+      en: "Long Island: fluke season stays open through Oct 15, and blackfish (tautog) season is starting, with different opening dates and bag limits for Long Island Sound and the NY Bight.",
+      es: "Long Island: la temporada de fluke sigue abierta hasta el 15 de octubre y comienza la de tautog, con fechas y límites distintos para Long Island Sound y el NY Bight." },
+    { region: "east", date: "2025-10", seasonal: true, src: "FishingBooker – ShadowCaste (Key Largo)", url: "https://fishingbooker.com/de/reports/view/108060",
+      ko: "플로리다 키스(작년 10월): 오프쇼어와 백컨트리 모두 입질이 좋았다는 보고. 올해 10월 정식 리포트는 찾지 못해 참고용입니다.",
+      en: "Florida Keys (last October): offshore and backcountry fishing both reported as firing. No dated Oct 2026 report found, so this is seasonal reference.",
+      es: "Cayos de Florida (octubre pasado): pesca de altura y backcountry reportadas como excelentes. No se encontró un reporte de oct. 2026; es referencia estacional." },
+    { region: "central", date: "2026-10", seasonal: false, src: "Captain Experiences – Surfside Beach (customer reviews)", url: "https://captainexperiences.com/fishing-reports/locations/texas/surfside-beach?page=25",
+      ko: "텍사스 프리포트/서프사이드 인근: 9월 말~10월 중순 고객 후기에서 스내퍼 어획 한도 채움, 플라운더 작살·활 낚시 보고. 공식 리포트가 아닌 후기입니다.",
+      en: "Freeport/Surfside, TX: late-Sept to mid-Oct customer reviews mention snapper limits and flounder gigging. These are reviews, not official reports.",
+      es: "Freeport/Surfside, TX: reseñas de fines de sept. a mediados de oct. mencionan límites de huachinango y pesca de lenguado con fisga. Son reseñas, no reportes oficiales." },
+    { region: "west", date: "2026-07", seasonal: false, src: "FishingBooker – San Diego Bay report", url: "https://fishingbooker.com/reports/view/121998",
+      ko: "샌디에이고 베이(7월 초): 아침에 스팟티드 베이 배스가 활발, 작은 광어와 좋은 크기의 코르비나도 확인.",
+      en: "San Diego Bay (early July): spotted bay bass wide open in the mornings, plus smaller halibut and good-sized corvina.",
+      es: "Bahía de San Diego (principios de julio): lubina de bahía muy activa por la mañana, además de halibut pequeño y corvina de buen tamaño." },
+    { region: "west", date: "2025-10", seasonal: true, src: "San Diego Fish Reports", url: "https://www.sandiegofishreports.com/fish_reports/saltwater.php",
+      ko: "샌디에이고(작년 10월): 풀데이 트립에서 참다랑어·황다랑어 한도, 하프데이는 옐로테일·보니토 등. 올해 10월자는 아직 못 찾았습니다.",
+      en: "San Diego (last October): full-day trips landed bluefin and yellowfin limits; half-days caught yellowtail and bonito. No Oct 2026 entry found yet.",
+      es: "San Diego (octubre pasado): viajes de día completo con límites de atún rojo y aleta amarilla; medio día con jurel y bonito. Aún no hay entrada de oct. 2026." }
+  ]
+};
+</script>
+<script>
+const UI = {
+  ko: { title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
+    reportNote: "검색으로 확인된 리포트만 출처 링크와 함께 표시합니다. '작년' 표시는 올해 자료가 없어 계절 참고용입니다. 출항 전 업체에 확인하세요.",
+    all: "전체", noBoat: "조건에 맞는 배가 없습니다.", perPerson: "인당", perBoat: "배 전체", info: "배 정보", book: "예약하기", source: "출처",
+    length: "길이", cap: "정원", ft: "ft", people: "명", amen: "시설/장비", reviews: "리뷰", call: "전화", mail: "이메일", bookTitle: "예약 문의",
+    bookHint: "전화나 이메일로 날짜·인원을 문의하세요.", port: "항구", fishes: "대상 어종", trips: "출항 시간 · 가격", seasonal: "작년 자료", sample: "샘플 데이터",
+    footer: "배·가격·연락처·리뷰는 샘플 데이터입니다. 실제 업체 정보로 교체 후 사용하세요.",
+    k: { half: "반나절", full: "종일", ext: "연장/숙박", night: "야간" },
+    a: { rod: "낚싯대 대여", bait: "미끼 제공", galley: "매점", cabin: "선실", ice: "얼음/쿨러", ac: "에어컨" } },
+  en: { title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
+    reportNote: "Only reports found via search are shown, with source links. “Last year” means no current data was found and it is seasonal reference. Confirm with the operator before you go.",
+    all: "All", noBoat: "No boats match.", perPerson: "per person", perBoat: "whole boat", info: "Boat info", book: "Book now", source: "Source",
+    length: "Length", cap: "Capacity", ft: "ft", people: "people", amen: "Amenities", reviews: "Reviews", call: "Call", mail: "Email", bookTitle: "Book this trip",
+    bookHint: "Call or email to ask about dates and group size.", port: "Port", fishes: "Target fish", trips: "Trip times · prices", seasonal: "Last year", sample: "Sample data",
+    footer: "Boats, prices, contacts and reviews are sample data. Replace with real operator info before use.",
+    k: { half: "Half day", full: "Full day", ext: "Extended / overnight", night: "Night" },
+    a: { rod: "Rod rental", bait: "Bait included", galley: "Galley", cabin: "Cabin", ice: "Ice / cooler", ac: "A/C" } },
+  es: { title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
+    reportNote: "Solo se muestran reportes encontrados en la búsqueda, con enlace a la fuente. “Año pasado” es referencia estacional. Confirma con el operador antes de ir.",
+    all: "Todos", noBoat: "No hay barcos que coincidan.", perPerson: "por persona", perBoat: "barco completo", info: "Info del barco", book: "Reservar", source: "Fuente",
+    length: "Eslora", cap: "Capacidad", ft: "pies", people: "personas", amen: "Servicios", reviews: "Reseñas", call: "Llamar", mail: "Correo", bookTitle: "Reservar este viaje",
+    bookHint: "Llama o escribe para consultar fechas y número de personas.", port: "Puerto", fishes: "Especies", trips: "Horarios · precios", seasonal: "Año pasado", sample: "Datos de ejemplo",
+    footer: "Barcos, precios, contactos y reseñas son datos de ejemplo. Sustituye por datos reales antes de usar.",
+    k: { half: "Medio día", full: "Día completo", ext: "Extendido / noche", night: "Nocturno" },
+    a: { rod: "Alquiler de caña", bait: "Carnada incluida", galley: "Cafetería", cabin: "Camarote", ice: "Hielo / nevera", ac: "A/C" } }
+};
+
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
+const $ = id => document.getElementById(id);
+const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null };
+function seasonOf(d) { const m = d.getMonth() + 1; return Object.keys(DATA.seasons).find(s => DATA.seasons[s].m.includes(m)); }
+const t = () => UI[state.lang];
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const stars = n => "★".repeat(Math.round(n)) + "☆".repeat(5 - Math.round(n));
+const fishName = f => f[state.lang];
+const chip = (label, on, attr, extra = "") => `<button class="chip ${extra} ${on ? "on" : ""}" ${attr}>${label}</button>`;
+
+function render() {
+  document.documentElement.lang = state.lang;
+  document.querySelectorAll("[data-i]").forEach(el => el.textContent = t()[el.dataset.i]);
+  $("lang").innerHTML = [["ko", "한국어"], ["en", "English"], ["es", "Español"]].map(([c, n]) => `<button class="${state.lang === c ? "on" : ""}" data-lang="${c}">${n}</button>`).join("");
+  $("regions").innerHTML = Object.keys(DATA.regions).map(r => chip(DATA.regions[r][state.lang], state.region === r, `data-region="${r}"`)).join("");
+  $("seasons").innerHTML = Object.keys(DATA.seasons).map(s => chip(DATA.seasons[s][state.lang], state.season === s, `data-season="${s}"`)).join("");
+
+  const inSeason = DATA.fish.filter(f => (f.s[state.region] || []).includes(state.season));
+  if (state.fish && !inSeason.some(f => f.id === state.fish)) state.fish = null;
+  $("fish").innerHTML = chip(t().all, !state.fish, `data-fish=""`) + inSeason.map(f => chip(`<span class="e">${f.e}</span>${fishName(f)}`, state.fish === f.id, `data-fish="${f.id}"`, "fish")).join("");
+  $("types").innerHTML = chip(t().all, !state.type, `data-type=""`) + Object.keys(DATA.types).map(k => chip(DATA.types[k][state.lang], state.type === k, `data-type="${k}"`)).join("");
+
+  const boats = DATA.boats.filter(b => b.region === state.region && (!state.type || b.type === state.type) &&
+    (state.fish ? b.fish.includes(state.fish) : b.fish.some(id => inSeason.some(f => f.id === id))));
+  $("boats").innerHTML = boats.length ? boats.map(boatCard).join("") : `<p class="muted">${t().noBoat}</p>`;
+
+  $("reports").innerHTML = DATA.reports.filter(r => r.region === state.region).map(r => `
+    <div class="card rep"><div class="muted">${r.date}${r.seasonal ? ` · <b>${t().seasonal}</b>` : ""}</div>
+    <div>${esc(r[state.lang])}</div><div class="muted">${t().source}: <a href="${r.url}" target="_blank" rel="noopener">${esc(r.src)}</a></div></div>`).join("");
+}
+
+function boatCard(b) {
+  const unitFor = b.type === "charter" ? t().perBoat : t().perPerson;
+  return `<div class="card"><h3>${esc(b.name)}</h3>
+    <div class="muted">📍 ${esc(b.port)} · <span class="stars">${stars(b.rating)}</span> ${b.rating} (${b.reviews.length})</div>
+    <div>${DATA.types[b.type][state.lang]}</div>
+    <div>${b.fish.map(id => `<span class="tag">${fishName(DATA.fish.find(f => f.id === id))}</span>`).join("")}</div>
+    <table>${b.trips.map(x => `<tr><td>${t().k[x.k]} · ${x.t}</td><td>$${x.p} <span class="muted">${unitFor}</span></td></tr>`).join("")}</table>
+    <div class="btns"><button class="act info" data-info="${b.id}">${t().info}</button><button class="act book" data-book="${b.id}">${t().book}</button></div></div>`;
+}
+
+function openModal(html) { $("mbody").innerHTML = html; $("modal").classList.add("open"); }
+
+function showInfo(b) {
+  openModal(`<h2>${esc(b.name)}</h2><p class="muted">📍 ${esc(b.port)} · ${t().sample}</p>
+    <p>${t().length}: ${b.length} ${t().ft} · ${t().cap}: ${b.cap} ${t().people}</p>
+    <p><b>${t().amen}</b><br>${b.amen.map(a => `<span class="tag">${t().a[a]}</span>`).join("")}</p>
+    <p><b>${t().fishes}</b><br>${b.fish.map(id => `<span class="tag">${fishName(DATA.fish.find(f => f.id === id))}</span>`).join("")}</p>
+    <p><b>${t().reviews}</b> <span class="stars">${stars(b.rating)}</span> ${b.rating}</p>
+    ${b.reviews.map(r => `<div class="review"><b>${esc(r.n)}</b> <span class="stars">${stars(r.s)}</span> <span class="muted">${r.d}</span><br>${esc(r.t)}</div>`).join("")}
+    <div class="btns" style="margin-top:12px"><button class="act book" data-book="${b.id}">${t().book}</button></div>`);
+}
+
+function showBook(b) {
+  const tel = b.phone.replace(/[^+\d]/g, "");
+  openModal(`<h2>${t().bookTitle}</h2><h3>${esc(b.name)}</h3><p class="muted">${t().bookHint}</p>
+    <div class="contact"><div>📞 ${t().call}</div><a href="tel:${tel}">${esc(b.phone)}</a>
+    <div>✉️ ${t().mail}</div><a href="mailto:${esc(b.email)}?subject=${encodeURIComponent(b.name)}">${esc(b.email)}</a></div>
+    <p class="muted">${t().sample}</p>`);
+}
+
+document.addEventListener("click", e => {
+  const d = e.target.closest("button, .modal"); if (!d) return;
+  const ds = d.dataset || {};
+  if (d.id === "modal" || d.id === "close") return $("modal").classList.remove("open");
+  if (ds.lang) { state.lang = ds.lang; store("lang", ds.lang); }
+  else if (ds.region) { state.region = ds.region; state.fish = null; }
+  else if (ds.season) { state.season = ds.season; }
+  else if ("fish" in ds) { state.fish = ds.fish || null; }
+  else if ("type" in ds) { state.type = ds.type || null; }
+  else if (ds.info) return showInfo(DATA.boats.find(b => b.id === ds.info));
+  else if (ds.book) return showBook(DATA.boats.find(b => b.id === ds.book));
+  else return;
+  render();
+});
+render();
+</script>
+</body>
+</html>

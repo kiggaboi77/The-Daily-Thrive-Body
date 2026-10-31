@@ -25,8 +25,9 @@ const UI = {
     a: { rod: "Alquiler de caña", bait: "Carnada incluida", galley: "Cafetería", cabin: "Camarote", ice: "Hielo / nevera", ac: "A/C" } }
 };
 
+function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
 const $ = id => document.getElementById(id);
-const state = { lang: localStorage.lang || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null };
+const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null };
 function seasonOf(d) { const m = d.getMonth() + 1; return Object.keys(DATA.seasons).find(s => DATA.seasons[s].m.includes(m)); }
 const t = () => UI[state.lang];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -89,7 +90,7 @@ document.addEventListener("click", e => {
   const d = e.target.closest("button, .modal"); if (!d) return;
   const ds = d.dataset || {};
   if (d.id === "modal" || d.id === "close") return $("modal").classList.remove("open");
-  if (ds.lang) { state.lang = ds.lang; localStorage.lang = ds.lang; }
+  if (ds.lang) { state.lang = ds.lang; store("lang", ds.lang); }
   else if (ds.region) { state.region = ds.region; state.fish = null; }
   else if (ds.season) { state.season = ds.season; }
   else if ("fish" in ds) { state.fish = ds.fish || null; }
