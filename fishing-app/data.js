@@ -1,0 +1,100 @@
+// NOTE: Boats, prices, schedules, contacts and reviews below are SAMPLE data (555-01xx phones, example.com emails).
+// Replace with real operator data before publishing. Fishing reports are real, with source links.
+const DATA = {
+  regions: {
+    east:    { ko: "동부", en: "East", es: "Este" },
+    central: { ko: "중부 (걸프)", en: "Central (Gulf)", es: "Centro (Golfo)" },
+    west:    { ko: "서부", en: "West", es: "Oeste" }
+  },
+  seasons: {
+    spring: { ko: "봄", en: "Spring", es: "Primavera", m: [3, 4, 5] },
+    summer: { ko: "여름", en: "Summer", es: "Verano", m: [6, 7, 8] },
+    fall:   { ko: "가을", en: "Fall", es: "Otoño", m: [9, 10, 11] },
+    winter: { ko: "겨울", en: "Winter", es: "Invierno", m: [12, 1, 2] }
+  },
+  types: {
+    party:     { ko: "파티 보트 (공동 승선)", en: "Party boat (per person)", es: "Barco grupal (por persona)" },
+    charter:   { ko: "프라이빗 차터 (전체 대여)", en: "Private charter (whole boat)", es: "Chárter privado (barco completo)" },
+    overnight: { ko: "장거리·숙박 트립", en: "Long-range / overnight", es: "Largo alcance / noche" }
+  },
+  // seasons per region
+  fish: [
+    { id: "bluefin", e: "🐟", ko: "참다랑어", en: "Bluefin tuna", es: "Atún rojo", s: { west: ["summer", "fall"], east: ["fall", "winter"] } },
+    { id: "yellowfin", e: "🐟", ko: "황다랑어", en: "Yellowfin tuna", es: "Atún aleta amarilla", s: { west: ["summer", "fall"], east: ["summer", "fall"], central: ["spring", "summer", "fall"] } },
+    { id: "yellowtail", e: "🐠", ko: "옐로테일(방어류)", en: "Yellowtail", es: "Jurel de California", s: { west: ["spring", "summer", "fall"] } },
+    { id: "halibut", e: "🐡", ko: "광어(할리벗)", en: "California halibut", es: "Halibut de California", s: { west: ["spring", "summer"] } },
+    { id: "rockfish", e: "🐠", ko: "락피시(우럭류)", en: "Rockfish", es: "Rocote", s: { west: ["spring", "summer", "fall", "winter"] } },
+    { id: "salmon", e: "🐟", ko: "연어", en: "Salmon", es: "Salmón", s: { west: ["summer"] } },
+    { id: "striper", e: "🐟", ko: "줄무늬농어", en: "Striped bass", es: "Lubina rayada", s: { east: ["spring", "fall"] } },
+    { id: "fluke", e: "🐡", ko: "플루크(여름넙치)", en: "Fluke", es: "Platija de verano", s: { east: ["summer"] } },
+    { id: "tautog", e: "🐠", ko: "타우토그(블랙피시)", en: "Tautog (blackfish)", es: "Tautog", s: { east: ["fall", "winter"] } },
+    { id: "mahi", e: "🐬", ko: "만새기(마히마히)", en: "Mahi-mahi", es: "Dorado", s: { east: ["spring", "summer"], central: ["spring", "summer"] } },
+    { id: "sailfish", e: "🐟", ko: "돛새치", en: "Sailfish", es: "Pez vela", s: { east: ["fall", "winter"] } },
+    { id: "grouper", e: "🐠", ko: "그루퍼(농어류)", en: "Grouper", es: "Mero", s: { east: ["fall", "winter", "spring"], central: ["fall", "winter"] } },
+    { id: "snapper", e: "🐠", ko: "레드 스내퍼(퉁돔류)", en: "Red snapper", es: "Huachinango del Golfo", s: { central: ["summer", "fall"], east: ["summer"] } },
+    { id: "redfish", e: "🐟", ko: "레드피시(레드드럼)", en: "Redfish (red drum)", es: "Corvina roja", s: { central: ["fall", "winter"] } },
+    { id: "trout", e: "🐟", ko: "스펙클드 트라우트", en: "Speckled trout", es: "Trucha moteada", s: { central: ["fall", "winter", "spring"] } },
+    { id: "kingfish", e: "🐟", ko: "킹 매커럴(삼치류)", en: "King mackerel", es: "Carite", s: { central: ["spring", "fall"], east: ["fall"] } }
+  ],
+  boats: [
+    { id: "e1", region: "east", port: "Montauk, NY", name: "Montauk Star (sample)", type: "party", fish: ["striper", "fluke", "tautog", "bluefin"], length: 85, cap: 60, rating: 4.6,
+      trips: [{ k: "half", t: "8:00 AM – 1:00 PM", p: 85 }, { k: "full", t: "6:00 AM – 4:00 PM", p: 140 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (631) 555-0101", email: "book@example.com",
+      reviews: [{ n: "Mike R.", s: 5, d: "2026-09", t: "Great crew, helped my kids land their first fluke." }, { n: "Dana L.", s: 4, d: "2026-08", t: "Crowded on weekends but plenty of fish." }] },
+    { id: "e2", region: "east", port: "Key West, FL", name: "Southern Cross Charters (sample)", type: "charter", fish: ["mahi", "sailfish", "grouper", "kingfish", "snapper"], length: 42, cap: 6, rating: 4.9,
+      trips: [{ k: "half", t: "7:00 AM – 12:00 PM", p: 650 }, { k: "full", t: "7:00 AM – 3:00 PM", p: 1050 }],
+      amen: ["rod", "bait", "ice", "ac"], phone: "+1 (305) 555-0102", email: "captain@example.com",
+      reviews: [{ n: "Andrew G.", s: 5, d: "2026-10", t: "Captain put us on fish all day. Highly recommend." }, { n: "Sofia M.", s: 5, d: "2026-07", t: "¡Excelente experiencia! Muy profesional." }] },
+    { id: "e3", region: "east", port: "Fort Lauderdale, FL", name: "Gulf Stream Express (sample)", type: "party", fish: ["mahi", "kingfish", "sailfish", "yellowfin"], length: 65, cap: 40, rating: 4.4,
+      trips: [{ k: "half", t: "9:00 AM – 1:30 PM", p: 60 }, { k: "night", t: "7:00 PM – 11:00 PM", p: 55 }],
+      amen: ["rod", "bait", "galley"], phone: "+1 (954) 555-0103", email: "info@example.com",
+      reviews: [{ n: "Jin Park", s: 4, d: "2026-09", t: "가격 대비 만족. 초보자도 편해요." }] },
+    { id: "c1", region: "central", port: "Galveston, TX", name: "Bay & Gulf Party Boats (sample)", type: "party", fish: ["snapper", "kingfish", "yellowfin"], length: 100, cap: 70, rating: 4.3,
+      trips: [{ k: "half", t: "6:00 AM – 12:00 PM", p: 95 }, { k: "ext", t: "6:00 AM – 8:00 PM (extended)", p: 190 }],
+      amen: ["rod", "bait", "galley", "ac"], phone: "+1 (409) 555-0111", email: "tickets@example.com",
+      reviews: [{ n: "Carlos V.", s: 5, d: "2026-10", t: "Limit de huachinango, la tripulación muy amable." }, { n: "Beth K.", s: 4, d: "2026-09", t: "Rough seas, but the crew was great." }] },
+    { id: "c2", region: "central", port: "Freeport, TX", name: "Red & Trout Guides (sample)", type: "charter", fish: ["redfish", "trout", "snapper"], length: 24, cap: 4, rating: 4.8,
+      trips: [{ k: "half", t: "6:30 AM – 11:30 AM", p: 500 }, { k: "full", t: "6:30 AM – 2:30 PM", p: 750 }],
+      amen: ["rod", "bait", "ice"], phone: "+1 (979) 555-0112", email: "guide@example.com",
+      reviews: [{ n: "Tom H.", s: 5, d: "2026-10", t: "We limited out on redfish before lunch." }] },
+    { id: "c3", region: "central", port: "Venice, LA", name: "Delta Offshore (sample)", type: "overnight", fish: ["yellowfin", "mahi", "grouper", "kingfish"], length: 60, cap: 12, rating: 4.7,
+      trips: [{ k: "night", t: "Overnight (24h)", p: 450 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (985) 555-0113", email: "trips@example.com",
+      reviews: [{ n: "Ray D.", s: 5, d: "2026-05", t: "Yellowfin all day, comfortable bunks." }] },
+    { id: "w1", region: "west", port: "San Diego, CA", name: "Point Loma Fleet (sample)", type: "party", fish: ["yellowtail", "rockfish", "bluefin", "yellowfin"], length: 90, cap: 45, rating: 4.7,
+      trips: [{ k: "half", t: "6:30 AM – 12:30 PM", p: 85 }, { k: "full", t: "5:30 AM – 5:00 PM", p: 160 }, { k: "ext", t: "Overnight (1.5 day)", p: 350 }],
+      amen: ["rod", "bait", "galley", "cabin"], phone: "+1 (619) 555-0121", email: "reserve@example.com",
+      reviews: [{ n: "Lisa C.", s: 5, d: "2026-10", t: "Full-day trip: bluefin limits for our whole group." }, { n: "Daniel Kim", s: 5, d: "2026-09", t: "친절한 선원들, 참치 손맛 최고!" }] },
+    { id: "w2", region: "west", port: "Newport Beach, CA", name: "Pacific Dawn Charters (sample)", type: "charter", fish: ["halibut", "yellowtail", "rockfish"], length: 36, cap: 6, rating: 4.8,
+      trips: [{ k: "half", t: "7:00 AM – 12:00 PM", p: 700 }, { k: "full", t: "6:00 AM – 3:00 PM", p: 1200 }],
+      amen: ["rod", "bait", "ice", "ac"], phone: "+1 (949) 555-0122", email: "hello@example.com",
+      reviews: [{ n: "Priya S.", s: 5, d: "2026-07", t: "Perfect family trip. We caught halibut!" }] },
+    { id: "w3", region: "west", port: "Westport, WA", name: "Grays Harbor Salmon Co. (sample)", type: "party", fish: ["salmon", "rockfish"], length: 55, cap: 24, rating: 4.5,
+      trips: [{ k: "full", t: "6:00 AM – 3:00 PM", p: 150 }],
+      amen: ["rod", "bait", "galley"], phone: "+1 (360) 555-0123", email: "book2@example.com",
+      reviews: [{ n: "Erik J.", s: 4, d: "2026-08", t: "Good salmon day, cold start." }] }
+  ],
+  // Real reports; summaries are paraphrased from the source pages.
+  reports: [
+    { region: "east", date: "2026-10-08", seasonal: false, src: "The Fisherman (Long Island forecast)", url: "https://www.thefisherman.com/long-island-video-fishing-forecast-october-8th-2026/",
+      ko: "롱아일랜드: 플루크 시즌은 10월 15일까지 열려 있고, 블랙피시(타우토그) 시즌은 롱아일랜드 사운드와 뉴욕 바이트에서 개시일·어획 제한이 다르게 시작됩니다.",
+      en: "Long Island: fluke season stays open through Oct 15, and blackfish (tautog) season is starting, with different opening dates and bag limits for Long Island Sound and the NY Bight.",
+      es: "Long Island: la temporada de fluke sigue abierta hasta el 15 de octubre y comienza la de tautog, con fechas y límites distintos para Long Island Sound y el NY Bight." },
+    { region: "east", date: "2025-10", seasonal: true, src: "FishingBooker – ShadowCaste (Key Largo)", url: "https://fishingbooker.com/de/reports/view/108060",
+      ko: "플로리다 키스(작년 10월): 오프쇼어와 백컨트리 모두 입질이 좋았다는 보고. 올해 10월 정식 리포트는 찾지 못해 참고용입니다.",
+      en: "Florida Keys (last October): offshore and backcountry fishing both reported as firing. No dated Oct 2026 report found, so this is seasonal reference.",
+      es: "Cayos de Florida (octubre pasado): pesca de altura y backcountry reportadas como excelentes. No se encontró un reporte de oct. 2026; es referencia estacional." },
+    { region: "central", date: "2026-10", seasonal: false, src: "Captain Experiences – Surfside Beach (customer reviews)", url: "https://captainexperiences.com/fishing-reports/locations/texas/surfside-beach?page=25",
+      ko: "텍사스 프리포트/서프사이드 인근: 9월 말~10월 중순 고객 후기에서 스내퍼 어획 한도 채움, 플라운더 작살·활 낚시 보고. 공식 리포트가 아닌 후기입니다.",
+      en: "Freeport/Surfside, TX: late-Sept to mid-Oct customer reviews mention snapper limits and flounder gigging. These are reviews, not official reports.",
+      es: "Freeport/Surfside, TX: reseñas de fines de sept. a mediados de oct. mencionan límites de huachinango y pesca de lenguado con fisga. Son reseñas, no reportes oficiales." },
+    { region: "west", date: "2026-07", seasonal: false, src: "FishingBooker – San Diego Bay report", url: "https://fishingbooker.com/reports/view/121998",
+      ko: "샌디에이고 베이(7월 초): 아침에 스팟티드 베이 배스가 활발, 작은 광어와 좋은 크기의 코르비나도 확인.",
+      en: "San Diego Bay (early July): spotted bay bass wide open in the mornings, plus smaller halibut and good-sized corvina.",
+      es: "Bahía de San Diego (principios de julio): lubina de bahía muy activa por la mañana, además de halibut pequeño y corvina de buen tamaño." },
+    { region: "west", date: "2025-10", seasonal: true, src: "San Diego Fish Reports", url: "https://www.sandiegofishreports.com/fish_reports/saltwater.php",
+      ko: "샌디에이고(작년 10월): 풀데이 트립에서 참다랑어·황다랑어 한도, 하프데이는 옐로테일·보니토 등. 올해 10월자는 아직 못 찾았습니다.",
+      en: "San Diego (last October): full-day trips landed bluefin and yellowfin limits; half-days caught yellowtail and bonito. No Oct 2026 entry found yet.",
+      es: "San Diego (octubre pasado): viajes de día completo con límites de atún rojo y aleta amarilla; medio día con jurel y bonito. Aún no hay entrada de oct. 2026." }
+  ]
+};

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>US Fishing Boats · 미국 낚시 배 · Barcos de pesca EE.UU.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>🎣 <span data-i="title"></span></h1>
+  <div class="lang" id="lang"></div>
+</header>
+<main>
+  <section><h2 data-i="region"></h2><div class="row" id="regions"></div></section>
+  <section><h2 data-i="season"></h2><div class="row" id="seasons"></div></section>
+  <section><h2>🐟 <span data-i="fishBtn"></span></h2><div class="row" id="fish"></div></section>
+  <section><h2 data-i="boatType"></h2><div class="row" id="types"></div></section>
+  <section><h2 data-i="boats"></h2><div class="grid" id="boats"></div></section>
+  <section><h2>📰 <span data-i="reports"></span></h2><div class="notice" data-i="reportNote" style="margin-bottom:10px"></div><div class="grid" id="reports"></div></section>
+</main>
+<footer data-i="footer"></footer>
+<div class="modal" id="modal"><div class="box"><button class="x" id="close">×</button><div id="mbody"></div></div></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
