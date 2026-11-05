@@ -37,3 +37,6 @@ button.act{flex:1;padding:10px;border-radius:10px;border:0;cursor:pointer;font-s
 .contact a{display:block;font-size:1.15rem;font-weight:700;color:var(--teal);margin:8px 0;word-break:break-all}
 .review{border-top:1px solid var(--line);padding:8px 0}
 footer{text-align:center;color:#5b6b73;font-size:.8rem;padding:20px}
+.badge{display:inline-block;background:#eceff1;color:#455a64;padding:2px 9px;border-radius:999px;font-size:.75rem;font-weight:700}
+.badge.real{background:#e6f4ea;color:#1e7a3c}
+.contact .big a{display:block;font-size:1.1rem;font-weight:700;color:var(--teal);margin:2px 0 10px;word-break:break-all}

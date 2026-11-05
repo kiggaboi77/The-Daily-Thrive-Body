@@ -1,33 +1,33 @@
 const UI = {
-  ko: { area: "세부 지역", allAreas: "전체 지역", fishNote: "어종별 시즌은 대략적인 가이드입니다. 크기·수량·금어기는 주/연방마다 다르고 자주 바뀌니 출항 전 NOAA·주 정부 규정을 확인하세요.", tag: { guide: "시즌 가이드", last: "작년 자료", reg: "규정(확인 필요)", old: "예전/연도 미상 자료" }, title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
+  ko: { dataSrc: "데이터", realOnly: "실제 업체만", withSample: "샘플 포함", real: "실제 업체", sampleBadge: "샘플", site: "웹사이트", ask: "가격·시간 문의", noEmail: "이메일 공개 정보 없음 — 전화나 웹사이트로 문의", gReviews: "Google에서 리뷰 보기", srcLink: "정보 출처", boatNote: "‘실제 업체’의 전화번호·가격·시간은 검색으로 확인한 디렉터리/예약 사이트 정보라 최신이 아닐 수 있습니다. 가격이 비어 있으면 업체에 직접 문의하세요. 대표 어종은 해당 지역 기준 추정입니다.", area: "세부 지역", allAreas: "전체 지역", fishNote: "어종별 시즌은 대략적인 가이드입니다. 크기·수량·금어기는 주/연방마다 다르고 자주 바뀌니 출항 전 NOAA·주 정부 규정을 확인하세요.", tag: { guide: "시즌 가이드", last: "작년 자료", reg: "규정(확인 필요)", old: "예전/연도 미상 자료" }, title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
     reportNote: "검색으로 확인된 리포트만 출처 링크와 함께 표시합니다. '작년' 표시는 올해 자료가 없어 계절 참고용입니다. 출항 전 업체에 확인하세요.",
     all: "전체", noBoat: "조건에 맞는 배가 없습니다.", perPerson: "인당", perBoat: "배 전체", info: "배 정보", book: "예약하기", source: "출처",
     length: "길이", cap: "정원", ft: "ft", people: "명", amen: "시설/장비", reviews: "리뷰", call: "전화", mail: "이메일", bookTitle: "예약 문의",
     bookHint: "전화나 이메일로 날짜·인원을 문의하세요.", port: "항구", fishes: "대상 어종", trips: "출항 시간 · 가격", seasonal: "작년 자료", sample: "샘플 데이터",
-    footer: "배·가격·연락처·리뷰는 샘플 데이터입니다. 실제 업체 정보로 교체 후 사용하세요.",
+    footer: "‘실제 업체’ 정보는 검색으로 확인한 디렉터리 기준이라 출항 전 전화로 확인하세요. ‘샘플’ 표시된 배·가격·연락처·리뷰는 예시 데이터입니다.",
     k: { half: "반나절", full: "종일", ext: "연장/숙박", night: "야간" },
     a: { rod: "낚싯대 대여", bait: "미끼 제공", galley: "매점", cabin: "선실", ice: "얼음/쿨러", ac: "에어컨" } },
-  en: { area: "Area", allAreas: "All areas", fishNote: "Seasons are an approximate guide. Size, bag limits and closures differ by state/federal rules and change often — check NOAA and your state before you go.", tag: { guide: "Season guide", last: "Last year", reg: "Regulation (verify)", old: "Older / undated" }, title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
+  en: { dataSrc: "Data", realOnly: "Real operators only", withSample: "Include samples", real: "Real operator", sampleBadge: "Sample", site: "Website", ask: "Ask for price/times", noEmail: "No public email found — call or use the website", gReviews: "See reviews on Google", srcLink: "Source", boatNote: "Phones, prices and times for real operators come from directory/booking listings found by search and may be out of date. Where a price is blank, ask the operator. Target species are an estimate for the area.", area: "Area", allAreas: "All areas", fishNote: "Seasons are an approximate guide. Size, bag limits and closures differ by state/federal rules and change often — check NOAA and your state before you go.", tag: { guide: "Season guide", last: "Last year", reg: "Regulation (verify)", old: "Older / undated" }, title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
     reportNote: "Only reports found via search are shown, with source links. “Last year” means no current data was found and it is seasonal reference. Confirm with the operator before you go.",
     all: "All", noBoat: "No boats match.", perPerson: "per person", perBoat: "whole boat", info: "Boat info", book: "Book now", source: "Source",
     length: "Length", cap: "Capacity", ft: "ft", people: "people", amen: "Amenities", reviews: "Reviews", call: "Call", mail: "Email", bookTitle: "Book this trip",
     bookHint: "Call or email to ask about dates and group size.", port: "Port", fishes: "Target fish", trips: "Trip times · prices", seasonal: "Last year", sample: "Sample data",
-    footer: "Boats, prices, contacts and reviews are sample data. Replace with real operator info before use.",
+    footer: "Real-operator info comes from directory listings found by search — confirm by phone before you go. Boats marked Sample (prices, contacts, reviews) are example data.",
     k: { half: "Half day", full: "Full day", ext: "Extended / overnight", night: "Night" },
     a: { rod: "Rod rental", bait: "Bait included", galley: "Galley", cabin: "Cabin", ice: "Ice / cooler", ac: "A/C" } },
-  es: { area: "Zona", allAreas: "Todas las zonas", fishNote: "Las temporadas son una guía aproximada. Tallas, límites y vedas cambian según el estado/federal; revisa NOAA y tu estado antes de ir.", tag: { guide: "Guía de temporada", last: "Año pasado", reg: "Norma (verificar)", old: "Antiguo / sin fecha" }, title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
+  es: { dataSrc: "Datos", realOnly: "Solo operadores reales", withSample: "Incluir ejemplos", real: "Operador real", sampleBadge: "Ejemplo", site: "Sitio web", ask: "Consultar precio/horario", noEmail: "Sin correo público — llama o usa el sitio web", gReviews: "Ver reseñas en Google", srcLink: "Fuente", boatNote: "Teléfonos, precios y horarios de operadores reales provienen de listados encontrados por búsqueda y pueden no estar actualizados. Si falta el precio, consulta al operador. Las especies son una estimación de la zona.", area: "Zona", allAreas: "Todas las zonas", fishNote: "Las temporadas son una guía aproximada. Tallas, límites y vedas cambian según el estado/federal; revisa NOAA y tu estado antes de ir.", tag: { guide: "Guía de temporada", last: "Año pasado", reg: "Norma (verificar)", old: "Antiguo / sin fecha" }, title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
     reportNote: "Solo se muestran reportes encontrados en la búsqueda, con enlace a la fuente. “Año pasado” es referencia estacional. Confirma con el operador antes de ir.",
     all: "Todos", noBoat: "No hay barcos que coincidan.", perPerson: "por persona", perBoat: "barco completo", info: "Info del barco", book: "Reservar", source: "Fuente",
     length: "Eslora", cap: "Capacidad", ft: "pies", people: "personas", amen: "Servicios", reviews: "Reseñas", call: "Llamar", mail: "Correo", bookTitle: "Reservar este viaje",
     bookHint: "Llama o escribe para consultar fechas y número de personas.", port: "Puerto", fishes: "Especies", trips: "Horarios · precios", seasonal: "Año pasado", sample: "Datos de ejemplo",
-    footer: "Barcos, precios, contactos y reseñas son datos de ejemplo. Sustituye por datos reales antes de usar.",
+    footer: "La info de operadores reales proviene de listados hallados por búsqueda: confirma por teléfono antes de ir. Los barcos marcados como Ejemplo son datos ficticios.",
     k: { half: "Medio día", full: "Día completo", ext: "Extendido / noche", night: "Nocturno" },
     a: { rod: "Alquiler de caña", bait: "Carnada incluida", galley: "Cafetería", cabin: "Camarote", ice: "Hielo / nevera", ac: "A/C" } }
 };
 
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
 const $ = id => document.getElementById(id);
-const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null, area: null };
+const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null, area: null, sample: false };
 function seasonOf(d) { const m = d.getMonth() + 1; return Object.keys(DATA.seasons).find(s => DATA.seasons[s].m.includes(m)); }
 const t = () => UI[state.lang];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -49,12 +49,14 @@ function render() {
   const scope = state.area ? [state.area] : regionAreas;
   const fishById = Object.fromEntries(DATA.fish.map(f => [f.id, f]));
   const inSeasonIn = (id, area) => ((fishById[id] || { s: {} }).s[area] || []).includes(state.season);
-  const inSeason = DATA.fish.filter(f => scope.some(k => inSeasonIn(f.id, k) && DATA.boats.some(b => b.area === k && b.fish.includes(f.id))));
+  const pool = DATA.boats.filter(b => state.sample || b.real);
+  const inSeason = DATA.fish.filter(f => scope.some(k => inSeasonIn(f.id, k) && pool.some(b => b.area === k && b.fish.includes(f.id))));
   if (state.fish && !inSeason.some(f => f.id === state.fish)) state.fish = null;
   $("fish").innerHTML = chip(t().all, !state.fish, `data-fish=""`) + inSeason.map(f => chip(`<span class="e">${f.e}</span>${fishName(f)}`, state.fish === f.id, `data-fish="${f.id}"`, "fish")).join("");
+  $("srcRow").innerHTML = chip(t().realOnly, !state.sample, `data-sample="0"`) + chip(t().withSample, state.sample, `data-sample="1"`);
   $("types").innerHTML = chip(t().all, !state.type, `data-type=""`) + Object.keys(DATA.types).map(k => chip(DATA.types[k][state.lang], state.type === k, `data-type="${k}"`)).join("");
 
-  const boats = DATA.boats.filter(b => b.region === state.region && (!state.area || b.area === state.area) && (!state.type || b.type === state.type) &&
+  const boats = pool.filter(b => b.region === state.region && (!state.area || b.area === state.area) && (!state.type || b.type === state.type) &&
     (state.fish ? b.fish.includes(state.fish) && inSeasonIn(state.fish, b.area) : b.fish.some(id => inSeasonIn(id, b.area))));
   $("boats").innerHTML = boats.length ? boats.map(boatCard).join("") : `<p class="muted">${t().noBoat}</p>`;
 
@@ -63,34 +65,51 @@ function render() {
     <div>${esc(r[state.lang])}</div><div class="muted">${t().source}: <a href="${r.url}" target="_blank" rel="noopener">${esc(r.src)}</a></div></div>`).join("");
 }
 
+const note = b => (b.note && (b.note[state.lang] || b.note.en)) || "";
+const gUrl = b => "https://www.google.com/search?q=" + encodeURIComponent(b.name.replace(" (sample)", "") + " " + b.port + " reviews");
+const badge = b => `<span class="badge ${b.real ? "real" : ""}">${b.real ? t().real : t().sampleBadge}</span>`;
+const unitOf = (b, x) => x.u === "boat" ? t().perBoat : x.u === "pp" ? t().perPerson : (b.type === "charter" ? t().perBoat : t().perPerson);
+const fishTags = b => b.fish.map(id => `<span class="tag">${fishName(DATA.fish.find(f => f.id === id))}</span>`).join("");
+const telLink = p => `<a href="tel:${p.replace(/[^+\d]/g, "")}">${esc(p)}</a>`;
+const shortUrl = u => esc(u.replace(/^https?:\/\/(www\.)?/, "").slice(0, 60));
+
 function boatCard(b) {
-  const unitFor = b.type === "charter" ? t().perBoat : t().perPerson;
-  return `<div class="card"><h3>${esc(b.name)}</h3>
-    <div class="muted">📍 ${esc(b.port)} · <span class="stars">${stars(b.rating)}</span> ${b.rating} (${b.reviews.length})</div>
+  const trips = b.trips.length
+    ? `<table>${b.trips.map(x => `<tr><td>${t().k[x.k]} · ${esc(x.t)}</td><td>${x.p != null ? `$${x.p} <span class="muted">${unitOf(b, x)}</span>` : `<span class="muted">${t().ask}</span>`}</td></tr>`).join("")}</table>`
+    : `<div class="muted">${t().ask}</div>`;
+  const rating = b.rating ? ` · <span class="stars">${stars(b.rating)}</span> ${b.rating} (${b.reviews.length})` : "";
+  return `<div class="card"><div>${badge(b)}</div><h3>${esc(b.name)}</h3>
+    <div class="muted">📍 ${esc(b.port)}${rating}</div>
     <div>${DATA.types[b.type][state.lang]}</div>
-    <div>${b.fish.map(id => `<span class="tag">${fishName(DATA.fish.find(f => f.id === id))}</span>`).join("")}</div>
-    <table>${b.trips.map(x => `<tr><td>${t().k[x.k]} · ${x.t}</td><td>$${x.p} <span class="muted">${unitFor}</span></td></tr>`).join("")}</table>
+    <div>${fishTags(b)}</div>${trips}
+    ${note(b) ? `<div class="muted">${esc(note(b))}</div>` : ""}
     <div class="btns"><button class="act info" data-info="${b.id}">${t().info}</button><button class="act book" data-book="${b.id}">${t().book}</button></div></div>`;
 }
 
 function openModal(html) { $("mbody").innerHTML = html; $("modal").classList.add("open"); }
 
 function showInfo(b) {
-  openModal(`<h2>${esc(b.name)}</h2><p class="muted">📍 ${esc(b.port)} · ${t().sample}</p>
-    <p>${t().length}: ${b.length} ${t().ft} · ${t().cap}: ${b.cap} ${t().people}</p>
-    <p><b>${t().amen}</b><br>${b.amen.map(a => `<span class="tag">${t().a[a]}</span>`).join("")}</p>
-    <p><b>${t().fishes}</b><br>${b.fish.map(id => `<span class="tag">${fishName(DATA.fish.find(f => f.id === id))}</span>`).join("")}</p>
-    <p><b>${t().reviews}</b> <span class="stars">${stars(b.rating)}</span> ${b.rating}</p>
-    ${b.reviews.map(r => `<div class="review"><b>${esc(r.n)}</b> <span class="stars">${stars(r.s)}</span> <span class="muted">${r.d}</span><br>${esc(r.t)}</div>`).join("")}
+  const size = [b.length ? `${t().length}: ${b.length} ${t().ft}` : "", b.cap ? `${t().cap}: ${b.cap} ${t().people}` : ""].filter(Boolean).join(" · ");
+  const amen = b.amen ? `<p><b>${t().amen}</b><br>${b.amen.map(a => `<span class="tag">${t().a[a]}</span>`).join("")}</p>` : "";
+  const reviews = b.reviews
+    ? `<p><b>${t().reviews}</b> <span class="stars">${stars(b.rating)}</span> ${b.rating}</p>` + b.reviews.map(r => `<div class="review"><b>${esc(r.n)}</b> <span class="stars">${stars(r.s)}</span> <span class="muted">${r.d}</span><br>${esc(r.t)}</div>`).join("")
+    : `<p><b>${t().reviews}</b><br><a href="${gUrl(b)}" target="_blank" rel="noopener">${t().gReviews}</a></p>`;
+  const src = b.src ? `<p class="muted">${t().srcLink}: <a href="${b.src}" target="_blank" rel="noopener">${shortUrl(b.src)}</a></p>` : "";
+  openModal(`<div>${badge(b)}</div><h2>${esc(b.name)}</h2><p class="muted">📍 ${esc(b.port)}</p>
+    ${size ? `<p>${size}</p>` : ""}${note(b) ? `<p>${esc(note(b))}</p>` : ""}${amen}
+    <p><b>${t().fishes}</b><br>${fishTags(b)}</p>${reviews}${src}
     <div class="btns" style="margin-top:12px"><button class="act book" data-book="${b.id}">${t().book}</button></div>`);
 }
 
 function showBook(b) {
-  const tel = b.phone.replace(/[^+\d]/g, "");
-  openModal(`<h2>${t().bookTitle}</h2><h3>${esc(b.name)}</h3><p class="muted">${t().bookHint}</p>
-    <div class="contact"><div>📞 ${t().call}</div><a href="tel:${tel}">${esc(b.phone)}</a>
-    <div>✉️ ${t().mail}</div><a href="mailto:${esc(b.email)}?subject=${encodeURIComponent(b.name)}">${esc(b.email)}</a></div>
-    <p class="muted">${t().sample}</p>`);
+  const phones = [b.phone, b.phone2].filter(Boolean);
+  const phoneHtml = phones.length ? phones.map(p => `<div>📞 ${t().call}</div><div class="big">${telLink(p)}</div>`).join("") : `<div class="muted">📞 ${t().ask}</div>`;
+  const mail = b.email ? `<div>✉️ ${t().mail}</div><div class="big"><a href="mailto:${esc(b.email)}?subject=${encodeURIComponent(b.name)}">${esc(b.email)}</a></div>` : `<div class="muted">✉️ ${t().noEmail}</div>`;
+  const site = b.site ? `<div>🌐 ${t().site}</div><div class="big"><a href="${b.site}" target="_blank" rel="noopener">${shortUrl(b.site)}</a></div>` : "";
+  const link = !b.site && b.src ? `<div>🌐 ${t().srcLink}</div><div class="big"><a href="${b.src}" target="_blank" rel="noopener">${shortUrl(b.src)}</a></div>` : "";
+  openModal(`<h2>${t().bookTitle}</h2><h3>${esc(b.name)}</h3>${badge(b)}<p class="muted">${t().bookHint}</p>
+    <div class="contact">${phoneHtml}${mail}${site}${link}</div>
+    <p class="muted">${b.real ? t().boatNote : t().sample}</p>`);
 }
 
 document.addEventListener("click", e => {
@@ -98,6 +117,7 @@ document.addEventListener("click", e => {
   const ds = d.dataset || {};
   if (d.id === "modal" || d.id === "close") return $("modal").classList.remove("open");
   if (ds.lang) { state.lang = ds.lang; store("lang", ds.lang); }
+  else if ("sample" in ds) { state.sample = ds.sample === "1"; state.fish = null; }
   else if ("area" in ds) { state.area = ds.area || null; state.fish = null; }
   else if (ds.region) { state.region = ds.region; state.fish = null; }
   else if (ds.season) { state.season = ds.season; }
