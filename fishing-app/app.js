@@ -1,5 +1,5 @@
 const UI = {
-  ko: { dataSrc: "데이터", realOnly: "실제 업체만", withSample: "샘플 포함", real: "실제 업체", sampleBadge: "샘플", site: "웹사이트", ask: "가격·시간 문의", noEmail: "이메일 공개 정보 없음 — 전화나 웹사이트로 문의", gReviews: "Google에서 리뷰 보기", srcLink: "정보 출처", boatNote: "‘실제 업체’의 전화번호·가격·시간은 검색으로 확인한 디렉터리/예약 사이트 정보라 최신이 아닐 수 있습니다. 가격이 비어 있으면 업체에 직접 문의하세요. 대표 어종은 해당 지역 기준 추정입니다.", area: "세부 지역", allAreas: "전체 지역", fishNote: "어종별 시즌은 대략적인 가이드입니다. 크기·수량·금어기는 주/연방마다 다르고 자주 바뀌니 출항 전 NOAA·주 정부 규정을 확인하세요.", tag: { guide: "시즌 가이드", last: "작년 자료", reg: "규정(확인 필요)", old: "예전/연도 미상 자료" }, title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
+  ko: { search: "물고기 검색 (예: sea bass, 오징어, 광어)", noFish: "검색어에 맞는 어종이 이 지역·시즌에 없습니다. 지역이나 시즌을 바꿔 보세요.", dataSrc: "데이터", realOnly: "실제 업체만", withSample: "샘플 포함", real: "실제 업체", sampleBadge: "샘플", site: "웹사이트", ask: "가격·시간 문의", noEmail: "이메일 공개 정보 없음 — 전화나 웹사이트로 문의", gReviews: "Google에서 리뷰 보기", srcLink: "정보 출처", boatNote: "‘실제 업체’의 전화번호·가격·시간은 검색으로 확인한 디렉터리/예약 사이트 정보라 최신이 아닐 수 있습니다. 가격이 비어 있으면 업체에 직접 문의하세요. 대표 어종은 해당 지역 기준 추정입니다.", area: "세부 지역", allAreas: "전체 지역", fishNote: "어종별 시즌은 대략적인 가이드입니다. 크기·수량·금어기는 주/연방마다 다르고 자주 바뀌니 출항 전 NOAA·주 정부 규정을 확인하세요.", tag: { guide: "시즌 가이드", last: "작년 자료", reg: "규정(확인 필요)", old: "예전/연도 미상 자료" }, title: "미국 낚시 배 예약", region: "지역 선택", season: "시즌", fishBtn: "물고기 고르기", boatType: "배 종류", boats: "배 목록", reports: "최근 피싱 리포트",
     reportNote: "검색으로 확인된 리포트만 출처 링크와 함께 표시합니다. '작년' 표시는 올해 자료가 없어 계절 참고용입니다. 출항 전 업체에 확인하세요.",
     all: "전체", noBoat: "조건에 맞는 배가 없습니다.", perPerson: "인당", perBoat: "배 전체", info: "배 정보", book: "예약하기", source: "출처",
     length: "길이", cap: "정원", ft: "ft", people: "명", amen: "시설/장비", reviews: "리뷰", call: "전화", mail: "이메일", bookTitle: "예약 문의",
@@ -7,7 +7,7 @@ const UI = {
     footer: "‘실제 업체’ 정보는 검색으로 확인한 디렉터리 기준이라 출항 전 전화로 확인하세요. ‘샘플’ 표시된 배·가격·연락처·리뷰는 예시 데이터입니다.",
     k: { half: "반나절", full: "종일", ext: "연장/숙박", night: "야간" },
     a: { rod: "낚싯대 대여", bait: "미끼 제공", galley: "매점", cabin: "선실", ice: "얼음/쿨러", ac: "에어컨" } },
-  en: { dataSrc: "Data", realOnly: "Real operators only", withSample: "Include samples", real: "Real operator", sampleBadge: "Sample", site: "Website", ask: "Ask for price/times", noEmail: "No public email found — call or use the website", gReviews: "See reviews on Google", srcLink: "Source", boatNote: "Phones, prices and times for real operators come from directory/booking listings found by search and may be out of date. Where a price is blank, ask the operator. Target species are an estimate for the area.", area: "Area", allAreas: "All areas", fishNote: "Seasons are an approximate guide. Size, bag limits and closures differ by state/federal rules and change often — check NOAA and your state before you go.", tag: { guide: "Season guide", last: "Last year", reg: "Regulation (verify)", old: "Older / undated" }, title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
+  en: { search: "Search fish (e.g. sea bass, squid, flounder)", noFish: "No matching fish for this area and season. Try another area or season.", dataSrc: "Data", realOnly: "Real operators only", withSample: "Include samples", real: "Real operator", sampleBadge: "Sample", site: "Website", ask: "Ask for price/times", noEmail: "No public email found — call or use the website", gReviews: "See reviews on Google", srcLink: "Source", boatNote: "Phones, prices and times for real operators come from directory/booking listings found by search and may be out of date. Where a price is blank, ask the operator. Target species are an estimate for the area.", area: "Area", allAreas: "All areas", fishNote: "Seasons are an approximate guide. Size, bag limits and closures differ by state/federal rules and change often — check NOAA and your state before you go.", tag: { guide: "Season guide", last: "Last year", reg: "Regulation (verify)", old: "Older / undated" }, title: "US Fishing Boat Booking", region: "Region", season: "Season", fishBtn: "Pick a fish", boatType: "Boat type", boats: "Boats", reports: "Recent fishing reports",
     reportNote: "Only reports found via search are shown, with source links. “Last year” means no current data was found and it is seasonal reference. Confirm with the operator before you go.",
     all: "All", noBoat: "No boats match.", perPerson: "per person", perBoat: "whole boat", info: "Boat info", book: "Book now", source: "Source",
     length: "Length", cap: "Capacity", ft: "ft", people: "people", amen: "Amenities", reviews: "Reviews", call: "Call", mail: "Email", bookTitle: "Book this trip",
@@ -15,7 +15,7 @@ const UI = {
     footer: "Real-operator info comes from directory listings found by search — confirm by phone before you go. Boats marked Sample (prices, contacts, reviews) are example data.",
     k: { half: "Half day", full: "Full day", ext: "Extended / overnight", night: "Night" },
     a: { rod: "Rod rental", bait: "Bait included", galley: "Galley", cabin: "Cabin", ice: "Ice / cooler", ac: "A/C" } },
-  es: { dataSrc: "Datos", realOnly: "Solo operadores reales", withSample: "Incluir ejemplos", real: "Operador real", sampleBadge: "Ejemplo", site: "Sitio web", ask: "Consultar precio/horario", noEmail: "Sin correo público — llama o usa el sitio web", gReviews: "Ver reseñas en Google", srcLink: "Fuente", boatNote: "Teléfonos, precios y horarios de operadores reales provienen de listados encontrados por búsqueda y pueden no estar actualizados. Si falta el precio, consulta al operador. Las especies son una estimación de la zona.", area: "Zona", allAreas: "Todas las zonas", fishNote: "Las temporadas son una guía aproximada. Tallas, límites y vedas cambian según el estado/federal; revisa NOAA y tu estado antes de ir.", tag: { guide: "Guía de temporada", last: "Año pasado", reg: "Norma (verificar)", old: "Antiguo / sin fecha" }, title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
+  es: { search: "Buscar pez (p. ej. sea bass, calamar, lenguado)", noFish: "No hay peces que coincidan en esta zona y temporada. Prueba otra.", dataSrc: "Datos", realOnly: "Solo operadores reales", withSample: "Incluir ejemplos", real: "Operador real", sampleBadge: "Ejemplo", site: "Sitio web", ask: "Consultar precio/horario", noEmail: "Sin correo público — llama o usa el sitio web", gReviews: "Ver reseñas en Google", srcLink: "Fuente", boatNote: "Teléfonos, precios y horarios de operadores reales provienen de listados encontrados por búsqueda y pueden no estar actualizados. Si falta el precio, consulta al operador. Las especies son una estimación de la zona.", area: "Zona", allAreas: "Todas las zonas", fishNote: "Las temporadas son una guía aproximada. Tallas, límites y vedas cambian según el estado/federal; revisa NOAA y tu estado antes de ir.", tag: { guide: "Guía de temporada", last: "Año pasado", reg: "Norma (verificar)", old: "Antiguo / sin fecha" }, title: "Reserva de barcos de pesca EE.UU.", region: "Región", season: "Temporada", fishBtn: "Elige un pez", boatType: "Tipo de barco", boats: "Barcos", reports: "Reportes de pesca recientes",
     reportNote: "Solo se muestran reportes encontrados en la búsqueda, con enlace a la fuente. “Año pasado” es referencia estacional. Confirma con el operador antes de ir.",
     all: "Todos", noBoat: "No hay barcos que coincidan.", perPerson: "por persona", perBoat: "barco completo", info: "Info del barco", book: "Reservar", source: "Fuente",
     length: "Eslora", cap: "Capacidad", ft: "pies", people: "personas", amen: "Servicios", reviews: "Reseñas", call: "Llamar", mail: "Correo", bookTitle: "Reservar este viaje",
@@ -27,7 +27,7 @@ const UI = {
 
 function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) {} }
 const $ = id => document.getElementById(id);
-const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null, area: null, sample: false };
+const state = { lang: store("lang") || "ko", region: "east", season: seasonOf(new Date()), fish: null, type: null, area: null, sample: false, q: "" };
 function seasonOf(d) { const m = d.getMonth() + 1; return Object.keys(DATA.seasons).find(s => DATA.seasons[s].m.includes(m)); }
 const t = () => UI[state.lang];
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -51,13 +51,19 @@ function render() {
   const inSeasonIn = (id, area) => ((fishById[id] || { s: {} }).s[area] || []).includes(state.season);
   const pool = DATA.boats.filter(b => state.sample || b.real);
   const inSeason = DATA.fish.filter(f => scope.some(k => inSeasonIn(f.id, k) && pool.some(b => b.area === k && b.fish.includes(f.id))));
-  if (state.fish && !inSeason.some(f => f.id === state.fish)) state.fish = null;
-  $("fish").innerHTML = chip(t().all, !state.fish, `data-fish=""`) + inSeason.map(f => chip(`<span class="e">${f.e}</span>${fishName(f)}`, state.fish === f.id, `data-fish="${f.id}"`, "fish")).join("");
+  const norm = s => String(s).toLowerCase().replace(/[\s-]+/g, "");
+  const qn = norm(state.q);
+  const matches = f => !qn || norm([f.ko, f.en, f.es, f.alias || ""].join(" ")).includes(qn);
+  const shown = inSeason.filter(matches);
+  const matchIds = new Set(shown.map(f => f.id));
+  if (state.fish && !matchIds.has(state.fish)) state.fish = null;
+  $("fishQ").placeholder = t().search;
+  $("fish").innerHTML = chip(t().all, !state.fish, `data-fish=""`) + shown.map(f => chip(`<span class="e">${f.e}</span>${fishName(f)}`, state.fish === f.id, `data-fish="${f.id}"`, "fish")).join("") + (qn && !shown.length ? `<p class="muted">${t().noFish}</p>` : "");
   $("srcRow").innerHTML = chip(t().realOnly, !state.sample, `data-sample="0"`) + chip(t().withSample, state.sample, `data-sample="1"`);
   $("types").innerHTML = chip(t().all, !state.type, `data-type=""`) + Object.keys(DATA.types).map(k => chip(DATA.types[k][state.lang], state.type === k, `data-type="${k}"`)).join("");
 
   const boats = pool.filter(b => b.region === state.region && (!state.area || b.area === state.area) && (!state.type || b.type === state.type) &&
-    (state.fish ? b.fish.includes(state.fish) && inSeasonIn(state.fish, b.area) : b.fish.some(id => inSeasonIn(id, b.area))));
+    (state.fish ? b.fish.includes(state.fish) && inSeasonIn(state.fish, b.area) : b.fish.some(id => inSeasonIn(id, b.area) && (!qn || matchIds.has(id)))));
   $("boats").innerHTML = boats.length ? boats.map(boatCard).join("") : `<p class="muted">${t().noBoat}</p>`;
 
   $("reports").innerHTML = DATA.reports.filter(r => r.region === state.region).map(r => `
@@ -126,6 +132,8 @@ document.addEventListener("click", e => {
   else if (ds.info) return showInfo(DATA.boats.find(b => b.id === ds.info));
   else if (ds.book) return showBook(DATA.boats.find(b => b.id === ds.book));
   else return;
-  render();
+  document.addEventListener("input", e => { if (e.target.id === "fishQ") { state.q = e.target.value; render(); } });
+render();
 });
+document.addEventListener("input", e => { if (e.target.id === "fishQ") { state.q = e.target.value; render(); } });
 render();
